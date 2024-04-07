@@ -1,0 +1,562 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema campocauca
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `campocauca` ;
+
+-- -----------------------------------------------------
+-- Schema campocauca
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `campocauca` DEFAULT CHARACTER SET utf8mb3 ;
+USE `campocauca` ;
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`categoria`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`categoria` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`categoria` (
+  `id_categoria` INT NOT NULL AUTO_INCREMENT,
+  `nombre_categoria` VARCHAR(45) NOT NULL,
+  `descipcion_categoria` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_categoria`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3
+COMMENT = 'Esta entidad se crea con el objetivo de clasificar cada articulo en categorias y a su vez  generar un filtro de busqueda que ayude al usuario o vendedor a encontrar el articulo facilmente ';
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`empresa`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`empresa` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`empresa` (
+  `id_empresa` INT NOT NULL AUTO_INCREMENT,
+  `razon_social` VARCHAR(45) NOT NULL,
+  `Nit` VARCHAR(45) NOT NULL,
+  `direccion` VARCHAR(45) NOT NULL,
+  `telefonoemp` INT NOT NULL,
+  `correo` VARCHAR(45) NOT NULL,
+  `empresacol` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_empresa`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3
+COMMENT = 'Esta entidad se crea con el objetivo de poder mantener un registro de todos los clientes,en el dicho caso de que este identifique como empresa ';
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`departamento`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`departamento` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`departamento` (
+  `id_departamento` INT NOT NULL AUTO_INCREMENT,
+  `departamento` VARCHAR(45) NOT NULL,
+  `descripcion_departamento` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_departamento`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3
+COMMENT = 'Esta entidad se crea con el objetivo de determinar la procedencia por departamentos, o en su defecto dictaminar hacia que punto van dirijido los pedidos';
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`municipio`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`municipio` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`municipio` (
+  `id_municipio` INT NOT NULL AUTO_INCREMENT,
+  `municipio` VARCHAR(45) NOT NULL,
+  `codigo_municipio` VARCHAR(45) NOT NULL,
+  `departamento_id_departamento` INT NOT NULL,
+  PRIMARY KEY (`id_municipio`),
+  CONSTRAINT `fk_municipio_departamento1`
+    FOREIGN KEY (`departamento_id_departamento`)
+    REFERENCES `campocauca`.`departamento` (`id_departamento`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3
+COMMENT = 'Esta entidad se crea con el objetivo de determinar la procedencia por municipios, o en su defecto dictaminar hacia que punto van dirijido los pedidos';
+
+CREATE INDEX `fk_municipio_departamento1_idx` ON `campocauca`.`municipio` (`departamento_id_departamento` ASC) VISIBLE;
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`tipo_identificacion`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`tipo_identificacion` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`tipo_identificacion` (
+  `id_tipo_identificacion` INT NOT NULL AUTO_INCREMENT,
+  `tipo` VARCHAR(45) NOT NULL,
+  `descripcion` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_tipo_identificacion`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3
+COMMENT = 'tabla diseñada con el fin de identificar si la persona que se registra  es extrajera, nacional,';
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`tipo_persona`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`tipo_persona` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`tipo_persona` (
+  `id_tipo_persona` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NULL DEFAULT NULL,
+  `descripcion` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_tipo_persona`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3
+COMMENT = 'tabla diseñada con el fin de identificar si la persona que se registra juridica o natural.';
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`persona`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`persona` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`persona` (
+  `id_persona` INT NOT NULL AUTO_INCREMENT,
+  `primer_nombre` VARCHAR(40) NOT NULL,
+  `segundo_nombre` VARCHAR(45) NULL DEFAULT NULL,
+  `primer_apellido` VARCHAR(45) NOT NULL,
+  `segundo_apellido` VARCHAR(45) NULL DEFAULT NULL,
+  `telefono` VARCHAR(45) NOT NULL,
+  `direccion` VARCHAR(45) NOT NULL,
+  `correo` VARCHAR(45) NOT NULL,
+  `id_empresa` INT NULL DEFAULT NULL,
+  `tipoPerona_id_tipo_persona` INT NOT NULL,
+  `tipo_documento_id_tipo_documento` INT NOT NULL,
+  `municipio_id_municipio` INT NOT NULL,
+  PRIMARY KEY (`id_persona`),
+  CONSTRAINT `fk_persona_empresa`
+    FOREIGN KEY (`id_empresa`)
+    REFERENCES `campocauca`.`empresa` (`id_empresa`),
+  CONSTRAINT `fk_persona_municipio1`
+    FOREIGN KEY (`municipio_id_municipio`)
+    REFERENCES `campocauca`.`municipio` (`id_municipio`),
+  CONSTRAINT `fk_persona_tipo_documento1`
+    FOREIGN KEY (`tipo_documento_id_tipo_documento`)
+    REFERENCES `campocauca`.`tipo_identificacion` (`id_tipo_identificacion`),
+  CONSTRAINT `fk_persona_tipoPerona1`
+    FOREIGN KEY (`tipoPerona_id_tipo_persona`)
+    REFERENCES `campocauca`.`tipo_persona` (`id_tipo_persona`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3
+COMMENT = 'Esta entidad se crea con el objetivo de poder mantener un registro de todos los clientes, donde se almacene personas tipo cliente como tipo provedor,';
+
+CREATE INDEX `fk_persona_empresa_idx` ON `campocauca`.`persona` (`id_empresa` ASC) VISIBLE;
+
+CREATE INDEX `fk_persona_tipoPerona1_idx` ON `campocauca`.`persona` (`tipoPerona_id_tipo_persona` ASC) VISIBLE;
+
+CREATE INDEX `fk_persona_tipo_documento1_idx` ON `campocauca`.`persona` (`tipo_documento_id_tipo_documento` ASC) VISIBLE;
+
+CREATE INDEX `fk_persona_municipio1_idx` ON `campocauca`.`persona` (`municipio_id_municipio` ASC) VISIBLE;
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`unidad_de_medida`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`unidad_de_medida` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`unidad_de_medida` (
+  `idunidad_de_medida` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NOT NULL,
+  `descripcion` VARCHAR(145) NOT NULL,
+  PRIMARY KEY (`idunidad_de_medida`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`articulo`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`articulo` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`articulo` (
+  `id_articulo` INT NOT NULL AUTO_INCREMENT,
+  `nombre_articulo` VARCHAR(45) NOT NULL,
+  `descripcion_articulo` VARCHAR(345) NOT NULL,
+  `imagen` TEXT NOT NULL,
+  `categoria_id_categoria` INT NOT NULL,
+  `unidad_de_medida_idunidad_de_medida` INT NOT NULL,
+  `persona_id_persona` INT NOT NULL,
+  PRIMARY KEY (`id_articulo`),
+  CONSTRAINT `fk_articulo_categoria1`
+    FOREIGN KEY (`categoria_id_categoria`)
+    REFERENCES `campocauca`.`categoria` (`id_categoria`),
+  CONSTRAINT `fk_articulo_persona1`
+    FOREIGN KEY (`persona_id_persona`)
+    REFERENCES `campocauca`.`persona` (`id_persona`),
+  CONSTRAINT `fk_articulo_unidad_de_medida1`
+    FOREIGN KEY (`unidad_de_medida_idunidad_de_medida`)
+    REFERENCES `campocauca`.`unidad_de_medida` (`idunidad_de_medida`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3
+COMMENT = 'Esta entidad se crea con el objetivo de mantener un registro de todos los articulos que hay en la tienda, teniendo en cuenta sus caracteristicas ';
+
+CREATE INDEX `fk_articulo_categoria1_idx` ON `campocauca`.`articulo` (`categoria_id_categoria` ASC) VISIBLE;
+
+CREATE INDEX `fk_articulo_unidad_de_medida1_idx` ON `campocauca`.`articulo` (`unidad_de_medida_idunidad_de_medida` ASC) VISIBLE;
+
+CREATE INDEX `fk_articulo_persona1_idx` ON `campocauca`.`articulo` (`persona_id_persona` ASC) VISIBLE;
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`auth_group`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`auth_group` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`auth_group` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(150) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+CREATE UNIQUE INDEX `name` ON `campocauca`.`auth_group` (`name` ASC) VISIBLE;
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`django_content_type`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`django_content_type` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`django_content_type` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `app_label` VARCHAR(100) NOT NULL,
+  `model` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 22
+DEFAULT CHARACTER SET = utf8mb3;
+
+CREATE UNIQUE INDEX `django_content_type_app_label_model_76bd3d3b_uniq` ON `campocauca`.`django_content_type` (`app_label` ASC, `model` ASC) VISIBLE;
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`auth_permission`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`auth_permission` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`auth_permission` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `content_type_id` INT NOT NULL,
+  `codename` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co`
+    FOREIGN KEY (`content_type_id`)
+    REFERENCES `campocauca`.`django_content_type` (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 85
+DEFAULT CHARACTER SET = utf8mb3;
+
+CREATE UNIQUE INDEX `auth_permission_content_type_id_codename_01ab375a_uniq` ON `campocauca`.`auth_permission` (`content_type_id` ASC, `codename` ASC) VISIBLE;
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`auth_group_permissions`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`auth_group_permissions` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`auth_group_permissions` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `group_id` INT NOT NULL,
+  `permission_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm`
+    FOREIGN KEY (`permission_id`)
+    REFERENCES `campocauca`.`auth_permission` (`id`),
+  CONSTRAINT `auth_group_permissions_group_id_b120cbf9_fk_auth_group_id`
+    FOREIGN KEY (`group_id`)
+    REFERENCES `campocauca`.`auth_group` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+CREATE UNIQUE INDEX `auth_group_permissions_group_id_permission_id_0cd325b0_uniq` ON `campocauca`.`auth_group_permissions` (`group_id` ASC, `permission_id` ASC) VISIBLE;
+
+CREATE INDEX `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` ON `campocauca`.`auth_group_permissions` (`permission_id` ASC) VISIBLE;
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`auth_user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`auth_user` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`auth_user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `password` VARCHAR(128) NOT NULL,
+  `last_login` DATETIME(6) NULL DEFAULT NULL,
+  `is_superuser` TINYINT(1) NOT NULL,
+  `username` VARCHAR(150) NOT NULL,
+  `first_name` VARCHAR(150) NOT NULL,
+  `last_name` VARCHAR(150) NOT NULL,
+  `email` VARCHAR(254) NOT NULL,
+  `is_staff` TINYINT(1) NOT NULL,
+  `is_active` TINYINT(1) NOT NULL,
+  `date_joined` DATETIME(6) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 2
+DEFAULT CHARACTER SET = utf8mb3;
+
+CREATE UNIQUE INDEX `username` ON `campocauca`.`auth_user` (`username` ASC) VISIBLE;
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`auth_user_groups`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`auth_user_groups` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`auth_user_groups` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `group_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `auth_user_groups_group_id_97559544_fk_auth_group_id`
+    FOREIGN KEY (`group_id`)
+    REFERENCES `campocauca`.`auth_group` (`id`),
+  CONSTRAINT `auth_user_groups_user_id_6a12ed8b_fk_auth_user_id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `campocauca`.`auth_user` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+CREATE UNIQUE INDEX `auth_user_groups_user_id_group_id_94350c0c_uniq` ON `campocauca`.`auth_user_groups` (`user_id` ASC, `group_id` ASC) VISIBLE;
+
+CREATE INDEX `auth_user_groups_group_id_97559544_fk_auth_group_id` ON `campocauca`.`auth_user_groups` (`group_id` ASC) VISIBLE;
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`auth_user_user_permissions`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`auth_user_user_permissions` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`auth_user_user_permissions` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `permission_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm`
+    FOREIGN KEY (`permission_id`)
+    REFERENCES `campocauca`.`auth_permission` (`id`),
+  CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `campocauca`.`auth_user` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+CREATE UNIQUE INDEX `auth_user_user_permissions_user_id_permission_id_14a6b632_uniq` ON `campocauca`.`auth_user_user_permissions` (`user_id` ASC, `permission_id` ASC) VISIBLE;
+
+CREATE INDEX `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` ON `campocauca`.`auth_user_user_permissions` (`permission_id` ASC) VISIBLE;
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`tipo_documento`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`tipo_documento` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`tipo_documento` (
+  `idtipo_documento` INT NOT NULL,
+  `nombre` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idtipo_documento`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3
+COMMENT = 'Esta entidad se crea con el objetivo de diferenciar los tipos de factura que se puedan tener, como: factura de venta, factura de compra, orden de pedido.';
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`cabeza`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`cabeza` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`cabeza` (
+  `id_cabeza` INT NOT NULL AUTO_INCREMENT,
+  `id_persona` VARCHAR(45) NOT NULL,
+  `fecha` DATE NOT NULL,
+  `valor_total` VARCHAR(45) NOT NULL,
+  `vendedor` INT NOT NULL,
+  `comprador` INT NOT NULL,
+  `tipo_documento_idtipo_documento` INT NOT NULL,
+  PRIMARY KEY (`id_cabeza`),
+  CONSTRAINT `fk_cabeza_persona1`
+    FOREIGN KEY (`vendedor`)
+    REFERENCES `campocauca`.`persona` (`id_persona`),
+  CONSTRAINT `fk_cabeza_persona2`
+    FOREIGN KEY (`comprador`)
+    REFERENCES `campocauca`.`persona` (`id_persona`),
+  CONSTRAINT `fk_cabeza_tipo_documento1`
+    FOREIGN KEY (`tipo_documento_idtipo_documento`)
+    REFERENCES `campocauca`.`tipo_documento` (`idtipo_documento`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3
+COMMENT = 'Esta entidad se crea con el objetivo de visualizar la informacion basica de la tienda, el vendedor, y el comprador';
+
+CREATE INDEX `fk_cabeza_persona1_idx` ON `campocauca`.`cabeza` (`vendedor` ASC) VISIBLE;
+
+CREATE INDEX `fk_cabeza_persona2_idx` ON `campocauca`.`cabeza` (`comprador` ASC) VISIBLE;
+
+CREATE INDEX `fk_cabeza_tipo_documento1_idx` ON `campocauca`.`cabeza` (`tipo_documento_idtipo_documento` ASC) VISIBLE;
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`cuerpo`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`cuerpo` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`cuerpo` (
+  `id_cuerpo` INT NOT NULL AUTO_INCREMENT,
+  `cantidad` INT NOT NULL,
+  `valor_total_cuerpo` DECIMAL(10,0) NOT NULL,
+  `articulo_id_articulo` INT NOT NULL,
+  `cabeza_id_cabeza` INT NOT NULL,
+  PRIMARY KEY (`id_cuerpo`),
+  CONSTRAINT `fk_cuerpo_articulo1`
+    FOREIGN KEY (`articulo_id_articulo`)
+    REFERENCES `campocauca`.`articulo` (`id_articulo`),
+  CONSTRAINT `fk_cuerpo_cabeza1`
+    FOREIGN KEY (`cabeza_id_cabeza`)
+    REFERENCES `campocauca`.`cabeza` (`id_cabeza`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3
+COMMENT = 'Esta entidad se crea con el objetivo de poder registrar los articulos seleccionados por el cliente los cuales seran proximos a ser comprados o ya fueron comprados.';
+
+CREATE INDEX `fk_cuerpo_articulo1_idx` ON `campocauca`.`cuerpo` (`articulo_id_articulo` ASC) VISIBLE;
+
+CREATE INDEX `fk_cuerpo_cabeza1_idx` ON `campocauca`.`cuerpo` (`cabeza_id_cabeza` ASC) VISIBLE;
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`django_admin_log`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`django_admin_log` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`django_admin_log` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `action_time` DATETIME(6) NOT NULL,
+  `object_id` LONGTEXT NULL DEFAULT NULL,
+  `object_repr` VARCHAR(200) NOT NULL,
+  `action_flag` SMALLINT UNSIGNED NOT NULL,
+  `change_message` LONGTEXT NOT NULL,
+  `content_type_id` INT NULL DEFAULT NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co`
+    FOREIGN KEY (`content_type_id`)
+    REFERENCES `campocauca`.`django_content_type` (`id`),
+  CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `campocauca`.`auth_user` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+CREATE INDEX `django_admin_log_content_type_id_c4bce8eb_fk_django_co` ON `campocauca`.`django_admin_log` (`content_type_id` ASC) VISIBLE;
+
+CREATE INDEX `django_admin_log_user_id_c564eba6_fk_auth_user_id` ON `campocauca`.`django_admin_log` (`user_id` ASC) VISIBLE;
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`django_migrations`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`django_migrations` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`django_migrations` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `app` VARCHAR(255) NOT NULL,
+  `name` VARCHAR(255) NOT NULL,
+  `applied` DATETIME(6) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 20
+DEFAULT CHARACTER SET = utf8mb3;
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`django_session`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`django_session` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`django_session` (
+  `session_key` VARCHAR(40) NOT NULL,
+  `session_data` LONGTEXT NOT NULL,
+  `expire_date` DATETIME(6) NOT NULL,
+  PRIMARY KEY (`session_key`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+CREATE INDEX `django_session_expire_date_a5c62663` ON `campocauca`.`django_session` (`expire_date` ASC) VISIBLE;
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`metodo_pago`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`metodo_pago` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`metodo_pago` (
+  `id_metodo_pago` INT NOT NULL AUTO_INCREMENT,
+  `nombre_metodo` VARCHAR(45) NOT NULL,
+  `descripcion_metodo` TEXT NULL DEFAULT NULL,
+  `cabeza_id_cabeza` INT NOT NULL,
+  PRIMARY KEY (`id_metodo_pago`),
+  CONSTRAINT `fk_metodo_pago_cabeza1`
+    FOREIGN KEY (`cabeza_id_cabeza`)
+    REFERENCES `campocauca`.`cabeza` (`id_cabeza`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3
+COMMENT = 'Esta entidad se crea con el objetivo de llevar acabo una eleccion de los diferentes metodos de pago disponibles segun la facilidad del cliente ';
+
+CREATE INDEX `fk_metodo_pago_cabeza1_idx` ON `campocauca`.`metodo_pago` (`cabeza_id_cabeza` ASC) VISIBLE;
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`movimiento`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`movimiento` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`movimiento` (
+  `id_movimiento` INT NOT NULL AUTO_INCREMENT,
+  `tipo_movimiento` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_movimiento`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3
+COMMENT = 'Esta entidad se crea con el objetivo de ver los movimientos de salida y entrada de articulos al stock ';
+
+
+-- -----------------------------------------------------
+-- Table `campocauca`.`stock`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `campocauca`.`stock` ;
+
+CREATE TABLE IF NOT EXISTS `campocauca`.`stock` (
+  `id_stock` INT NOT NULL AUTO_INCREMENT,
+  `cantidad_actual` INT NOT NULL,
+  `valor_compra` DECIMAL(10,0) NOT NULL,
+  `valor_venta` DECIMAL(10,0) NULL DEFAULT NULL,
+  `utilidad` VARCHAR(45) NOT NULL,
+  `movimiento_id_movimiento` INT NOT NULL,
+  `articulo_id_articulo` INT NOT NULL,
+  PRIMARY KEY (`id_stock`),
+  CONSTRAINT `fk_stock_articulo1`
+    FOREIGN KEY (`articulo_id_articulo`)
+    REFERENCES `campocauca`.`articulo` (`id_articulo`),
+  CONSTRAINT `fk_stock_movimiento1`
+    FOREIGN KEY (`movimiento_id_movimiento`)
+    REFERENCES `campocauca`.`movimiento` (`id_movimiento`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3
+COMMENT = 'Esta entidad se crea con el objetivo de llevar un inventario de los articulos que se encunetran disponibles y su valor unitario de compra y venta ';
+
+CREATE INDEX `fk_stock_movimiento1_idx` ON `campocauca`.`stock` (`movimiento_id_movimiento` ASC) VISIBLE;
+
+CREATE INDEX `fk_stock_articulo1_idx` ON `campocauca`.`stock` (`articulo_id_articulo` ASC) VISIBLE;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
