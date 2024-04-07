@@ -7,7 +7,7 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
-#COMENTARIO
+# COMENTARIO
 class Articulo(models.Model):
     id_articulo = models.AutoField(primary_key=True)
     nombre_articulo = models.CharField(max_length=45)
@@ -16,7 +16,7 @@ class Articulo(models.Model):
     categoria_id_categoria = models.ForeignKey('Categoria', models.DO_NOTHING, db_column='categoria_id_categoria')
     unidad_de_medida_idunidad_de_medida = models.ForeignKey('UnidadDeMedida', models.DO_NOTHING, db_column='unidad_de_medida_idunidad_de_medida')
     persona_id_persona = models.ForeignKey('Persona', models.DO_NOTHING, db_column='persona_id_persona')
-#COMENTARIO 2
+# COMENTARIO 2
     class Meta:
         managed = False
         db_table = 'articulo'
@@ -26,7 +26,7 @@ class Articulo(models.Model):
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
     
-    #COMENTARIO 3
+    # COMENTARIO 3
 
     class Meta:
         managed = False
