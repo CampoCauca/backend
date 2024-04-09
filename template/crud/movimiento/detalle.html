@@ -107,7 +107,7 @@
                         <tr>
                           <th>id de movimiento</th>
                           <th>tipo de movimiento</th>
-                          <th>Descripción</th>
+                          {% comment %} <th>Descripción</th> {% endcomment %}
                                             
                         </tr>
                       </thead>
@@ -116,7 +116,7 @@
                           <tr>
                             <td>{{ movimiento.id_movimiento}}</td>
                             <td>{{ movimiento.tipo_movimiento}}</td>
-                            <td>{{ movimiento.descipcion_movimiento}}</td>                  
+                            {% comment %} <td>{{ movimiento.descipcion_movimiento}}</td>                   {% endcomment %}
                           </tr>
                       
                       </tbody>
