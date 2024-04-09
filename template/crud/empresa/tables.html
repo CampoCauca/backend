@@ -53,7 +53,7 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Categorias</h4>
+              <h4 class="page-title">Empresas</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
@@ -73,7 +73,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title mb-0">Creación de Catogoría</h5>
+                  <h5 class="card-title mb-0">Creación de Empresas</h5>
                 </div>
                 <div class="card">
                   <div class="card-body">
@@ -97,24 +97,58 @@
                                           <td >
                                               
                                               <div class="col-lg-7">
-                                                  <label for="id_categoria" >Código de Cartegoría</label>
-                                                  {{ form.id_categoria}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+                                                  <label for="id_empresa" >Código de Empresa</label>
+                                                  {{ form.id_empresa}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
                                               </div>
                                           </td>
                                           <td >
                                               
                                               <div class="col-lg-7" >
-                                                  <label for="nombre_categoria" >Nombre de Categoría</label>
-                                                  {{ form.nombre_categoria}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                                  <label for="razon_social" >Razon Social</label>
+                                                  {{ form.razon_social}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
                                           <td>
                                               
                                               <div class="col-lg-7">
-                                                  <label for="descipcion_categoria" >Descripción de Categoría</label>
-                                                  {{ form.descipcion_categoria }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                                  <label for="nit" >Nit</label>
+                                                  {{ form.nit }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
+
+                                          <td>
+                                              
+                                              <div class="col-lg-7">
+                                                  <label for="direccion" >Direccion</label>
+                                                  {{ form.direccion }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                              </div>
+                                          </td>
+
+                                          <td>
+                                              
+                                              <div class="col-lg-7">
+                                                  <label for="telefonoemp" >Telefono Empresa</label>
+                                                  {{ form.telefonoemp }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                              </div>
+                                          </td>
+
+                                          <td>
+                                              
+                                              <div class="col-lg-7">
+                                                  <label for="correo" >Correo</label>
+                                                  {{ form.correo }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                              </div>
+                                          </td>
+
+                                          <td>
+                                              
+                                              <div class="col-lg-7">
+                                                  <label for="empresacol" >Empresa col</label>
+                                                  {{ form.empresacol }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                              </div>
+                                          </td>
+
+                                          
                                           
                                       </tr>   
                                     </tr>                
@@ -138,33 +172,41 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Lista de Categoria</h5>
+                  <h5 class="card-title">Lista de Empresas</h5>
                   <div class="table-responsive">
                     <table id="zero_config" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th>Código de Categoría</th>
-                          <th>nombre de Categoría</th>
-                          <th>Descripción</th> 
+                          <th>id_empresa</th>
+                          <th>razon_social</th>
+                          <th>nit</th> 
+                          <th>direccion</th>
+                          <th>telefonoemp</th>
+                          <th>correo</th>
+                          <th>empresacol</th> 
                                             
                         </tr>
                       </thead>
                       <tbody>
-                        {% for categoria in object_list %}
+                        {% for empresa in object_list %}
                           <tr>
-                            <td>{{ categoria.id_categoria}}</td>
-                            <td>{{ categoria.nombre_categoria}}</td>
-                            <td>{{ categoria.descipcion_categoria}}</td>
+                            <td>{{ empresa.id_empresa}}</td>
+                            <td>{{ empresa.razon_social}}</td>
+                            <td>{{ empresa.nit}}</td>
+                            <td>{{ empresa.direccion}}</td>  
+                            <td>{{ empresa.telefonoemp}}</td>
+                            <td>{{ empresa.correo}}</td>   
+                            <td>{{ empresa.empresacol}}</td>  
                            
                                                       
                             <td>
-                              <form method="POST" action="eliminar/{{categoria.id_categoria}}">
+                              <form method="POST" action="eliminar/{{empresa.id_empresa}}">
                                   {% csrf_token %}
                                   <div class="btn-group">
 
                                       <!-- Creamos 3 botones que son ver, Editar y Eliminar, nos sirven para gestionar nuestros registros o postres -->
-                                      <a href="detalle/{{categoria.id_categoria}}" title="Ver" type="button" class="btn btn-success">Ver </a>
-                                      <a href="editar/{{categoria.id_categoria}}" title="Editar" type="button" class="btn btn-primary">Editar </a>
+                                      <a href="detalle/{{empresa.id_empresa}}" title="Ver" type="button" class="btn btn-success">Ver </a>
+                                      <a href="editar/{{empresa.id_empresa}}" title="Editar" type="button" class="btn btn-primary">Editar </a>
                                       <button class="btn btn-danger" onclick="return eliminar();" type="submit">
                                         Eliminar
                                       </button>
