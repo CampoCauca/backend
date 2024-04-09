@@ -35,5 +35,21 @@ urlpatterns = [
  
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
     path('categoria/eliminar/<int:pk>', CategoriaEliminar.as_view(), name='crud/Categoria/eliminar.html'), 
+#--------------------------------------------URL Muniicpio------------------------------------------------------------------------#
+    
+    path('municipio/', ListadoMunicipio.as_view(template_name = "crud/municipio/tables.html"), name='leermu'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
+    path('municipio/detalle/<int:pk>', MunicipioDetalle.as_view(template_name = "crud/municipio/detalle.html"), name='detallesmu'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('municipio/editar/<int:pk>', MunicipioActualizar.as_view(template_name = "crud/municipio/actualizar.html"), name='actualizarmu'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('municipio/eliminar/<int:pk>', MunicipioEliminar.as_view(), name='crud/municipio/eliminar.html'), 
 
 ]
+
