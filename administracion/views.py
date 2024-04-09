@@ -14,6 +14,42 @@ def Home(request):
 
 #-----------------------------------Categoria-----------------------------------------------------#
     
+class ListadoMunicipio(CreateView,ListView,SuccessMessageMixin):
+    model = Municipio
+    form = Municipio
+    fields = "__all__"
+    context_object_name = 'object_list'
+    success_message ='Municipio creado correctamente'
+    def get_success_url(self):        
+        return reverse('administracion:leermu') # Redireccionamos a la vista principal 'leer'    
+    
+
+class MunicipioDetalle (DetailView):
+    model =Municipio
+
+class MunicipioActualizar(SuccessMessageMixin,UpdateView):
+    model =Municipio
+    form = Municipio
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'regional' de nuestra Base de Datos 
+    success_message = 'Municipio Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('administracion:leermu') # Redireccionamos a la vista principal 'leer'
+    
+class MunicipioEliminar(SuccessMessageMixin, DeleteView): 
+    model = Municipio
+    form = Municipio
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'Municipio Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('administracion:leermu') # Redireccionamos a la vista principal 'leer'     
+     
+ #-----------------------------------Municipio-----------------------------------------------------#
+#-----------------------------------Categoria-----------------------------------------------------#
+    
 class ListadoCategoria(CreateView,ListView,SuccessMessageMixin):
     model = Categoria
     form = Categoria
