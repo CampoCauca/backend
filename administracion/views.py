@@ -158,7 +158,7 @@ class PersonaActualizar(SuccessMessageMixin,UpdateView):
     def get_success_url(self):               
         return reverse('administracion:leerper') # Redireccionamos a la vista principal 'leer'
     
-class TipoIdentificacionEliminar(SuccessMessageMixin, DeleteView): 
+class PersonaEliminar(SuccessMessageMixin, DeleteView): 
     model = Persona
     form = Persona
     fields = "__all__"     

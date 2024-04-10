@@ -88,7 +88,7 @@ urlpatterns = [
     path('persona/editar/<int:pk>', PersonaActualizar.as_view(template_name = "crud/persona/actualizar.html"), name='actualizarper'), 
  
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
-    # VERIFICAR ERROR path('persona/eliminar/<int:pk>', PersonaEliminar.as_view(), name='crud/persona/eliminar.html'), 
+    path('persona/eliminar/<int:pk>', PersonaEliminar.as_view(), name='crud/persona/eliminar.html'), 
 
 
 ]
