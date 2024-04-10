@@ -35,7 +35,27 @@ urlpatterns = [
     path('categoria/editar/<int:pk>', CategoriaActualizar.as_view(template_name = "crud/Categoria/actualizar.html"), name='actualizarca'), 
  
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
-    path('categoria/eliminar/<int:pk>', CategoriaEliminar.as_view(), name='crud/Categoria/eliminar.html'), 
+    path('categoria/eliminar/<int:pk>', CategoriaEliminar.as_view(), name='crud/Categoria/eliminar.html'),
+
+    
+      #--------------------------------------------URL Categoria------------------------------------------------------------------------#
+    
+    path('empresa/', ListadoEmpresa.as_view(template_name = "crud/empresa/tables.html"), name='leerem'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
+    path('empresa/detalle/<int:pk>', EmpresaDetalle.as_view(template_name = "crud/empresa/detalle.html"), name='detallesem'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('empresa/editar/<int:pk>', EmpresaActualizar.as_view(template_name = "crud/empresa/actualizar.html"), name='actualizarem'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('empresa/eliminar/<int:pk>', EmpresaEliminar.as_view(), name='crud/empresa/eliminar.html'), 
+ 
+
+    
 
        #--------------------------------------------URL Movimiento------------------------------------------------------------------------#
     

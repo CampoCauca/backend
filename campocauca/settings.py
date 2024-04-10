@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'administracion.apps.AdministracionConfig',
+    'product',
+    'rest_framework',
     'django_bootstrap5',
     'widget_tweaks',
     
