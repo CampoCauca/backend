@@ -44,8 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'administracion.apps.AdministracionConfig',
-    'product',
-    'rest_framework',
     'django_bootstrap5',
     'widget_tweaks',
     
@@ -92,7 +90,7 @@ DATABASES = {
        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'campocauca',
         'USER':'root',
-        'PASSWORD':'Admin1234*',
+        'PASSWORD':'Admin123*',
         'PORT':'3306',
         'HOST':'127.0.0.1',
 
