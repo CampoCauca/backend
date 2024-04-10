@@ -8,7 +8,6 @@
 from django.db import models
 
 
-
 class Articulo(models.Model):
     id_articulo = models.AutoField(primary_key=True)
     nombre_articulo = models.CharField(max_length=45)
@@ -218,7 +217,6 @@ class MetodoPago(models.Model):
 class Movimiento(models.Model):
     id_movimiento = models.AutoField(primary_key=True)
     tipo_movimiento = models.CharField(max_length=45)
-    descipcion_movimiento = models.CharField(max_length=45)
 
     class Meta:
         managed = False
