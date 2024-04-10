@@ -74,4 +74,21 @@ urlpatterns = [
     # La ruta 'eliminar' que usaremos para eliminar un Movimiento o registro de la Base de Datos 
     path('movimiento/eliminar/<int:pk>', MovimientoEliminar.as_view(), name='crud/movimiento/eliminar.html'), 
 
+  #--------------------------------------------URL Persona ------------------------------------------------------------------------#
+    
+    path('persona/', ListadoPersona.as_view(template_name = "crud/persona/tables.html"), name='leerper'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un tipo_identificacion o registro 
+    path('personan/detalle/<int:pk>', PersonaDetalle.as_view(template_name = "crud/persona/detalle.html"), name='detallesper'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('persona/editar/<int:pk>', PersonaActualizar.as_view(template_name = "crud/persona/actualizar.html"), name='actualizarper'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    # VERIFICAR ERROR path('persona/eliminar/<int:pk>', PersonaEliminar.as_view(), name='crud/persona/eliminar.html'), 
+
+
 ]

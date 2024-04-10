@@ -134,3 +134,38 @@ class  EmpresaEliminar(SuccessMessageMixin, DeleteView):
         messages.success (self.request, (success_message))       
         return reverse('administracion:leerem') # Redireccionamos a la vista principal 'leer'  
  #-----------------------------------Empresa-----------------------------------------------------#
+#-----------------------------------Persona-----------------------------------------------------#
+    
+class ListadoPersona(CreateView,ListView,SuccessMessageMixin):
+    model = Persona
+    form = Persona
+    fields = "__all__"
+    context_object_name = 'object_list'
+    success_message ='Persona creado correctamente'
+    def get_success_url(self):        
+        return reverse('administracion:leerper') # Redireccionamos a la vista principal 'leer'    
+    
+
+class PersonaDetalle (DetailView):
+    model =Persona
+
+class PersonaActualizar(SuccessMessageMixin,UpdateView):
+    model =Persona
+    form = Persona
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'regional' de nuestra Base de Datos 
+    success_message = 'Persona Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('administracion:leerper') # Redireccionamos a la vista principal 'leer'
+    
+class TipoIdentificacionEliminar(SuccessMessageMixin, DeleteView): 
+    model = Persona
+    form = Persona
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'Persona Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('administracion:leerper') # Redireccionamos a la vista principal 'leer'     
+     
