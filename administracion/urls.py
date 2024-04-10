@@ -23,39 +23,40 @@ urlpatterns = [
     
       #--------------------------------------------URL Categoria------------------------------------------------------------------------#
     
-    path('categoria/', ListadoCategoria.as_view(template_name = "crud/Categoria/tables.html"), name='leerca'),
+    path('categoria/', ListadoCategoria.as_view(template_name = "crud/categoria/tables.html"), name='leerca'),
  
     # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
-    path('categoria/detalle/<int:pk>', CategoriaDetalle.as_view(template_name = "crud/Categoria/detalle.html"), name='detallesca'),
+    path('categoria/detalle/<int:pk>', CategoriaDetalle.as_view(template_name = "crud/categoria/detalle.html"), name='detallesca'),
  
     # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
     #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
  
     # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
-    path('categoria/editar/<int:pk>', CategoriaActualizar.as_view(template_name = "crud/Categoria/actualizar.html"), name='actualizarca'), 
+    path('categoria/editar/<int:pk>', CategoriaActualizar.as_view(template_name = "crud/categoria/actualizar.html"), name='actualizarca'), 
  
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
-    path('categoria/eliminar/<int:pk>', CategoriaEliminar.as_view(), name='crud/Categoria/eliminar.html'),
+    path('categoria/eliminar/<int:pk>', CategoriaEliminar.as_view(), name='crud/categoria/eliminar.html'), 
+
+
 
     
-      #--------------------------------------------URL Categoria------------------------------------------------------------------------#
+      #--------------------------------------------URL TipoIdentificacion ------------------------------------------------------------------------#
     
-    path('empresa/', ListadoEmpresa.as_view(template_name = "crud/empresa/tables.html"), name='leerem'),
+    path('tipoidentificacion/', ListadoTipoIdentificacion.as_view(template_name = "crud/tipo_identificacion/tables.html"), name='leertip'),
  
-    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
-    path('empresa/detalle/<int:pk>', EmpresaDetalle.as_view(template_name = "crud/empresa/detalle.html"), name='detallesem'),
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un tipo_identificacion o registro 
+    path('tipoidentificacion/detalle/<int:pk>', TipoIdentificacionDetalle.as_view(template_name = "crud/tipo_identificacion/detalle.html"), name='detallestip'),
  
     # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
     #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
  
     # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
-    path('empresa/editar/<int:pk>', EmpresaActualizar.as_view(template_name = "crud/empresa/actualizar.html"), name='actualizarem'), 
+    path('tipoidentificacion/editar/<int:pk>', TipoIdentificacionActualizar.as_view(template_name = "crud/tipo_identificacion/actualizar.html"), name='actualizartip'), 
  
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
-    path('empresa/eliminar/<int:pk>', EmpresaEliminar.as_view(), name='crud/empresa/eliminar.html'), 
- 
+    path('tipoidentificacion/eliminar/<int:pk>', TipoIdentificacionEliminar.as_view(), name='crud/tipo_identificacion/eliminar.html'), 
 
-    
+#--------------------------------------------URL TipoIdentificacion------------------------------------------------------------------------#
 
        #--------------------------------------------URL Movimiento------------------------------------------------------------------------#
     
