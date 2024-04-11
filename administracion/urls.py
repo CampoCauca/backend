@@ -38,7 +38,7 @@ urlpatterns = [
     path('categoria/eliminar/<int:pk>', CategoriaEliminar.as_view(), name='crud/Categoria/eliminar.html'),
 
     
-      #--------------------------------------------URL Categoria------------------------------------------------------------------------#
+      #--------------------------------------------URL Empresa------------------------------------------------------------------------#
     
     path('empresa/', ListadoEmpresa.as_view(template_name = "crud/empresa/tables.html"), name='leerem'),
  
@@ -53,11 +53,8 @@ urlpatterns = [
  
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
     path('empresa/eliminar/<int:pk>', EmpresaEliminar.as_view(), name='crud/empresa/eliminar.html'), 
- 
-
-    
-
-       #--------------------------------------------URL Movimiento------------------------------------------------------------------------#
+  #--------------------------------------------URL Empresa------------------------------------------------------------------------#
+   #--------------------------------------------URL Movimiento------------------------------------------------------------------------#
     
     path('movimiento/', ListadoMovimiento.as_view(template_name = "crud/movimiento/tables.html"), name='leermov'),
  
@@ -72,5 +69,5 @@ urlpatterns = [
  
     # La ruta 'eliminar' que usaremos para eliminar un Movimiento o registro de la Base de Datos 
     path('movimiento/eliminar/<int:pk>', MovimientoEliminar.as_view(), name='crud/movimiento/eliminar.html'), 
-
+ #--------------------------------------------URL Movimiento------------------------------------------------------------------------#
 ]
