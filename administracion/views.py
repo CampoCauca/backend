@@ -120,9 +120,6 @@ class  EmpresaEliminar(SuccessMessageMixin, DeleteView):
         messages.success (self.request, (success_message))       
         return reverse('administracion:leerem') # Redireccionamos a la vista principal 'leer'  
  #-----------------------------------Empresa-----------------------------------------------------#
-
-
-
 #-----------------------------------Departamento-----------------------------------------------------#
  
 class ListadoDepartamento(CreateView,ListView,SuccessMessageMixin):
