@@ -109,13 +109,13 @@
                                                   {{ form.tipo_movimiento}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
-                                          {% comment %} <td>
+                                          <td>
                                               
                                               <div class="col-lg-7">
                                                   <label for="descipcion_movimiento" >Descripción de movimiento</label>
                                                   {{ form.descipcion_movimiento }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
-                                          </td>  {% endcomment %}
+                                          </td>  
                                           
                                       </tr>   
                                     </tr>                
@@ -146,7 +146,7 @@
                         <tr>
                           <th>id de movimiento</th>
                           <th>tipo de movimiento</th>
-                          {% comment %} <th>Descripción</th> {% endcomment %}
+                          <th>Descripción</th> 
                                             
                         </tr>
                       </thead>
@@ -156,7 +156,7 @@
                           <tr>
                             <td>{{ movimiento.id_movimiento}}</td>
                             <td>{{ movimiento.tipo_movimiento}}</td>
-                            {% comment %} <td>{{ movimiento.descipcion_movimiento}}</td> {% endcomment %}
+                            <td>{{ movimiento.descipcion_movimiento}}</td> 
                            
                                                       
                             <td>
