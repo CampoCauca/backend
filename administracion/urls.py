@@ -52,7 +52,7 @@ urlpatterns = [
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
     path('municipio/eliminar/<int:pk>', MunicipioEliminar.as_view(), name='crud/municipio/eliminar.html'), 
 
-      #--------------------------------------------URL metodo_pago------------------------------------------------------------------------#
+   #--------------------------------------------URL metodo_pago------------------------------------------------------------------------#
     
     path('metodo_pago/', ListadoMetodoPago.as_view(template_name = "crud/metodo_pago/tables.html"), name='leerme'),
  
@@ -66,6 +66,23 @@ urlpatterns = [
     path('metodo_pago/editar/<int:pk>', MetodoPagoActualizar.as_view(template_name = "crud/metodo_pago/actualizar.html"), name='actualizarme'), 
  
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
-    path('metodo_pago/eliminar/<int:pk>', MetodoPagoEliminar.as_view(), name='crud/metodo_pago/eliminar.html'), 
+    path('metodo_pago/eliminar/<int:pk>', MetodoPagoEliminar.as_view(), name='crud/metodo_pago/eliminar.html'),
+   #--------------------------------------------URL metodo_pago------------------------------------------------------------------------#
+   #--------------------------------------------DjangoMigrations------------------------------------------------------------------------#
+    
+    path('django_migrations/', ListadoDjangoMigrations.as_view(template_name = "crud/django_migrations/tables.html"), name='leerdjm'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
+    path('django_migrations/detalle/<int:pk>', DjangoMigrationsDetalle.as_view(template_name = "crud/django_migrations/detalle.html"), name='detallesdjm'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('django_migrations/editar/<int:pk>', DjangoMigrationsActualizar.as_view(template_name = "crud/django_migrations/actualizar.html"), name='actualizardjm'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('django_migrations/eliminar/<int:pk>', DjangoMigrationsEliminar.as_view(), name='crud/django_migrations/eliminar.html'), 
+   #--------------------------------------------DjangoMigrations------------------------------------------------------------------------#
 ]
 
