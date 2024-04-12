@@ -1,12 +1,4 @@
-{# Cargamos la librería #}
-{% load django_bootstrap5 %}
-{# CSS Bootstrap #}
-{% bootstrap_css %} 
 
-{# Widget Tweaks #}
-{% load widget_tweaks %}  
-
-{% load static %}
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
   <head>
@@ -19,7 +11,7 @@
     <meta name="robots" content="noindex,nofollow" />
     <title>Matrix Admin Lite Free Versions Template by WrapPixel</title>
     <!-- Favicon icon -->
-    <link rel="icon"type="image/png"sizes="16x16"href="/static/assets/images/favicon.png"/>
+    <link rel="icon"type="image/png"sizes="16x16"href="/static/static1/assets/images/favicon.png"/>
     <!-- Custom CSS -->
     <link rel="stylesheet"type="text/css"href="/static/assets/extra-libs/multicheck/multicheck.css"/>
     <link href="/static/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css"rel="stylesheet"/>
@@ -28,6 +20,7 @@
     {% load static %}
     {% load widget_tweaks %}
   </head>
+
 
   <body>
    
@@ -61,7 +54,7 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Actualización de datos</h4>
+              <h4 class="page-title">Movimiento</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
@@ -75,27 +68,24 @@
             </div>
           </div>
         </div>
-        
         <div class="container-fluid">
-          <!-- ============================================================== -->
-          <!-- Start Page Content -->
-          <!-- ============================================================== -->
+         
           <div class="row">
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title mb-0">Actualización de Categoría</h5>
+                  <h5 class="card-title mb-0">Creación de Movimiento</h5>
                 </div>
                 <div class="card">
                   <div class="card-body">
-                    <table id="table" >
+                    <table id="table" >                      
                       <thead>
                           <tr>
-                              {# JS y jQuery Bootstrap #}
-                              {% bootstrap_javascript  %} 
+                             {% bootstrap_javascript %}
+                             
                              
                               <div class="card-bodys">
-                                 
+                              
 
                                   <form method="post" enctype="multipart/form-data">
                   
@@ -104,55 +94,102 @@
                                       
                                       <!-- {{ form.as_p }} -->
                                       <tr class="espacio">
+                                        
                                           <td >
                                               
                                               <div class="col-lg-7">
-                                                  <label for="id_categoria" > Código de Cartegoría </label>
-                                                  {{ form.id_categoria}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+                                                  <label for="id_movimiento" >Código de Movimiento</label>
+                                                  {{ form.id_movimiento}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
                                               </div>
                                           </td>
                                           <td >
                                               
                                               <div class="col-lg-7" >
-                                                  <label for="nombre_categoria" > Nombre de Categoría </label>
-                                                  {{ form.nombre_categoria }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                                  <label for="tipo_movimiento" >Tipo de Movimiento</label>
+                                                  {{ form.tipo_movimiento}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
-                                          <td>
+                                          {% comment %} <td>
                                               
                                               <div class="col-lg-7">
-                                                  <label for="descipcion_categoria" > Descripción de Categoría </label>
-                                                  {{ form.descipcion_categoria }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                                  <label for="descipcion_movimiento" >Descripción de movimiento</label>
+                                                  {{ form.descipcion_movimiento }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
-                                          </td>
+                                          </td>  {% endcomment %}
                                           
-                                         
-                                      </tr>
-
-                                      
-                                      
-                                        <div class="col-lg-7">              
+                                      </tr>   
+                                    </tr>                
+                                      <div>              
                                           <button type="submit" class="btn btn-primary">Aceptar</button> 
                                           <a href="../" type="submit" class="btn btn-primary">Cancelar</a>
                                       </div> 
-
-                                                         
-                    
-                                      
-                                      
+                                      &nbsp;
+                                      &nbsp;
+                                      &nbsp;
+                                   
                                   </form>
                               </div>
                           </tr>
                       </thead>
-                    </table>  
+                    </table>       
                   </div>
                 </div>
               </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Listar movimientos</h5>
+                  <div class="table-responsive">
+                    <table id="zero_config" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>id de movimiento</th>
+                          <th>tipo de movimiento</th>
+                          {% comment %} <th>Descripción</th> {% endcomment %}
+                                            
+                        </tr>
+                      </thead>
 
-        </div>              
-       
+                      <tbody>
+                        {% for movimiento in object_list %}
+                          <tr>
+                            <td>{{ movimiento.id_movimiento}}</td>
+                            <td>{{ movimiento.tipo_movimiento}}</td>
+                            {% comment %} <td>{{ movimiento.descipcion_movimiento}}</td> {% endcomment %}
+                           
+                                                      
+                            <td>
+                              <form method="POST" action="eliminar/{{movimiento.id_movimiento}}">
+                                  {% csrf_token %}
+                                  <div class="btn-group">
+
+                                      <!-- Creamos 3 botones que son ver, Editar y Eliminar, nos sirven para gestionar nuestros registros o postres -->
+                                      <a href="detalle/{{movimiento.id_movimiento}}" title="Ver" type="button" class="btn btn-success">Ver </a>
+                                      <a href="editar/{{movimiento.id_movimiento}}" title="Editar" type="button" class="btn btn-primary">Editar </a>
+                                      <button class="btn btn-danger" onclick="return eliminar();" type="submit">
+                                        Eliminar
+                                      </button>
+                                  </div>
+                              </form>   
+                          </td> 
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                      <script>
+                        /****************************************
+                         *       Basic Table                   *
+                         ****************************************/
+                        $("#zero_config").DataTable();
+                      </script>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      
     </div>
     
     <script src="/static/assets/libs/jquery/dist/jquery.min.js"></script>
@@ -171,11 +208,5 @@
     <script src="/static/assets/extra-libs/DataTables/datatables.min.js"></script>
     
     
-    <script>
-      /****************************************
-       *       Basic Table                   *
-       ****************************************/
-      $("#zero_config").DataTable();
-    </script>
   </body>
 </html>
