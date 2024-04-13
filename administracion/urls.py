@@ -88,4 +88,20 @@ urlpatterns = [
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
     path('departamento/eliminar/<int:pk>', DepartamentoEliminar.as_view(), name='crud/departamento/eliminar.html'), 
    
+  #--------------------------------------------URL Articulo------------------------------------------------------------------------#
+    
+    path('articulo/', ListadoArticulo.as_view(template_name = "crud/articulo/tables.html"), name='leerart'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
+    path('articulo/detalle/<int:pk>', ArticuloDetalle.as_view(template_name = "crud/articulo/detalle.html"), name='detallesart'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('articulo/editar/<int:pk>', ArticuloActualizar.as_view(template_name = "crud/articulo/actualizar.html"), name='actualizarart'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('articulo/eliminar/<int:pk>', ArticuloEliminar.as_view(), name='crud/articulo/eliminar.html'), 
+   
 ]
