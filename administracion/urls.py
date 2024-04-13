@@ -52,4 +52,7 @@ urlpatterns = [
  
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
     path('metodo_pago/eliminar/<int:pk>', MetodoPagoEliminar.as_view(), name='crud/metodo_pago/eliminar.html'), 
+
+    #----------------------------------------url cabeza-----------------------------------------------------
+    #path()
 ]

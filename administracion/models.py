@@ -313,3 +313,5 @@ class UnidadDeMedida(models.Model):
         managed = False
         db_table = 'unidad_de_medida'
 
+
+
