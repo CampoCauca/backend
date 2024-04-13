@@ -1,3 +1,4 @@
+
 """
 URL configuration for campocauca project.
 
@@ -14,7 +15,6 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
 
 from django.urls import path
 from .views import *
@@ -35,27 +35,25 @@ urlpatterns = [
     path('categoria/editar/<int:pk>', CategoriaActualizar.as_view(template_name = "crud/Categoria/actualizar.html"), name='actualizarca'), 
  
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
-    path('categoria/eliminar/<int:pk>', CategoriaEliminar.as_view(), name='crud/Categoria/eliminar.html'),
+    path('categoria/eliminar/<int:pk>', CategoriaEliminar.as_view(), name='crud/Categoria/eliminar.html'), 
 
+     
+      #--------------------------------------------URL metodo_pago------------------------------------------------------------------------#
     
-      #--------------------------------------------URL Categoria------------------------------------------------------------------------#
-    
-    path('empresa/', ListadoEmpresa.as_view(template_name = "crud/empresa/tables.html"), name='leerem'),
+    path('metodo_pago/', ListadoMetodoPago.as_view(template_name = "crud/metodo_pago/tables.html"), name='leerme'),
  
     # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
-    path('empresa/detalle/<int:pk>', EmpresaDetalle.as_view(template_name = "crud/empresa/detalle.html"), name='detallesem'),
+    path('metodo_pago/detalle/<int:pk>', MetodoPagoDetalle.as_view(template_name = "crud/metodo_pago/detalle.html"), name='detallesme'),
  
     # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
     #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
  
     # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
-    path('empresa/editar/<int:pk>', EmpresaActualizar.as_view(template_name = "crud/empresa/actualizar.html"), name='actualizarem'), 
+    path('metodo_pago/editar/<int:pk>', MetodoPagoActualizar.as_view(template_name = "crud/metodo_pago/actualizar.html"), name='actualizarme'), 
  
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
-    path('empresa/eliminar/<int:pk>', EmpresaEliminar.as_view(), name='crud/empresa/eliminar.html'), 
+     path('metodo_pago/eliminar/<int:pk>', MetodoPagoEliminar.as_view(), name='crud/metodo_pago/eliminar.html'), 
  
-
-    
 
        #--------------------------------------------URL Movimiento------------------------------------------------------------------------#
     
@@ -73,6 +71,7 @@ urlpatterns = [
     # La ruta 'eliminar' que usaremos para eliminar un Movimiento o registro de la Base de Datos 
     path('movimiento/eliminar/<int:pk>', MovimientoEliminar.as_view(), name='crud/movimiento/eliminar.html'), 
 
+ 
   #--------------------------------------------URL Departamento------------------------------------------------------------------------#
     
     path('departamento/', ListadoDepartamento.as_view(template_name = "crud/departamento/tables.html"), name='leerdep'),
@@ -88,4 +87,5 @@ urlpatterns = [
  
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
     path('departamento/eliminar/<int:pk>', DepartamentoEliminar.as_view(), name='crud/departamento/eliminar.html'), 
+   
 ]

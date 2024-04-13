@@ -8,7 +8,6 @@ from django.contrib.messages.views import SuccessMessageMixin
 
 # Create your views here.
 
-
 def Home(request):
     
     return render (request, "index.html")
@@ -50,42 +49,43 @@ class CategoriaEliminar(SuccessMessageMixin, DeleteView):
      
  #-----------------------------------Categoria-----------------------------------------------------#
 
- 
-#-----------------------------------Movimiento-----------------------------------------------------#
+ #-----------------------------------Metodo_pago-----------------------------------------------------#
     
-class ListadoMovimiento(CreateView,ListView,SuccessMessageMixin):
-    model = Movimiento
-    form = Movimiento
+class ListadoMetodoPago(CreateView,ListView,SuccessMessageMixin):
+    model = MetodoPago
+    form = MetodoPago
     fields = "__all__"
     context_object_name = 'object_list'
-    success_message ='Movimiento creado correctamente'
+    success_message ='Metodo de pago creado correctamente'
     def get_success_url(self):        
-        return reverse('administracion:leermov') # Redireccionamos a la vista principal 'leer'    
+        return reverse('administracion:leerme') # Redireccionamos a la vista principal 'leer'    
     
 
-class MovimientoDetalle (DetailView):
-    model =Movimiento
+class MetodoPagoDetalle (DetailView):
+    model =MetodoPago
 
-class MovimientoActualizar(SuccessMessageMixin,UpdateView):
-    model =Movimiento
-    form = Movimiento
+class MetodoPagoActualizar(SuccessMessageMixin,UpdateView):
+    model =MetodoPago
+    form = MetodoPago
     fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'regional' de nuestra Base de Datos 
-    success_message = 'Movimiento Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+    success_message = 'Metodo de pago Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
 
     def get_success_url(self):               
-        return reverse('administracion:leermov') # Redireccionamos a la vista principal 'leer'
+        return reverse('administracion:leerme') # Redireccionamos a la vista principal 'leer'
     
-class MovimientoEliminar(SuccessMessageMixin, DeleteView): 
-    model = Movimiento
-    form = Movimiento
-       # Redireccionamos a la página principal luego de eliminar un registro o postre
+class MetodoPagoEliminar(SuccessMessageMixin, DeleteView): 
+    model = MetodoPago
+    form = MetodoPago
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
     def get_success_url(self): 
-
-        success_message = 'Movimiento Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        success_message = 'Metodo de pago Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
         messages.success (self.request, (success_message))       
-        return reverse('administracion:leermov') # Redireccionamos a la vista principal 'leer'     
+        return reverse('administracion:leerme') # Redireccionamos a la vista principal 'leer'     
      
- #-----------------------------------Movimiento-----------------------------------------------------#
+ #-----------------------------------Metodo de pago-----------------------------------------------------#
+
 #-----------------------------------Empresa-----------------------------------------------------#
     
 class ListadoEmpresa(CreateView,ListView,SuccessMessageMixin):
@@ -120,6 +120,7 @@ class  EmpresaEliminar(SuccessMessageMixin, DeleteView):
         messages.success (self.request, (success_message))       
         return reverse('administracion:leerem') # Redireccionamos a la vista principal 'leer'  
  #-----------------------------------Empresa-----------------------------------------------------#
+
 #-----------------------------------Departamento-----------------------------------------------------#
  
 class ListadoDepartamento(CreateView,ListView,SuccessMessageMixin):
@@ -156,3 +157,4 @@ class DepartamentoEliminar(SuccessMessageMixin, DeleteView):
         return reverse('administracion:leerdep') # Redireccionamos a la vista principal 'leer'     
      
  #-----------------------------------Departamento-----------------------------------------------------#
+       
