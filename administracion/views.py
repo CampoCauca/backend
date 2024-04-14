@@ -16,6 +16,8 @@ def Login(request):
     return render (request, "login.html")
 def Register(request):
     return render (request, "register.html")
+def Logout(request):
+    return render (request, "login.html")
 
 #-----------------------------------Categoria-----------------------------------------------------#
     
