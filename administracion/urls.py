@@ -54,5 +54,18 @@ urlpatterns = [
     path('metodo_pago/eliminar/<int:pk>', MetodoPagoEliminar.as_view(), name='crud/metodo_pago/eliminar.html'), 
 
     #----------------------------------------url cabeza-----------------------------------------------------
-    #path()
+    # Ruta para listar 
+    path('cabeza/', ListadoCabeza.as_view(template_name="crud/Cabeza/tables.html"), name='leerca'),
+
+    # Ruta para ver los detalles
+    path('cabeza/detalle/<int:pk>', CabezaDetalle.as_view(template_name="crud/Cabeza/detalle.html"), name='detallesca'),
+
+    # Ruta para crear 
+    path('cabeza/crear', CabezaCrear.as_view(template_name="crud/Cabeza/crear.html"), name='crearca'),
+
+    # Ruta para actualizar 
+    path('cabeza/editar/<int:pk>', CabezaActualizar.as_view(template_name="crud/Cabeza/actualizar.html"), name='actualizarca'),
+
+    # Ruta para eliminar 
+    path('cabeza/eliminar/<int:pk>', CabezaEliminar.as_view(), name='eliminarca'),
 ]

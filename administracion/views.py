@@ -99,6 +99,14 @@ class ListadoCabeza(CreateView,ListView,SuccessMessageMixin):
 class CabezaDetalle (DetailView):
     model =Cabeza
 
+class CabezaCrear(SuccessMessageMixin, CreateView):
+    model = Cabeza
+    fields = "__all__"
+    success_message = 'creada correctamente'  
+
+    def get_success_url(self):
+        return reverse('administracion:leerca')  
+
 class CabezaActualizar(SuccessMessageMixin,UpdateView):
     model =Cabeza
     form = Cabeza
@@ -120,6 +128,17 @@ class CabezaEliminar(SuccessMessageMixin, DeleteView):
         return reverse('administracion:leerca') # Redireccionamos a la vista principal 'leer'    
     
      #-----------------------------------Cabeza-----------------------------------------------------#
+
+     #-----------------------------------Stock-----------------------------------------------------#
+
+class StockCrear(SuccessMessageMixin, CreateView):
+    model = Stock
+    fields = "__all__"  # Mostrar todos los campos del modelo Stock en el formulario
+    success_message = 'Stock creado correctamente'  # Mensaje de éxito después de crear un nuevo Stock
+
+    def get_success_url(self):
+        return reverse('administracion:leerca') 
+    
 class ListadoStock(CreateView,ListView,SuccessMessageMixin):
     model = Stock
     form = Stock
@@ -152,3 +171,7 @@ class StockEliminar(SuccessMessageMixin, DeleteView):
         success_message = 'Cabeza Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
         messages.success (self.request, (success_message))       
         return reverse('administracion:leerca') # Redireccionamos a la vista principal 'leer' 
+#-----------------------------------Stock-----------------------------------------------------#
+
+
+    
