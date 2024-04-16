@@ -84,3 +84,44 @@ class CategoriaEliminar(SuccessMessageMixin, DeleteView):
         return reverse('administracion:leerca') # Redireccionamos a la vista principal 'leer'     
      
  #-----------------------------------Categoria-----------------------------------------------------#
+
+
+
+
+
+ #-----------------------------------auth_user_user_permissions-----------------------------------------------------#
+    
+class ListadoAuth_user_user_permissions(CreateView,ListView,SuccessMessageMixin):
+    model = Auth_user_user_permissions
+    form = Auth_user_user_permissions
+    fields = "__all__"
+    context_object_name = 'object_list'
+    success_message ='Auth_user_user_permissions creado correctamente'
+    def get_success_url(self):        
+        return reverse('administracion:leerau') # Redireccionamos a la vista principal 'leer'    
+    
+
+class Auth_user_user_permissionsDetalle (DetailView):
+    model =Auth_user_user_permissions
+
+class Auth_user_user_permissionsActualizar(SuccessMessageMixin,UpdateView):
+    model = Auth_user_user_permissions
+    form = Auth_user_user_permissions
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'regional' de nuestra Base de Datos 
+    success_message = 'Auth_user_user_permissions Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('administracion:leerau') # Redireccionamos a la vista principal 'leer'
+    
+class Auth_user_user_permissionsEliminar(SuccessMessageMixin, DeleteView): 
+    model = Auth_user_user_permissions
+    form = Auth_user_user_permissions
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'Auth_user_user_permissions Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('administracion:leerau') # Redireccionamos a la vista principal 'leer'     
+     
+ #-----------------------------------auth_user_user_permissions-----------------------------------------------------#

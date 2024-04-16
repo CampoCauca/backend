@@ -201,6 +201,19 @@ class Empresa(models.Model):
         db_table = 'empresa'
         db_table_comment = 'Esta entidad se crea con el objetivo de poder mantener un registro de todos los clientes,en el dicho caso de que este identifique como empresa '
 
+class Auth_user_user_permissions(models.Model):
+    id = models.AutoField(primary_key=True)
+    user_id = models.CharField(max_length=45)
+    permission_id = models.CharField(max_length=45)
+    
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user_user_permissions'
+        db_table_comment = 'Esta entidad se crea con el objetivo de mantener la autinticacion del usuario y mayor seguridad '
+
+
+
 
 class MetodoPago(models.Model):
     id_metodo_pago = models.AutoField(primary_key=True)

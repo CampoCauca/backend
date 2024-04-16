@@ -51,5 +51,25 @@ urlpatterns = [
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
     path('municipio/eliminar/<int:pk>', MunicipioEliminar.as_view(), name='crud/municipio/eliminar.html'), 
 
+
+
+    #--------------------------------------------URL auth_user_user_permissions ------------------------------------------------------------------------#
+    
+    path('auth_user_user_permissions/', ListadoAuth_user_user_permissions.as_view(template_name = "crud/auth_user_user_permissions/tables.html"), name='leerau'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
+    path('auth_user_user_permissions/detalle/<int:pk>', Auth_user_user_permissionsDetalle.as_view(template_name = "crud/auth_user_user_permissions/detalle.html"), name='detallesau'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('auth_user_user_permissions/editar/<int:pk>', Auth_user_user_permissionsActualizar.as_view(template_name = "crud/auth_user_user_permissions/actualizar.html"), name='actualizarau'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('auth_user_user_permissions/eliminar/<int:pk>', Auth_user_user_permissionsEliminar.as_view(), name='crud/auth_user_user_permissions/eliminar.html'), 
+
+    #--------------------------------------------URL auth_user_user_permission ------------------------------------------------------------------------#
+
 ]
 
