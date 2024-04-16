@@ -1,3 +1,4 @@
+
 """
 URL configuration for campocauca project.
 
@@ -21,5 +22,6 @@ from administracion.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('administracion/', include(('administracion.urls','administracion'))),
+    path("api/v1/", include("modules.urls")),
     path('', Home, name= 'index'),
 ]
