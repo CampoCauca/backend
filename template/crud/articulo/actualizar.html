@@ -1,6 +1,5 @@
 {# Cargamos la librería #}
-{% load bootstrap4 %}
- 
+{% load django_bootstrap5 %}
 {# CSS Bootstrap #}
 {% bootstrap_css %} 
 
@@ -25,7 +24,7 @@
     <link rel="stylesheet"type="text/css"href="/static/assets/extra-libs/multicheck/multicheck.css"/>
     <link href="/static/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css"rel="stylesheet"/>
     <link href="/static/dist/css/style.min.css" rel="stylesheet" />
-    {% load bootstrap4 %}
+    {% load django_bootstrap5 %}
     {% load static %}
     {% load widget_tweaks %}
   </head>
@@ -52,7 +51,7 @@
       <!-- Topbar header - style you can find in pages.scss -->
       <!-- ============================================================== -->
       <header class="topbar" data-navbarbg="skin5">
-        {% include "nav.html" %}
+        {% include "nava.html" %}
       </header>
 
       <div class="page-wrapper">
@@ -62,7 +61,7 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Actualización tipo documento</h4>
+              <h4 class="page-title">Actualización de datos</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
@@ -85,7 +84,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title mb-0">Actualización de tipo documento</h5>
+                  <h5 class="card-title mb-0">Actualización de Categoría</h5>
                 </div>
                 <div class="card">
                   <div class="card-body">
@@ -93,7 +92,7 @@
                       <thead>
                           <tr>
                               {# JS y jQuery Bootstrap #}
-                              {% bootstrap_javascript jquery='full' %} 
+                              {% bootstrap_javascript  %} 
                              
                               <div class="card-bodys">
                                  
@@ -108,22 +107,39 @@
                                           <td >
                                               
                                               <div class="col-lg-7">
-                                                  <label for="idnivel" >Código de nivel</label>
-                                                  {{ form.idnivel}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+                                                  <label for="id_categoria" > Código de Cartegoría </label>
+                                                  {{ form.id_categoria}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
                                               </div>
                                           </td>
                                           <td >
                                               
                                               <div class="col-lg-7" >
-                                                  <label for="denominacion" >Nombre</label>
-                                                  {{ form.denominacion }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                                  <label for="nombre_categoria" > Nombre de Categoría </label>
+                                                  {{ form.nombre_categoria }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
+                                          <td>
+                                              
+                                              <div class="col-lg-7">
+                                                  <label for="descipcion_categoria" > Descripción de Categoría </label>
+                                                  {{ form.descipcion_categoria }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                              </div>
+                                          </td>
+                                          
+                                         
                                       </tr>
+
+                                      
+                                      
                                         <div class="col-lg-7">              
                                           <button type="submit" class="btn btn-primary">Aceptar</button> 
                                           <a href="../" type="submit" class="btn btn-primary">Cancelar</a>
                                       </div> 
+
+                                                         
+                    
+                                      
+                                      
                                   </form>
                               </div>
                           </tr>

@@ -375,3 +375,238 @@ class TipoPersonaEliminar(SuccessMessageMixin, DeleteView):
         messages.success (self.request, (success_message))       
         return reverse('administracion:leertpe') # Redireccionamos a la vista principal 'leer'
     #------------------------------------Tipo Persona ----------------------------------#
+    #------------------------------------TipoDocumento ----------------------------------#
+class ListadoTipoDocumento(CreateView,ListView,SuccessMessageMixin):
+    model = TipoDocumento
+    form = TipoDocumento
+    fields = "__all__"
+    context_object_name = 'object_list'
+    success_message ='TipoDocumento creado correctamente'
+    def get_success_url(self):        
+        return reverse('administracion:leertdo') # Redireccionamos a la vista principal 'leer'    
+    
+
+class TipoDocumentoDetalle (DetailView):
+    model =TipoDocumento
+
+class TipoDocumentoActualizar(SuccessMessageMixin,UpdateView):
+    model =TipoDocumento
+    form = TipoDocumento
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'regional' de nuestra Base de Datos 
+    success_message = 'TipoDocumento Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('administracion:leertdo') # Redireccionamos a la vista principal 'leer'
+    
+class TipoDocumentoEliminar(SuccessMessageMixin, DeleteView): 
+    model = TipoDocumento
+    form = TipoDocumento
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'TipoDocumento Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('administracion:leertdo') # Redireccionamos a la vista principal 'leer'
+    #------------------------------------TipoDocumento ----------------------------------#
+#-----------------------------------Persona-----------------------------------------------------#
+    
+class ListadoPersona(CreateView,ListView,SuccessMessageMixin):
+    model = Persona
+    form = Persona
+    fields = "__all__"
+    context_object_name = 'object_list'
+    success_message ='Persona creado correctamente'
+    def get_success_url(self):        
+        return reverse('administracion:leerper') # Redireccionamos a la vista principal 'leer'    
+    
+
+class PersonaDetalle (DetailView):
+    model =Persona
+
+class PersonaActualizar(SuccessMessageMixin,UpdateView):
+    model =Persona
+    form = Persona
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'regional' de nuestra Base de Datos 
+    success_message = 'Persona Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('administracion:leerper') # Redireccionamos a la vista principal 'leer'
+    
+class PersonaEliminar(SuccessMessageMixin, DeleteView): 
+    model = Persona
+    form = Persona
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'Persona Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('administracion:leerper') # Redireccionamos a la vista principal 'leer'
+     #-----------------------------------Persona-----------------------------------------------------#
+      #-----------------------------------DjangoMigrations-----------------------------------------------------#
+    
+class ListadoDjangoMigrations(CreateView,ListView,SuccessMessageMixin):
+    model = DjangoMigrations
+    form = DjangoMigrations
+    fields = "__all__"
+    context_object_name = 'object_list'
+    success_message ='Metodo de pago creado correctamente'
+    def get_success_url(self):        
+        return reverse('administracion:leerdjm') # Redireccionamos a la vista principal 'leer'    
+    
+
+class DjangoMigrationsDetalle (DetailView):
+    model =DjangoMigrations
+
+class DjangoMigrationsActualizar(SuccessMessageMixin,UpdateView):
+    model =DjangoMigrations
+    form = DjangoMigrations
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'regional' de nuestra Base de Datos 
+    success_message = 'Metodo de pago Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('administracion:leerdjm') # Redireccionamos a la vista principal 'leer'
+    
+class DjangoMigrationsEliminar(SuccessMessageMixin, DeleteView): 
+    model = DjangoMigrations
+    form = DjangoMigrations
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'Metodo de pago Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('administracion:leerdjm') # Redireccionamos a la vista principal 'leer'
+#-----------------------------------DjangoMigrations-----------------------------------------------------#
+ #-----------------------------------AuthUserUserPermissions-----------------------------------------------------#
+    
+class ListadoAuthUserUserPermissions(CreateView,ListView,SuccessMessageMixin):
+    model = AuthUserUserPermissions
+    form = AuthUserUserPermissions
+    fields = "__all__"
+    context_object_name = 'object_list'
+    success_message ='AuthUserUserPermissions creado correctamente'
+    def get_success_url(self):        
+        return reverse('administracion:leerau') # Redireccionamos a la vista principal 'leer'    
+    
+
+class AuthUserUserPermissionsDetalle (DetailView):
+    model =AuthUserUserPermissions
+
+class AuthUserUserPermissionsActualizar(SuccessMessageMixin,UpdateView):
+    model = AuthUserUserPermissions
+    form = AuthUserUserPermissions
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'regional' de nuestra Base de Datos 
+    success_message = 'AuthUserUserPermissions Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('administracion:leerau') # Redireccionamos a la vista principal 'leer'
+    
+class AuthUserUserPermissionsEliminar(SuccessMessageMixin, DeleteView): 
+    model = AuthUserUserPermissions
+    form = AuthUserUserPermissions
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'AuthUserUserPermissions Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('administracion:leerau') # Redireccionamos a la vista principal 'leer'     
+     
+ #-----------------------------------AuthUserUserPermissions-----------------------------------------------------#
+    #-----------------------------------Cabeza-----------------------------------------------------#
+class ListadoCabeza(CreateView,ListView,SuccessMessageMixin):
+    model = Cabeza
+    form = Cabeza
+    fields = "__all__"
+    context_object_name = 'object_list'
+    success_message ='Cabeza creada correctamente'
+    def get_success_url(self):        
+        return reverse('administracion:leerca') # Redireccionamos a la vista principal 'leer'    
+    
+
+class CabezaDetalle (DetailView):
+    model =Cabeza
+
+class CabezaCrear(SuccessMessageMixin, CreateView):
+    model = Cabeza
+    fields = "__all__"
+    success_message = 'creada correctamente'  
+
+    def get_success_url(self):
+        return reverse('administracion:leerca')  
+
+class CabezaActualizar(SuccessMessageMixin,UpdateView):
+    model =Cabeza
+    form = Cabeza
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'regional' de nuestra Base de Datos 
+    success_message = 'Cabeza Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('administracion:leerca') # Redireccionamos a la vista principal 'leer'
+    
+class CabezaEliminar(SuccessMessageMixin, DeleteView): 
+    model = Cabeza
+    form = Cabeza
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'Cabeza Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('administracion:leerca') # Redireccionamos a la vista principal 'leer'
+
+
+#     def get_success_url(self):               
+#         return reverse('administracion:leerca') # Redireccionamos a la vista principal 'leer'
+    
+# from django.urls import reverse
+# from django.contrib.messages.views import SuccessMessageMixin
+# from django.views.generic.edit import DeleteView
+# from .models import Cabeza
+
+# class CabezaEliminar(SuccessMessageMixin, DeleteView):
+#     model = Cabeza
+#     success_message = "El registro fue eliminado exitosamente"  # Mensaje a mostrar tras eliminar el objeto
+    
+#     def get_success_url(self):
+#         return reverse('administracion:leerme')  # Redireccionamos a la vista principal 'leerme'
+    
+#----------------------------------------------------Cabeza-----------------------------------------------------#
+ #-----------------------------------Articulo-----------------------------------------------------#
+ 
+class ListadoArticulo(CreateView,ListView,SuccessMessageMixin):
+    model = Articulo
+    form = Articulo
+    fields = "__all__"
+    context_object_name = 'object_list'
+    success_message ='Articulo creado correctamente'
+    def get_success_url(self):        
+        return reverse('administracion:leerart') # Redireccionamos a la vista principal 'leer'    
+    
+
+class ArticuloDetalle (DetailView):
+    model =Articulo
+
+class ArticuloActualizar(SuccessMessageMixin,UpdateView):
+    model =Articulo
+    form = Articulo
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'regional' de nuestra Base de Datos 
+    success_message = 'Articulo Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('administracion:leerart') # Redireccionamos a la vista principal 'leer'
+    
+class ArticuloEliminar(SuccessMessageMixin, DeleteView): 
+    model = Articulo
+    form = Articulo
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'Articulo Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('administracion:leerart') # Redireccionamos a la vista principal 'leer'     
+     
+ #-----------------------------------Articulo-----------------------------------------------------#

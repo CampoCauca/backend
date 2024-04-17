@@ -156,5 +156,105 @@ urlpatterns = [
     path('tipo_persona/eliminar/<int:pk>', TipoPersonaEliminar.as_view(), name='crud/tipo_persona/eliminar.html'), 
 
 #--------------------------------------------URL TipoPersona------------------------------------------------------------------------#
+#--------------------------------------------URL TipoDocumento ------------------------------------------------------------------------#
+    
+    path('tipodocumento/', ListadoTipoDocumento.as_view(template_name = "crud/tipodocumento/tables.html"), name='leertdo'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un tipo_identificacion o registro 
+    path('tipodocumento/detalle/<int:pk>', TipoDocumentoDetalle.as_view(template_name = "crud/tipodocumento/detalle.html"), name='detallestdo'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('tipodocumento/editar/<int:pk>', TipoDocumentoActualizar.as_view(template_name = "crud/tipodocumento/actualizar.html"), name='actualizartdo'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('tipodocumento/eliminar/<int:pk>', TipoDocumentoEliminar.as_view(), name='crud/tipodocumento/eliminar.html'), 
+
+#--------------------------------------------URL TipoDocumento------------------------------------------------------------------------#
+#--------------------------------------------URL Persona ------------------------------------------------------------------------#
+    
+    path('persona/', ListadoPersona.as_view(template_name = "crud/persona/tables.html"), name='leerper'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un tipo_identificacion o registro 
+    path('personan/detalle/<int:pk>', PersonaDetalle.as_view(template_name = "crud/persona/detalle.html"), name='detallesper'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('persona/editar/<int:pk>', PersonaActualizar.as_view(template_name = "crud/persona/actualizar.html"), name='actualizarper'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('persona/eliminar/<int:pk>', PersonaEliminar.as_view(), name='crud/persona/eliminar.html'),
+#--------------------------------------------URL Persona ------------------------------------------------------------------------#
+#--------------------------------------------DjangoMigrations------------------------------------------------------------------------#
+    
+    path('django_migrations/', ListadoDjangoMigrations.as_view(template_name = "crud/django_migrations/tables.html"), name='leerdjm'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
+    path('django_migrations/detalle/<int:pk>', DjangoMigrationsDetalle.as_view(template_name = "crud/django_migrations/detalle.html"), name='detallesdjm'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('django_migrations/editar/<int:pk>', DjangoMigrationsActualizar.as_view(template_name = "crud/django_migrations/actualizar.html"), name='actualizardjm'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('django_migrations/eliminar/<int:pk>', DjangoMigrationsEliminar.as_view(), name='crud/django_migrations/eliminar.html'), 
+   #--------------------------------------------DjangoMigrations------------------------------------------------------------------------#
+#--------------------------------------------URL auth_user_user_permissions ------------------------------------------------------------------------#
+    
+    path('auth_user_user_permissions/', ListadoAuthUserUserPermissions.as_view(template_name = "crud/auth_user_user_permissions/tables.html"), name='leerau'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
+    path('auth_user_user_permissions/detalle/<int:pk>', AuthUserUserPermissionsDetalle.as_view(template_name = "crud/auth_user_user_permissions/detalle.html"), name='detallesau'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('auth_user_user_permissions/editar/<int:pk>', AuthUserUserPermissionsActualizar.as_view(template_name = "crud/auth_user_user_permissions/actualizar.html"), name='actualizarau'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('auth_user_user_permissions/eliminar/<int:pk>', AuthUserUserPermissionsEliminar.as_view(), name='crud/auth_user_user_permissions/eliminar.html'), 
+
+    #--------------------------------------------URL auth_user_user_permission ------------------------------------------------------------------------#
+#----------------------------------------url cabeza-----------------------------------------------------#
+    # Ruta para listar 
+    path('cabeza/', ListadoCabeza.as_view(template_name="crud/Cabeza/tables.html"), name='leerca'),
+
+    # Ruta para ver los detalles
+    path('cabeza/detalle/<int:pk>', CabezaDetalle.as_view(template_name="crud/Cabeza/detalle.html"), name='detallesca'),
+
+    # Ruta para crear 
+    path('cabeza/crear', CabezaCrear.as_view(template_name="crud/Cabeza/crear.html"), name='crearca'),
+
+    # Ruta para actualizar 
+    path('cabeza/editar/<int:pk>', CabezaActualizar.as_view(template_name="crud/Cabeza/actualizar.html"), name='actualizarca'),
+
+    # Ruta para eliminar 
+    path('cabeza/eliminar/<int:pk>', CabezaEliminar.as_view(), name='eliminarca'),
+
+    path('metodo_pago/eliminar/<int:pk>', MetodoPagoEliminar.as_view(), name='crud/metodo_pago/eliminar.html'),
+#----------------------------------------url cabeza-----------------------------------------------------#
+#--------------------------------------------URL Articulo------------------------------------------------------------------------#
+    
+    path('articulo/', ListadoArticulo.as_view(template_name = "crud/articulo/tables.html"), name='leerart'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
+    path('articulo/detalle/<int:pk>', ArticuloDetalle.as_view(template_name = "crud/articulo/detalle.html"), name='detallesart'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('articulo/editar/<int:pk>', ArticuloActualizar.as_view(template_name = "crud/articulo/actualizar.html"), name='actualizarart'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('articulo/eliminar/<int:pk>', ArticuloEliminar.as_view(), name='crud/articulo/eliminar.html'),
+    #--------------------------------------------URL Articulo------------------------------------------------------------------------#
 ]
 
