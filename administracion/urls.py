@@ -139,11 +139,22 @@ urlpatterns = [
     path('tipoidentificacion/eliminar/<int:pk>', TipoIdentificacionEliminar.as_view(), name='crud/tipo_identificacion/eliminar.html'), 
 
 #--------------------------------------------URL TipoIdentificacion------------------------------------------------------------------------#
-
-     
+#--------------------------------------------URL TipoPersona ------------------------------------------------------------------------#
+    
+    path('tipo_persona/', ListadoTipoPersona.as_view(template_name = "crud/tipo_persona/tables.html"), name='leertpe'),
  
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un tipo_identificacion o registro 
+    path('tipo_persona/detalle/<int:pk>', TipoPersonaDetalle.as_view(template_name = "crud/tipo_persona/detalle.html"), name='detallestpe'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('tipo_persona/editar/<int:pk>', TipoPersonaActualizar.as_view(template_name = "crud/tipo_persona/actualizar.html"), name='actualizartpe'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('tipo_persona/eliminar/<int:pk>', TipoPersonaEliminar.as_view(), name='crud/tipo_persona/eliminar.html'), 
 
-
-   
+#--------------------------------------------URL TipoPersona------------------------------------------------------------------------#
 ]
 
