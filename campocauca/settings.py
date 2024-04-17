@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'administracion.apps.AdministracionConfig',
     'django_bootstrap5',
     'widget_tweaks',
+    'product',
     
    
     
