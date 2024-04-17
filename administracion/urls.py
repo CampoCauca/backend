@@ -57,19 +57,19 @@ urlpatterns = [
 
        #--------------------------------------------URL Movimiento------------------------------------------------------------------------#
     
-    path('movimiento/', ListadoMovimiento.as_view(template_name = "crud/movimiento/tables.html"), name='leermov'),
+    # path('movimiento/', ListadoMovimiento.as_view(template_name = "crud/movimiento/tables.html"), name='leermov'),
  
-    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Movimiento o registro 
-    path('movimiento/detalle/<int:pk>', MovimientoDetalle.as_view(template_name = "crud/movimiento/detalle.html"), name='detallesmov'),
+    # # La ruta 'detalles' en donde mostraremos una página con los detalles de un Movimiento o registro 
+    # path('movimiento/detalle/<int:pk>', MovimientoDetalle.as_view(template_name = "crud/movimiento/detalle.html"), name='detallesmov'),
  
-    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Movimiento o registro  
-    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+    # # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Movimiento o registro  
+    # #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
  
-    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
-    path('movimiento/editar/<int:pk>', MovimientoActualizar.as_view(template_name = "crud/movimiento/actualizar.html"), name='actualizarmov'), 
+    # # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    # path('movimiento/editar/<int:pk>', MovimientoActualizar.as_view(template_name = "crud/movimiento/actualizar.html"), name='actualizarmov'), 
  
-    # La ruta 'eliminar' que usaremos para eliminar un Movimiento o registro de la Base de Datos 
-    path('movimiento/eliminar/<int:pk>', MovimientoEliminar.as_view(), name='crud/movimiento/eliminar.html'), 
+    # # La ruta 'eliminar' que usaremos para eliminar un Movimiento o registro de la Base de Datos 
+    # path('movimiento/eliminar/<int:pk>', MovimientoEliminar.as_view(), name='crud/movimiento/eliminar.html'), 
 
  
   #--------------------------------------------URL Departamento------------------------------------------------------------------------#
@@ -87,5 +87,19 @@ urlpatterns = [
  
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
     path('departamento/eliminar/<int:pk>', DepartamentoEliminar.as_view(), name='crud/departamento/eliminar.html'), 
+
+
+         #--------------------------------------------URL Grupo------------------------------------------------------------------------#
+    
+    path('auth_group/', GrupoListado.as_view(template_name = "crud/auth_group/tables.html"), name='leerGrupo'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un registro o Grupo 
+    path('auth_group/detalle/<int:pk>', GrupoDetalle.as_view(template_name = "crud/auth_group/detalle.html"), name='detallesGrupo'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un registro o Grupo de la Base de Datos 
+    path('auth_group/editar/<int:pk>', GrupoActualizar.as_view(template_name = "crud/auth_group/actualizar.html"), name='actualizarGrupo'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un registro o Grupo de la Base de Datos 
+    path('auth_group/eliminar/<int:pk>', GrupoEliminar.as_view(), name='crud/auth_group/eliminar.html'), 
    
 ]

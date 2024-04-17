@@ -157,4 +157,40 @@ class DepartamentoEliminar(SuccessMessageMixin, DeleteView):
         return reverse('administracion:leerdep') # Redireccionamos a la vista principal 'leer'     
      
  #-----------------------------------Departamento-----------------------------------------------------#
-       
+
+  #-----------------------------------Grupo-----------------------------------------------------#
+
+class GrupoListado(CreateView,ListView,SuccessMessageMixin):
+    model =AuthGroup
+    form = AuthGroup
+    fields = "__all__"
+    context_object_name = 'object_list'
+    success_message ='Categoria creado correctamente'
+    def get_success_url(self):        
+        return reverse('administracion:leerGrupo') # Redireccionamos a la vista principal 'leer'    
+    
+
+class GrupoDetalle (DetailView):
+    model =AuthGroup
+
+class GrupoActualizar(SuccessMessageMixin,UpdateView):
+    model =AuthGroup
+    form = AuthGroup
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'auth_group' de nuestra Base de Datos 
+    success_message = 'Categoria Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Grupo
+
+    def get_success_url(self):               
+        return reverse('administracion:leerGrupo') # Redireccionamos a la vista principal 'leer'
+    
+class GrupoEliminar(SuccessMessageMixin, DeleteView): 
+    model =AuthGroup
+    form = AuthGroup
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o Grupo
+    def get_success_url(self): 
+        success_message = 'Categoria Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Grupo
+        messages.success (self.request, (success_message))       
+        return reverse('administracion:leerGrupo') # Redireccionamos a la vista principal 'leer'      
+        
+ #-----------------------------------Grupo-----------------------------------------------------#
