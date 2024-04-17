@@ -18,10 +18,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from administracion.views import *
+from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('administracion/', include(('administracion.urls','administracion'))),
     path("api/v1/", include("modules.urls")),
-    path('', Home, name= 'index'),
+    path('home/', Home, name= 'index'),
+    path('', LoginView.as_view(template_name='login.html'), name="login"),
+    path('logout/', LogoutView.as_view(template_name='login.html'), name="logout"),
+    path('registro/', Register, name= 'register'),
 ]

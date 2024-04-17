@@ -121,6 +121,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
+LOGIN_REDIRECT_URL = 'index'
+
 LANGUAGE_CODE = 'es-es'
 
 TIME_ZONE = 'UTC'
