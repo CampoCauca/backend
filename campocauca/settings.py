@@ -46,10 +46,8 @@ INSTALLED_APPS = [
     'administracion.apps.AdministracionConfig',
     'django_bootstrap5',
     'widget_tweaks',
+    'rest_framework',
     'product',
-    
-   
-    
 ]
 
 MIDDLEWARE = [
@@ -120,6 +118,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
+
+LOGIN_REDIRECT_URL = 'index'
 
 LANGUAGE_CODE = 'es-es'
 
