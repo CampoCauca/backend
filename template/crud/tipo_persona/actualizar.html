@@ -1,3 +1,4 @@
+
 {# Cargamos la librería #}
 {% load django_bootstrap5 %}
 {# CSS Bootstrap #}
@@ -84,7 +85,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title mb-0">Actualización de Categoría</h5>
+                  <h5 class="card-title mb-0">Actualización del Tipo de Persona</h5>
                 </div>
                 <div class="card">
                   <div class="card-body">
@@ -107,25 +108,24 @@
                                           <td >
                                               
                                               <div class="col-lg-7">
-                                                  <label for="id_categoria" > Código de Cartegoría </label>
-                                                  {{ form.id_categoria}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+                                                  <label for="id_tipo_persona" > Id de Tipo Persona </label>
+                                                  {{form.id_tipo_persona}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
                                               </div>
                                           </td>
                                           <td >
                                               
                                               <div class="col-lg-7" >
-                                                  <label for="nombre_categoria" > Nombre de Categoría </label>
-                                                  {{ form.nombre_categoria }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                                  <label for="Nombre" > Nombre del Tipo de Persona </label>
+                                                  {{ form.nombre }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
                                           <td>
                                               
                                               <div class="col-lg-7">
-                                                  <label for="descipcion_categoria" > Descripción de Categoría </label>
-                                                  {{ form.descipcion_categoria }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                                  <label for="descripcion" > Descripción del Tipo Persona</label>
+                                                  {{ form.descripcion }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
-                                          
                                          
                                       </tr>
 
