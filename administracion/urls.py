@@ -87,5 +87,42 @@ urlpatterns = [
  
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
     path('departamento/eliminar/<int:pk>', DepartamentoEliminar.as_view(), name='crud/departamento/eliminar.html'), 
-   
+  
+    #--------------------------------------------URL AuthPermission------------------------------------------------------------------------#
+    
+    path('auth_permission/', ListadoAuthPermission.as_view(template_name = "crud/auth_permission/tables.html"), name='leeraut'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
+    path('auth_permission/detalle/<int:pk>', AuthPermissionDetalle.as_view(template_name = "crud/auth_permission/detalle.html"), name='detallesaut'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('auth_permission/editar/<int:pk>', AuthPermissionActualizar.as_view(template_name = "crud/auth_permission/actualizar.html"), name='actualizaraut'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('auth_permission/eliminar/<int:pk>', AuthPermissionEliminar.as_view(), name='crud/auth_permission/eliminar.html'), 
+
+    #--------------------------------------------URL AuthPermission------------------------------------------------------------------------#
+
+#--------------------------------------------URL Unidad_de_Medida------------------------------------------------------------------------#
+    
+    path('unidad_de_medida/', ListadoUnidadDeMedida.as_view(template_name = "crud/unidad_de_medida/tables.html"), name='leeruni'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
+    path('unidad_de_medida/detalle/<int:pk>', UnidadDeMedidaDetalle.as_view(template_name = "crud/unidad_de_medida/detalle.html"), name='detallesuni'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('unidad_de_medida/editar/<int:pk>', UnidadDeMedidaActualizar.as_view(template_name = "crud/unidad_de_medida/actualizar.html"), name='actualizaruni'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('unidad_de_medida/eliminar/<int:pk>', UnidadDeMedidaEliminar.as_view(), name='crud/unidad_de_medida/eliminar.html'), 
+
+    #--------------------------------------------URL Unidad_de_Medida------------------------------------------------------------------------#
+
+
 ]
