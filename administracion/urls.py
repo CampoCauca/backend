@@ -256,5 +256,21 @@ urlpatterns = [
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
     path('articulo/eliminar/<int:pk>', ArticuloEliminar.as_view(), name='crud/articulo/eliminar.html'),
     #--------------------------------------------URL Articulo------------------------------------------------------------------------#
+    #--------------------------------------------URL AuthGroupPermissions------------------------------------------------------------------------#
+    
+    path('auth_group_permission/', ListadoAuthGroupPermissions.as_view(template_name = "crud/auth_group_permission/tables.html"), name='leerauthgp'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
+    path('auth_group_permission/detalle/<int:pk>', AuthGroupPermissionsDetalle.as_view(template_name = "crud/auth_group_permission/detalle.html"), name='detallesauthgp'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('auth_group_permission/editar/<int:pk>', AuthGroupPermissionsActualizar.as_view(template_name = "crud/auth_group_permission/actualizar.html"), name='actualizarauthgp'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('auth_group_permission/eliminar/<int:pk>', AuthGroupPermissionsEliminar.as_view(), name='crud/auth_group_permission/eliminar.html'),
+    #--------------------------------------------URL AuthGroupPermissions------------------------------------------------------------------------#
 ]
 
