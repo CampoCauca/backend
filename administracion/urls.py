@@ -87,5 +87,18 @@ urlpatterns = [
  
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
     path('departamento/eliminar/<int:pk>', DepartamentoEliminar.as_view(), name='crud/departamento/eliminar.html'), 
+
+                 #--------------------------------------------URL django_content_type------------------------------------------------------------------------#
+    
+    path('django_content_type/', ContentTypeListado.as_view(template_name = "crud/django_content_type/tables.html"), name='leerContentType'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un registro o Content Type
+    path('django_content_type/detalle/<int:pk>', ContentTypeDetalle.as_view(template_name = "crud/django_content_type/detalle.html"), name='detallesContentType'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un registro o Content Type de la Base de Datos 
+    path('django_content_type/editar/<int:pk>', ContentTypeActualizar.as_view(template_name = "crud/django_content_type/actualizar.html"), name='actualizarContentType'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un registro o Content Type de la Base de Datos 
+    path('django_content_type/eliminar/<int:pk>', ContentTypeEliminar.as_view(), name='crud/django_content_type/eliminar.html'), 
    
 ]

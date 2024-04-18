@@ -157,4 +157,42 @@ class DepartamentoEliminar(SuccessMessageMixin, DeleteView):
         return reverse('administracion:leerdep') # Redireccionamos a la vista principal 'leer'     
      
  #-----------------------------------Departamento-----------------------------------------------------#
+
+    #-----------------------------------django_content_type-----------------------------------------------------#
+
+class ContentTypeListado(CreateView,ListView,SuccessMessageMixin):
+    model = DjangoContentType
+    form = DjangoContentType
+    fields = "__all__"
+    context_object_name = 'object_list'
+    success_message ='Categoria creado correctamente'
+    def get_success_url(self):        
+        return reverse('administracion:leerContentType') # Redireccionamos a la vista principal 'leer'    
+    
+
+class ContentTypeDetalle (DetailView):
+    model = DjangoContentType
+
+class ContentTypeActualizar(SuccessMessageMixin,UpdateView):
+    model = DjangoContentType
+    form = DjangoContentType
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'Content Type' de nuestra Base de Datos 
+    success_message = 'Categoria Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Content Type
+
+    def get_success_url(self):               
+        return reverse('administracion:leerContentType') # Redireccionamos a la vista principal 'leer'
+    
+class ContentTypeEliminar(SuccessMessageMixin, DeleteView): 
+    model = DjangoContentType
+    form = DjangoContentType
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o Content Type
+    def get_success_url(self): 
+        success_message = 'Categoria Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Grupo
+        messages.success (self.request, (success_message))       
+        return reverse('administracion:leerContentType') # Redireccionamos a la vista principal 'leer'    
+        
+ #-----------------------------------django_content_type-----------------------------------------------------#
+     
        
