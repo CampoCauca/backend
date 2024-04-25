@@ -53,7 +53,7 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Categorias</h4>
+              <h4 class="page-title">Artículos</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
@@ -73,7 +73,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title mb-0">Creación de Catogoría</h5>
+                  <h5 class="card-title mb-0">Creación de Artículo</h5>
                 </div>
                 <div class="card">
                   <div class="card-body">
@@ -92,30 +92,55 @@
                                       {% csrf_token %}
                                       
                                       <!-- {{ form.as_p }} -->
-                                      <tr class="espacio">
-                                        
+                                       <tr class="espacio">
                                           <td >
                                               
                                               <div class="col-lg-7">
-                                                  <label for="id_categoria" >Código de Cartegoría</label>
-                                                  {{ form.id_categoria}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+                                                  <label for="id_articulo" > Código de Artículo </label>
+                                                  {{ form.id_articulo}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
                                               </div>
                                           </td>
                                           <td >
                                               
                                               <div class="col-lg-7" >
-                                                  <label for="nombre_categoria" >Nombre de Categoría</label>
-                                                  {{ form.nombre_categoria}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                                  <label for="nombre_articulo" > Nombre de Artículo </label>
+                                                  {{ form.nombre_articulo }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
                                           <td>
                                               
                                               <div class="col-lg-7">
-                                                  <label for="descipcion_categoria" >Descripción de Categoría</label>
-                                                  {{ form.descipcion_categoria }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                                  <label for="descripcion_articulo" > Descripción de Artículo </label>
+                                                  {{ form.descripcion_articulo }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
                                           
+                                         
+                                      </tr>
+
+                                       <tr class="espacio">
+                                          <td >
+                                              
+                                              <div class="col-lg-7">
+                                                  <label for="categoria_id_categoria" > Código de Categoria </label>
+                                                  {{ form.categoria_id_categoria}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+                                              </div>
+                                          </td>
+                                          <td >
+                                              
+                                              <div class="col-lg-7" >
+                                                  <label for="unidad_de_medida_idunidad_de_medida" > Código de Unidad de medida </label>
+                                                  {{ form.unidad_de_medida_idunidad_de_medida }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                              </div>
+                                          </td>
+                                          <td>
+                                              
+                                              <div class="col-lg-7">
+                                                  <label for="persona_id_persona" > Código de Persona </label>
+                                                  {{ form.persona_id_persona }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                              </div>
+                                          </td>
+                                  
                                       </tr>   
                                     </tr>                
                                       <div>              
@@ -138,36 +163,40 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Lista de Categoria</h5>
+                  <h5 class="card-title">Lista de Artículo</h5>
                   <div class="table-responsive">
                     <table id="zero_config" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th>Código de Categoría</th>
-                          <th>nombre de Categoría</th>
+                          <th>Código de Artículo</th>
+                          <th>Nombre de Artículo</th>
                           <th>Descripción</th> 
-                                            
+                          <th>Código de Categoria</th>
+                          <th>Código de Unidad de medida</th>
+                          <th>Código de Persona</th>                       
                         </tr>
                       </thead>
-                      <tbody>
-                        {% for categoria in object_list %}
+                       <tbody>
+                         {% for articulo in object_list %}
                           <tr>
-                            <td>{{ categoria.id_categoria}}</td>
-                            <td>{{ categoria.nombre_categoria}}</td>
-                            <td>{{ categoria.descipcion_categoria}}</td>
-                           
-                                                      
-                            <td>
-                              <form method="POST" action="eliminar/{{categoria.id_categoria}}">
+                            <td>{{ articulo.id_articulo}}</td>
+                            <td>{{ articulo.nombre_articulo}}</td>
+                            <td>{{ articulo.descripcion_articulo}}</td>                       
+                            <td>{{ articulo.categoria_id_categoria}}</td>
+                            <td>{{ articulo.unidad_de_medida_idunidad_de_medida}}</td>
+                            <td>{{ articulo.persona_id_persona}}</td>                       
+                          </tr>
+                     
+                              <form method="POST" action="eliminar/{{articulo.id_articulo}}">
                                   {% csrf_token %}
                                   <div class="btn-group">
 
                                       <!-- Creamos 3 botones que son ver, Editar y Eliminar, nos sirven para gestionar nuestros registros o postres -->
-                                      <a href="detalle/{{categoria.id_categoria}}" title="Ver" type="button" class="btn btn-success">Ver </a>
-                                      <a href="editar/{{categoria.id_categoria}}" title="Editar" type="button" class="btn btn-primary">Editar </a>
+                                      <a href="detalle/{{articulo.id_articulo}}" title="Ver" type="button" class="btn btn-success">Ver </a>
+                                      <a href="editar/{{articulo.id_articulo}}" title="Editar" type="button" class="btn btn-primary">Editar </a>
                                       <button class="btn btn-danger" onclick="return eliminar();" type="submit">
                                         Eliminar
-                                      </button>
+                                      </button> 
                                   </div>
                               </form>   
                           </td> 

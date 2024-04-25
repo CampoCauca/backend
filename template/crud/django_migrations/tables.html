@@ -162,20 +162,20 @@
                       <tbody>
                         {% for django_migrations in object_list %}
                           <tr>
-                            <td>{{ django_migrations.id_django_migrations}}</td>
-                            <td>{{ django_migrations.app_django_migrations}}</td>
-                            <td>{{ django_migrations.name_django_migrations}}</td>
-                            <td>{{ django_migrations.applied_django_migrations}}</td>
+                            <td>{{ django_migrations.id}}</td>
+                            <td>{{ django_migrations.app}}</td>
+                            <td>{{ django_migrations.name}}</td>
+                            <td>{{ django_migrations.applied}}</td>
                            
                                                       
                             <td>
-                              <form method="POST" action="eliminar/{{django_migrations.id_django_migrations}}">
+                              <form method="POST" action="eliminar/{{django_migrations.id}}">
                                   {% csrf_token %}
                                   <div class="btn-group">
 
                                       <!-- Creamos 3 botones que son ver, Editar y Eliminar, nos sirven para gestionar nuestros registros o postres -->
-                                      <a href="detalle/{{django_migrations.id_django_migrations}}" title="Ver" type="button" class="btn btn-success">Ver </a>
-                                      <a href="editar/{{django_migrations.id_django_migrations}}" title="Editar" type="button" class="btn btn-primary">Editar </a>
+                                      <a href="detalle/{{django_migrations.id}}" title="Ver" type="button" class="btn btn-success">Ver </a>
+                                      <a href="editar/{{django_migrations.id}}" title="Editar" type="button" class="btn btn-primary">Editar </a>
                                       <button class="btn btn-danger" onclick="return eliminar();" type="submit">
                                         Eliminar
                                       </button>

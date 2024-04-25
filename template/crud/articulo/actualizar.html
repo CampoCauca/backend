@@ -84,7 +84,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title mb-0">Actualización de Categoría</h5>
+                  <h5 class="card-title mb-0">Actualización de artículo</h5>
                 </div>
                 <div class="card">
                   <div class="card-body">
@@ -107,29 +107,49 @@
                                           <td >
                                               
                                               <div class="col-lg-7">
-                                                  <label for="id_categoria" > Código de Cartegoría </label>
-                                                  {{ form.id_categoria}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+                                                  <label for="id_articulo" > Código de Artículo </label>
+                                                  {{ form.id_articulo}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
                                               </div>
                                           </td>
                                           <td >
                                               
                                               <div class="col-lg-7" >
-                                                  <label for="nombre_categoria" > Nombre de Categoría </label>
-                                                  {{ form.nombre_categoria }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                                  <label for="nombre_articulo" > Nombre de Artículo </label>
+                                                  {{ form.nombre_articulo }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
                                           <td>
                                               
                                               <div class="col-lg-7">
-                                                  <label for="descipcion_categoria" > Descripción de Categoría </label>
-                                                  {{ form.descipcion_categoria }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                                  <label for="descripcion_articulo" > Descripción de Artículo </label>
+                                                  {{ form.descripcion_articulo }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
-                                          </td>
-                                          
-                                         
+                                          </td> 
                                       </tr>
 
-                                      
+                                       <tr class="espacio">
+                                          <td >
+                                              
+                                              <div class="col-lg-7">
+                                                  <label for="categoria_id_categoria" > Código de Categoria </label>
+                                                  {{ form.categoria_id_categoria}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+                                              </div>
+                                          </td>
+                                          <td >
+                                              
+                                              <div class="col-lg-7" >
+                                                  <label for="unidad_de_medida_idunidad_de_medida" > Código de Unidad de medida </label>
+                                                  {{ form.unidad_de_medida_idunidad_de_medida }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                              </div>
+                                          </td>
+                                          <td>
+                                              
+                                              <div class="col-lg-7">
+                                                  <label for="persona_id_persona" > Código de Persona </label>
+                                                  {{ form.persona_id_persona }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                              </div>
+                                          </td>
+                                      </tr>
                                       
                                         <div class="col-lg-7">              
                                           <button type="submit" class="btn btn-primary">Aceptar</button> 
