@@ -178,7 +178,7 @@ urlpatterns = [
     path('persona/', ListadoPersona.as_view(template_name = "crud/persona/tables.html"), name='leerper'),
  
     # La ruta 'detalles' en donde mostraremos una página con los detalles de un tipo_identificacion o registro 
-    path('personan/detalle/<int:pk>', PersonaDetalle.as_view(template_name = "crud/persona/detalle.html"), name='detallesper'),
+    path('persona/detalle/<int:pk>', PersonaDetalle.as_view(template_name = "crud/persona/detalle.html"), name='detallesper'),
  
     # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
     #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
@@ -226,7 +226,7 @@ urlpatterns = [
     # Ruta para listar 
     path('cabeza/', ListadoCabeza.as_view(template_name="crud/Cabeza/tables.html"), name='leerca'),
 
-    # Ruta para ver los detalles
+    # Ruta para ver los  les
     path('cabeza/detalle/<int:pk>', CabezaDetalle.as_view(template_name="crud/Cabeza/detalle.html"), name='detallesca'),
 
     # Ruta para crear 

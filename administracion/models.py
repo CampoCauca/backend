@@ -13,10 +13,10 @@ class Articulo(models.Model):
     id_articulo = models.AutoField(primary_key=True)
     nombre_articulo = models.CharField(max_length=45)
     descripcion_articulo = models.CharField(max_length=345)
-    imagen = models.TextField()
-    categoria_id_categoria = models.ForeignKey('Categoria', models.DO_NOTHING, db_column='categoria_id_categoria')
-    unidad_de_medida_idunidad_de_medida = models.ForeignKey('UnidadDeMedida', models.DO_NOTHING, db_column='unidad_de_medida_idunidad_de_medida')
-    persona_id_persona = models.ForeignKey('Persona', models.DO_NOTHING, db_column='persona_id_persona')
+    # imagen = models.TextField()
+    # categoria_id_categoria = models.ForeignKey('Categoria', models.DO_NOTHING, db_column='categoria_id_categoria')
+    # unidad_de_medida_idunidad_de_medida = models.ForeignKey('UnidadDeMedida', models.DO_NOTHING, db_column='unidad_de_medida_idunidad_de_medida')
+    # persona_id_persona = models.ForeignKey('Persona', models.DO_NOTHING, db_column='persona_id_persona')
 
     class Meta:
         managed = False
