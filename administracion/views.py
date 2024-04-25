@@ -200,6 +200,7 @@ class MetodoPagoEliminar(SuccessMessageMixin, DeleteView):
     model = MetodoPago
     form = MetodoPago
     fields = "__all__"
+    
 
     # Redireccionamos a la página principal luego de eliminar un registro o postre
     def get_success_url(self):
@@ -527,7 +528,7 @@ class ListadoCabeza(CreateView,ListView,SuccessMessageMixin):
     context_object_name = 'object_list'
     success_message ='Cabeza creada correctamente'
     def get_success_url(self):        
-        return reverse('administracion:leerca') # Redireccionamos a la vista principal 'leer'    
+        return reverse('administracion:leercab') # Redireccionamos a la vista principal 'leer'    
     
 
 class CabezaDetalle (DetailView):
@@ -539,7 +540,7 @@ class CabezaCrear(SuccessMessageMixin, CreateView):
     success_message = 'creada correctamente'  
 
     def get_success_url(self):
-        return reverse('administracion:leerca')  
+        return reverse('administracion:leercab')  
 
 class CabezaActualizar(SuccessMessageMixin,UpdateView):
     model =Cabeza
@@ -548,7 +549,7 @@ class CabezaActualizar(SuccessMessageMixin,UpdateView):
     success_message = 'Cabeza Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
 
     def get_success_url(self):               
-        return reverse('administracion:leerca') # Redireccionamos a la vista principal 'leer'
+        return reverse('administracion:leercab') # Redireccionamos a la vista principal 'leer'
     
 class CabezaEliminar(SuccessMessageMixin, DeleteView): 
     model = Cabeza
@@ -559,7 +560,7 @@ class CabezaEliminar(SuccessMessageMixin, DeleteView):
     def get_success_url(self): 
         success_message = 'Cabeza Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
         messages.success (self.request, (success_message))       
-        return reverse('administracion:leerca') # Redireccionamos a la vista principal 'leer'
+        return reverse('administracion:leercab') # Redireccionamos a la vista principal 'leer'
 
 
 #     def get_success_url(self):               

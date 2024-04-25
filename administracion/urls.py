@@ -224,19 +224,19 @@ urlpatterns = [
     #--------------------------------------------URL auth_user_user_permission ------------------------------------------------------------------------#
 #----------------------------------------url cabeza-----------------------------------------------------#
     # Ruta para listar 
-    path('cabeza/', ListadoCabeza.as_view(template_name="crud/Cabeza/tables.html"), name='leerca'),
+    path('cabeza/', ListadoCabeza.as_view(template_name="crud/Cabeza/tables.html"), name='leercab'),
 
-    # Ruta para ver los  les
-    path('cabeza/detalle/<int:pk>', CabezaDetalle.as_view(template_name="crud/Cabeza/detalle.html"), name='detallesca'),
+    # Ruta para ver los detalles
+    path('cabeza/detalle/<int:pk>', CabezaDetalle.as_view(template_name="crud/Cabeza/detalle.html"), name='detallescab'),
 
     # Ruta para crear 
-    path('cabeza/crear', CabezaCrear.as_view(template_name="crud/Cabeza/crear.html"), name='crearca'),
+    path('cabeza/crear', CabezaCrear.as_view(template_name="crud/Cabeza/crear.html"), name='crearcab'),
 
     # Ruta para actualizar 
-    path('cabeza/editar/<int:pk>', CabezaActualizar.as_view(template_name="crud/Cabeza/actualizar.html"), name='actualizarca'),
+    path('cabeza/editar/<int:pk>', CabezaActualizar.as_view(template_name="crud/Cabeza/actualizar.html"), name='actualizarcab'),
 
     # Ruta para eliminar 
-    path('cabeza/eliminar/<int:pk>', CabezaEliminar.as_view(), name='eliminarca'),
+    path('cabeza/eliminar/<int:pk>', CabezaEliminar.as_view(), name='eliminarcab'),
 
     path('metodo_pago/eliminar/<int:pk>', MetodoPagoEliminar.as_view(), name='crud/metodo_pago/eliminar.html'),
 #----------------------------------------url cabeza-----------------------------------------------------#
