@@ -13,14 +13,26 @@ class Articulo(models.Model):
     id_articulo = models.AutoField(primary_key=True)
     nombre_articulo = models.CharField(max_length=45)
     descripcion_articulo = models.CharField(max_length=345)
-    # imagen = models.TextField()
-    # categoria_id_categoria = models.ForeignKey('Categoria', models.DO_NOTHING, db_column='categoria_id_categoria')
-    # unidad_de_medida_idunidad_de_medida = models.ForeignKey('UnidadDeMedida', models.DO_NOTHING, db_column='unidad_de_medida_idunidad_de_medida')
-    # persona_id_persona = models.ForeignKey('Persona', models.DO_NOTHING, db_column='persona_id_persona')
+    categoria_id_categoria = models.ForeignKey('Categoria', models.DO_NOTHING, db_column='categoria_id_categoria')
+    unidad_de_medida_idunidad_de_medida = models.ForeignKey('UnidadDeMedida', models.DO_NOTHING, db_column='unidad_de_medida_idunidad_de_medida')
+    persona_id_persona = models.ForeignKey('Persona', models.DO_NOTHING, db_column='persona_id_persona')
 
     class Meta:
         managed = False
         db_table = 'articulo'
+        db_table_comment = 'Esta entidad se crea con el objetivo de mantener un registro de todos los articulos que hay en la tienda, teniendo en cuenta sus caracteristicas '
+        
+        
+class Imagen(models.Model):
+    id_imagen = models.AutoField(primary_key=True)
+    url = models.CharField(max_length=255)
+    descripcion = models.CharField(max_length=345)
+    articulo_id_articulo = models.ForeignKey(Articulo, models.DO_NOTHING, db_column='articulo_id_articulo')
+    
+
+    class Meta:
+        managed = False
+        db_table = 'imagen'
         db_table_comment = 'Esta entidad se crea con el objetivo de mantener un registro de todos los articulos que hay en la tienda, teniendo en cuenta sus caracteristicas '
 
 

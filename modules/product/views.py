@@ -1,4 +1,4 @@
-from administracion.models import Articulo, Categoria, Movimiento, Stock, UnidadDeMedida
+from administracion.models import Articulo, Categoria, Movimiento, Stock, UnidadDeMedida, Imagen
 from rest_framework import viewsets, permissions
 from .serializers import (
     ArticuloSerializer,
@@ -6,6 +6,7 @@ from .serializers import (
     MovimientoSerializer,
     StockSerializer,
     UnidadDeMedidaSerializer,
+    ImagenSerializer
 )
 
 
@@ -49,4 +50,10 @@ class MovimientoViewSet(viewsets.ModelViewSet):
 class StockViewSet(viewsets.ModelViewSet):
     queryset = Stock.objects.all()
     serializer_class = StockSerializer
+    permission_classes = [permissions.AllowAny]
+    
+    
+class ImagenViewSet(viewsets.ModelViewSet):
+    queryset = Imagen.objects.all()
+    serializer_class = ImagenSerializer
     permission_classes = [permissions.AllowAny]
