@@ -1,5 +1,12 @@
 from rest_framework import serializers
-from administracion.models import Articulo, Categoria, Movimiento, Stock, UnidadDeMedida
+from administracion.models import (
+    Articulo,
+    Categoria,
+    Movimiento,
+    Stock,
+    UnidadDeMedida,
+    Imagen,
+)
 
 
 class CategoriaSerializer(serializers.ModelSerializer):
@@ -27,6 +34,12 @@ class StockSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class ImagenSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Imagen
+        fields = "__all__"
+
+
 class ArticuloSerializer(serializers.ModelSerializer):
     categoria = CategoriaSerializer(source="categoria_id_categoria", read_only=True)
     unidadDeMedida = UnidadDeMedidaSerializer(
@@ -34,6 +47,7 @@ class ArticuloSerializer(serializers.ModelSerializer):
     )
 
     stock = serializers.SerializerMethodField()
+    imagen = serializers.SerializerMethodField()
 
     class Meta:
         model = Articulo
@@ -41,18 +55,26 @@ class ArticuloSerializer(serializers.ModelSerializer):
             "id_articulo",
             "nombre_articulo",
             "descripcion_articulo",
-            "imagen",
             "categoria",
             "unidadDeMedida",
             "persona_id_persona",
             "stock",
+            "imagen",
         ]
+
+    def get_imagen(self, obj):
+        try:
+            imagenes = Imagen.objects.filter(articulo_id_articulo=obj.id_articulo)
+            return ImagenSerializer(imagenes, many=True).data
+        except Imagen.DoesNotExist:
+            return None
 
     def get_stock(self, obj):
         try:
             latest_stock = Stock.objects.filter(
                 articulo_id_articulo=obj.id_articulo
             ).latest("id_stock")
+
             return StockSerializer(latest_stock).data
         except Stock.DoesNotExist:
             return None

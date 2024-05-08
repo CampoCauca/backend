@@ -53,7 +53,7 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Cabeza</h4>
+              <h4 class="page-title">Municipios</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
@@ -73,7 +73,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title mb-0">Creación de Cabeza</h5>
+                  <h5 class="card-title mb-0">Creación de Municipios</h5>
                 </div>
                 <div class="card">
                   <div class="card-body">
@@ -97,46 +97,32 @@
                                           <td >
                                               
                                               <div class="col-lg-7">
-                                                  <label for="id_categoria" >id de Cabeza</label>
-                                                  {{ form.id_categoria}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+                                                  <label for="id_municipio" >Código de Municipio</label>
+                                                  {{ form.id_municipio}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
                                               </div>
                                           </td>
                                           <td >
                                               
                                               <div class="col-lg-7" >
-                                                  <label for="nombre_categoria" >id de persona</label>
-                                                  {{ form.nombre_categoria}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                                  <label for="municipio" >Nombre de Municipio</label>
+                                                  {{ form.municipio}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
                                           <td>
                                               
                                               <div class="col-lg-7">
-                                                  <label for="descipcion_categoria" >Fecha</label>
-                                                  {{ form.descipcion_categoria }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                                  <label for="codigo_municipio" >Codigo de Municipio</label>
+                                                  {{ form.codigo_municipio}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
                                           <td>
                                               
                                               <div class="col-lg-7">
-                                                  <label for="descipcion_categoria" >valor total</label>
-                                                  {{ form.descipcion_categoria }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                                  <label for="departamento_id_departamento" >Departamento</label>
+                                                  {{ form.departamento_id_departamento}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
-                                          <td>
-                                              
-                                              <div class="col-lg-7">
-                                                  <label for="descipcion_categoria" >vendedor</label>
-                                                  {{ form.descipcion_categoria }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
-                                              </div>
-                                          </td>
-                                          <td>
-                                              
-                                              <div class="col-lg-7">
-                                                  <label for="descipcion_categoria" >Comprador</label>
-                                                  {{ form.descipcion_categoria }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
-                                              </div>
-                                          </td>
-                                          
+                                                                                   
                                       </tr>   
                                     </tr>                
                                       <div>              
@@ -159,39 +145,37 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Lista de Cabeza</h5>
+                  <h5 class="card-title">Lista de Municipio</h5>
                   <div class="table-responsive">
                     <table id="zero_config" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th>Código de emcabezado</th>
-                          <th>Codigo de la persona</th>
-                          <th>Fecha</th> 
-                          <th>Valor Total</th>   
-                          <th>Vendedor</th>  
-                          <th>Comprador</th> 
+                          <th>Codigo de Municipio</th>
+                          <th>nombre de Municipio</th>
+                          <th>Codigo de municipio</th>
+                          <th>Departamento</th> 
+
                                             
                         </tr>
                       </thead>
                       <tbody>
-                        {% for cabeza in object_list %}
+                        {% for municipio in object_list %}
                           <tr>
-                            <td>{{ cabeza.id_cabeza}}</td>
-                            <td>{{ cabeza.id_persona}}</td>
-                            <td>{{ cabeza.fecha}}</td> 
-                            <td>{{ cabeza.valor_total}}</td> 
-                            <td>{{ cabeza.vendedor}}</td> 
-                            <td>{{ cabeza.comprador}}</td>
+                            <td>{{ municipio.id_municipio}}</td>
+                            <td>{{ municipio.municipio}}</td>
+                            <td>{{ municipio.codigo_municipio}}</td>
+                            <td>{{ municipio.departamento_id_departamento}}</td>
+
                            
                                                       
                             <td>
-                              <form method="POST" action="eliminar/{{cabeza.id_cabeza}}">
+                              <form method="POST" action="eliminar/{{municipio.id_municipio}}">
                                   {% csrf_token %}
                                   <div class="btn-group">
 
                                       <!-- Creamos 3 botones que son ver, Editar y Eliminar, nos sirven para gestionar nuestros registros o postres -->
-                                      <a href="detalle/{{cabeza.id_cabeza}}" title="Ver" type="button" class="btn btn-success">Ver </a>
-                                      <a href="editar/{{cabeza.id_cabeza}}" title="Editar" type="button" class="btn btn-primary">Editar </a>
+                                      <a href="detalle/{{municipio.id_municipio}}" title="Ver" type="button" class="btn btn-success">Ver </a>
+                                      <a href="editar/{{municipio.id_municipio}}" title="Editar" type="button" class="btn btn-primary">Editar </a>
                                       <button class="btn btn-danger" onclick="return eliminar();" type="submit">
                                         Eliminar
                                       </button>
