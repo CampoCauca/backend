@@ -8,6 +8,7 @@ from .serializers import (
     UnidadDeMedidaSerializer,
 )
 
+from .domain.criteria.criterias import PriceCriteria, StockCiteria, NameCriteria, CategoryCiteria
 
 class CategoriaViewSet(viewsets.ModelViewSet):
     queryset = Categoria.objects.all()
@@ -28,17 +29,29 @@ class ArticuloViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = super().get_queryset()
+        print(queryset)
 
         # Get persona_id_persona from URL parameter
 
-        id_persona = self.request.GET.get("idPersona")
+        idPersona = self.request.GET.get("idPersona") # Obligatorio
+        paramCriteria = self.request.GET.get("criteria")
+        paramCriteriaValue = self.request.GET.get("value")
 
         # Filter queryset based on persona_id_persona
-        if id_persona:
-            queryset = queryset.filter(persona_id_persona=id_persona)
+        if idPersona:
+            queryset = queryset.filter(persona_id_persona=idPersona)
+        
+        match paramCriteria:
+            case "min_price":
+                criteria = PriceCriteria(paramCriteriaValue)
+            case "stock":
+                criteria = StockCiteria(paramCriteriaValue)
+            case "name":
+                criteria = NameCriteria(paramCriteriaValue)
+            case "category":
+                criteria = CategoryCiteria(paramCriteriaValue)
 
-        return queryset
-
+        return criteria.apply(queryset)
 
 class MovimientoViewSet(viewsets.ModelViewSet):
     queryset = Movimiento.objects.all()

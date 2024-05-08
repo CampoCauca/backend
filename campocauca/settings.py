@@ -47,9 +47,6 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'widget_tweaks',
     'product',
-    
-   
-    
 ]
 
 MIDDLEWARE = [
