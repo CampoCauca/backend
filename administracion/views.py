@@ -802,3 +802,39 @@ class ContentTypeEliminar(SuccessMessageMixin, DeleteView):
         return reverse('administracion:leerContentType') # Redireccionamos a la vista principal 'leer'    
         
  #-----------------------------------django_content_type-----------------------------------------------------#
+ #-----------------------------------Unidad_de_medida-----------------------------------------------------#
+    
+class ListadoUnidadDeMedida(CreateView,ListView,SuccessMessageMixin):
+    model = UnidadDeMedida
+    form = UnidadDeMedida
+    fields = "__all__"
+    context_object_name = 'object_list'
+    success_message ='Unidad de medida creada correctamente'
+    def get_success_url(self):        
+        return reverse('administracion:leeruni') # Redireccionamos a la vista principal 'leer'    
+    
+
+class UnidadDeMedidaDetalle (DetailView):
+    model =UnidadDeMedida
+
+class UnidadDeMedidaActualizar(SuccessMessageMixin,UpdateView):
+    model =UnidadDeMedida
+    form = UnidadDeMedida
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'regional' de nuestra Base de Datos 
+    success_message = 'Unidad de medida Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('administracion:leeruni') # Redireccionamos a la vista principal 'leer'
+    
+class UnidadDeMedidaEliminar(SuccessMessageMixin, DeleteView): 
+    model = UnidadDeMedida
+    form = UnidadDeMedida
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'Unidad de medida Eliminada Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('administracion:leeruni') # Redireccionamos a la vista principal 'leer' 
+
+#-----------------------------------Unidad_de_medida-----------------------------------------------------#
