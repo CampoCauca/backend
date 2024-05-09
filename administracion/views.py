@@ -1,21 +1,64 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.urls import reverse
 from .models import *
 from django.contrib import messages
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
+# Extensiones  para seguridad
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login
+from .forms import MyUserCreationForm, LoginForm
 
 # Create your views here.
+def register(request):
+    if request.method == 'POST':
+        form = MyUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            email = form.cleaned_data.get('email')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(email=email, password=raw_password)
+            login(request, user)
+            return redirect('login')
+    else:
+        form = MyUserCreationForm()
+    return render(request, 'register.html', {'form': form})
+
+
+
+
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data.get('email')
+            password = form.cleaned_data.get('password')
+            first_name = form.cleaned_data.get('first_name')
+            last_name = form.cleaned_data.get('last_name')
+            user = authenticate(request, email=email, password=password,first_name=first_name,last_name=last_name)
+            if user is not None:
+                login(request, user)
+                
+                return redirect( 'index' )
+            else:
+                error = 'Correo electrónico o contraseña incorrectos'
+    else:
+        form = LoginForm()
+        error = 'Correo electrónico o contraseña incorrectos'
+    return render(request, 'login.html', {'form': form, 'error': error})
+   
+
+   
+
+def Perfil(request):
+    return render (request, "perfil/perfil.html")
 
 
 def Home(request):
 
     return render(request, "index.html")
-def Login(request):
-    return render (request, "login.html")
-def Register(request):
-    return render (request, "register.html")
 
 
 

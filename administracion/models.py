@@ -8,6 +8,11 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
+#importación de librerias especificas para modificar el registro de usuarios 
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.contrib.auth import get_user_model
 
 class Articulo(models.Model):
     id_articulo = models.AutoField(primary_key=True)
@@ -54,26 +59,91 @@ class AuthPermission(models.Model):
         unique_together = (('content_type', 'codename'),)
 
 
-class AuthUser(models.Model):
-    password = models.CharField(max_length=128)
-    last_login = models.DateTimeField(blank=True, null=True)
-    is_superuser = models.IntegerField()
-    username = models.CharField(unique=True, max_length=150)
-    first_name = models.CharField(max_length=150)
-    last_name = models.CharField(max_length=150)
-    email = models.CharField(max_length=254)
-    is_staff = models.IntegerField()
-    is_active = models.IntegerField()
-    date_joined = models.DateTimeField()
+class MyUserManager(BaseUserManager):
+    def create_user(self, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError('El correo electrónico es obligatorio')
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
 
+    def create_superuser(self, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        return self.create_user(email, password, **extra_fields)
+  
+        
+class MyUser(AbstractBaseUser):
+    id = models.BigAutoField(primary_key=True)
+    password = models.CharField(max_length=128)
+    email = models.EmailField(unique=True)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    last_login = models.DateTimeField(blank=True, null=True)
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'last_name']
+
+    objects = MyUserManager()
+
+    def __str__(self):
+        return self.email
+
+    def has_perm(self, perm, obj=None):
+        return True
+
+    def has_module_perms(self, app_label):
+        return True    
     class Meta:
-        managed = False
-        db_table = 'auth_user'
+        managed = True
+        db_table = 'myuser'
+        
+class Persona(models.Model):
+
+    id_persona = models.IntegerField(primary_key=True)
+    primer_nombre = models.CharField(max_length=50)
+    segundo_nombre= models.CharField(max_length=45)
+    primer_apellido = models.CharField(max_length=50)
+    segundo_apellido = models.CharField(max_length=45)
+    identificacion = models.CharField(max_length=45)
+    correo = models.EmailField(unique=True)
+    telefono = models.CharField(max_length=45)
+    correo_institucional = models.CharField(max_length=70)
+    direccion = models.CharField(max_length=45)
+    foto = models.ImageField(upload_to = "img/", null=True)
+   
+    
+    class Meta:
+        managed = True
+        db_table = 'persona'
+      
+@receiver(post_save, sender=Persona)       
+def create_user_for_persona(sender, instance, created, **kwargs):
+    if created:
+        User = get_user_model()
+        email = instance.correop
+        first_name = instance.primer_nombre
+        last_name = instance.primer_apellido
+        password = instance.identificacion  # Aquí puedes definir cómo deseas obtener el valor de la contraseña
+        user = User.objects.create_user(email=email, password=password, first_name=first_name, last_name=last_name)        
+
+def actualizar_usuario(sender, instance, **kwargs):
+    usuario = instance.user
+    usuario.email = instance.email
+    usuario.first_name = instance.first_name
+    usuario.last_name = instance.last_name
+    usuario.save()
+
 
 
 class AuthUserGroups(models.Model):
     id = models.BigAutoField(primary_key=True)
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+    user = models.ForeignKey(MyUser, models.DO_NOTHING)
     group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
 
     class Meta:
@@ -84,7 +154,7 @@ class AuthUserGroups(models.Model):
 
 class AuthUserUserPermissions(models.Model):
     id = models.BigAutoField(primary_key=True)
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+    user = models.ForeignKey(MyUser, models.DO_NOTHING)
     permission = models.ForeignKey(AuthPermission, models.DO_NOTHING)
 
     class Meta:
@@ -150,7 +220,7 @@ class DjangoAdminLog(models.Model):
     action_flag = models.PositiveSmallIntegerField()
     change_message = models.TextField()
     content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+    user = models.ForeignKey(MyUser, models.DO_NOTHING)
 
     class Meta:
         managed = False
@@ -237,24 +307,6 @@ class Municipio(models.Model):
         db_table_comment = 'Esta entidad se crea con el objetivo de determinar la procedencia por municipios, o en su defecto dictaminar hacia que punto van dirijido los pedidos'
 
 
-class Persona(models.Model):
-    id_persona = models.AutoField(primary_key=True)
-    primer_nombre = models.CharField(max_length=40)
-    segundo_nombre = models.CharField(max_length=45, blank=True, null=True)
-    primer_apellido = models.CharField(max_length=45)
-    segundo_apellido = models.CharField(max_length=45, blank=True, null=True)
-    telefono = models.CharField(max_length=45)
-    direccion = models.CharField(max_length=45)
-    correo = models.CharField(max_length=45)
-    id_empresa = models.ForeignKey(Empresa, models.DO_NOTHING, db_column='id_empresa', blank=True, null=True)
-    tipoperona_id_tipo_persona = models.ForeignKey('TipoPersona', models.DO_NOTHING, db_column='tipoPerona_id_tipo_persona')  # Field name made lowercase.
-    tipo_documento_id_tipo_documento = models.ForeignKey('TipoIdentificacion', models.DO_NOTHING, db_column='tipo_documento_id_tipo_documento')
-    municipio_id_municipio = models.ForeignKey(Municipio, models.DO_NOTHING, db_column='municipio_id_municipio')
-
-    class Meta:
-        managed = False
-        db_table = 'persona'
-        db_table_comment = 'Esta entidad se crea con el objetivo de poder mantener un registro de todos los clientes, donde se almacene personas tipo cliente como tipo provedor,'
 
 
 class Stock(models.Model):

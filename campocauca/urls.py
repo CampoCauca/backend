@@ -25,7 +25,8 @@ urlpatterns = [
     path('administracion/', include(('administracion.urls','administracion'))),
     path("api/v1/", include("modules.urls")),
     path('home/', Home, name= 'index'),
-    path('', LoginView.as_view(template_name='login.html'), name="login"),
+    path('',login_view, name="login"),
     path('logout/', LogoutView.as_view(template_name='login.html'), name="logout"),
-    path('registro/', Register, name= 'register'),
+    path('registro/', register, name= 'register'),
+    path('perfil/', Perfil, name="perfil"),
 ]

@@ -287,12 +287,23 @@
                       width="31"
                     />
                   </a>
+                  <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic "> 
+            {% if request.user.is_authenticated %}
+                {{ request.user.first_name}}
+                {{ request.user.last_name}}
+            {% else %}
+               <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="{% url 'login' %}">Inicia sesión para continuar.</a>
+            {% endif %}
+
+                </a>
                   <ul
                     class="dropdown-menu dropdown-menu-end user-dd animated"
                     aria-labelledby="navbarDropdown"
                   >
                     <a class="dropdown-item" href="javascript:void(0)"
-                      ><i class="mdi mdi-account me-1 ms-1"></i> My Profile</a
+                      ><i class="mdi mdi-account me-1 ms-1">
+                      <a href="{% url 'perfil' %}">
+                      </i> Mi Perfil</a
                     >
                     <a class="dropdown-item" href="javascript:void(0)"
                       ><i class="mdi mdi-wallet me-1 ms-1"></i> My Balance</a
