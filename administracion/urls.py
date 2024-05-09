@@ -290,5 +290,22 @@ urlpatterns = [
     path('auth_permission/eliminar/<int:pk>', AuthPermissionEliminar.as_view(), name='crud/auth_permission/eliminar.html'), 
 
     #--------------------------------------------URL AuthPermission------------------------------------------------------------------------#
+    #--------------------------------------------URL Cuerpo------------------------------------------------------------------------#
+    
+    path('cuerpo/', ListadoCuerpo.as_view(template_name = "crud/cuerpo/tables.html"), name='leercur'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
+    path('cuerpo/detalle/<int:pk>', CuerpoDetalle.as_view(template_name = "crud/cuerpo/detalle.html"), name='detallescur'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('cuerpo/editar/<int:pk>', CuerpoActualizar.as_view(template_name = "crud/cuerpo/actualizar.html"), name='actualizarcur'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('cuerpo/eliminar/<int:pk>', CuerpoEliminar.as_view(), name='crud/cuerpo/eliminar.html'), 
+
+    #--------------------------------------------URL Cuerpo------------------------------------------------------------------------#
 ]
 

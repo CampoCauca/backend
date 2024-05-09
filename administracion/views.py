@@ -730,3 +730,39 @@ class AuthPermissionEliminar(SuccessMessageMixin, DeleteView):
         return reverse('administracion:leeraut') # Redireccionamos a la vista principal 'leer' 
 
 #-----------------------------------Auth_permission(Permisos de autenticacion)-----------------------------------------------------#
+#-----------------------------------Cuerpo-----------------------------------------------------#
+    
+class ListadoCuerpo(CreateView,ListView,SuccessMessageMixin):
+    model = Cuerpo
+    form = Cuerpo
+    fields = "__all__"
+    context_object_name = 'object_list'
+    success_message ='Cuerpo creado correctamente'
+    def get_success_url(self):        
+        return reverse('administracion:leercur') # Redireccionamos a la vista principal 'leer'    
+    
+
+class CuerpoDetalle (DetailView):
+    model =Cuerpo
+
+class CuerpoActualizar(SuccessMessageMixin,UpdateView):
+    model =Cuerpo
+    form = Cuerpo
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'regional' de nuestra Base de Datos 
+    success_message = 'Cuerpo Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('administracion:leercur') # Redireccionamos a la vista principal 'leer'
+    
+class CuerpoEliminar(SuccessMessageMixin, DeleteView): 
+    model = Cuerpo
+    form = Cuerpo
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'Cuerpo Eliminada Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('administracion:leercur') # Redireccionamos a la vista principal 'leer' 
+
+#-----------------------------------Cuerpo-----------------------------------------------------#
