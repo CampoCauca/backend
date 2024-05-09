@@ -694,3 +694,39 @@ class AuthGroupPermissionsEliminar(SuccessMessageMixin, DeleteView):
         return reverse('administracion:leerauthgp') # Redireccionamos a la vista principal 'leer'     
      
  #-----------------------------------AuthGroupPermissions-----------------------------------------------------#
+ #-----------------------------------Auth_permission(Permisos de autenticacion)-----------------------------------------------------#
+    
+class ListadoAuthPermission(CreateView,ListView,SuccessMessageMixin):
+    model = AuthPermission
+    form = AuthPermission
+    fields = "__all__"
+    context_object_name = 'object_list'
+    success_message ='Auth permission creado correctamente'
+    def get_success_url(self):        
+        return reverse('administracion:leeraut') # Redireccionamos a la vista principal 'leer'    
+    
+
+class AuthPermissionDetalle (DetailView):
+    model =AuthPermission
+
+class AuthPermissionActualizar(SuccessMessageMixin,UpdateView):
+    model =AuthPermission
+    form = AuthPermission
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'regional' de nuestra Base de Datos 
+    success_message = 'Auth Permission Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+
+    def get_success_url(self):               
+        return reverse('administracion:leeraut') # Redireccionamos a la vista principal 'leer'
+    
+class AuthPermissionEliminar(SuccessMessageMixin, DeleteView): 
+    model = AuthPermission
+    form = AuthPermission
+    fields = "__all__"     
+ 
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self): 
+        success_message = 'Auth Permission Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        messages.success (self.request, (success_message))       
+        return reverse('administracion:leeraut') # Redireccionamos a la vista principal 'leer' 
+
+#-----------------------------------Auth_permission(Permisos de autenticacion)-----------------------------------------------------#
