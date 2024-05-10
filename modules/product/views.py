@@ -23,6 +23,7 @@ from .serializers import (
 
 from rest_framework import status
 from rest_framework.response import Response
+from django.shortcuts import get_object_or_404
 
 import base64
 import os
@@ -99,43 +100,55 @@ class UniqueFileNameGenerator:
 class ImagenViewSet(viewsets.ModelViewSet):
     queryset = Imagen.objects.all()
     serializer_class = ImagenSerializer
-    permission_classes = [permissions.AllowAny]
 
-    def create(self, request):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
+    def create(self, request, *args, **kwargs):
+        # Get the base64 encoded image data from the request
+        base64Image = request.data.get("url", None)
+        idProducto = request.data.get("articulo_id_articulo", None)
+        descripcionImagen = request.data.get("descripcion", None)
 
-        try:
-            # Extract base64 data from the request
-            image_data = serializer.validated_data["image"]
-            print("LLEGA AQUI")
-            format, imgstr = image_data.split(";base64,", 1)
-            ext = format.split("/")[-1]  # Extract image extension
-            
-            # Validate base64 content
-            if ext not in ["jpg", "jpeg", "png"]:
-                raise ValidationError("Unsupported image format.")
-            if not base64.b64decode(imgstr):
-                raise ValidationError("Invalid base64 data.")
+        if base64Image:
 
-            # Decode base64 data and create a ContentFile object
-            decoded_content = base64.b64decode(imgstr)
-            content_file = ContentFile(decoded_content, name=f"image.{ext}")
+            try:
+                # Decode the base64 image data
+                format, imgstr = base64Image.split(";base64,")
 
-            # Generate a unique filename
-            unique_filename_generator = UniqueFileNameGenerator()
-            unique_filename = unique_filename_generator.generate(ext)
+                ext = format.split("/")[-1]
 
-            # Save the image to the static/media/img folder (modify if needed)
-            image_path = default_storage.save(
-                os.path.join("static/media/img", unique_filename), content_file
+                # Generate a unique name for the image
+                unique_name = self.generate_unique_name(ext)
+                # Construct the file path
+                file_path = os.path.join("static", "media", "img", unique_name)
+                # Decode the base64 data and save it as a file
+                with open(file_path, "wb") as f:
+                    f.write(base64.b64decode(imgstr))
+
+                productoInstance = get_object_or_404(Articulo, id_articulo=idProducto)
+
+                Imagen.objects.create(
+                    url=file_path,
+                    articulo_id_articulo=productoInstance,
+                    descripcion=descripcionImagen,
+                )
+
+                # Return the URL of the saved image
+                return Response(status=status.HTTP_201_CREATED)
+            except Exception as e:
+                return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response(
+                {"error": "Base64 image data not provided"},
+                status=status.HTTP_400_BAD_REQUEST,
             )
-            
-            
-            image_url = default_storage.url(image_path)  # Get the image URL
 
-            # Return a success response with the image URL
-            return response({"image_url": image_url}, status=status.HTTP_201_CREATED)
+    def generate_unique_name(self, ext):
+        """
+        Generate a unique name for the image file.
+        """
+        # Implement your own logic to generate a unique name
+        # For example, you can use UUID or timestamp-based names
+        # Here's a simple example using timestamp
+        import time
 
-        except Exception as e:
-            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        timestamp = str(int(time.time()))
+        return f"image_{timestamp}.{ext}"
