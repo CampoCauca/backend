@@ -47,6 +47,9 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'widget_tweaks',
     'product',
+    'category',
+    'modules.unidad_de_medida'
+    
     
    
     
