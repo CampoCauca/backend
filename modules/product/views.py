@@ -1,24 +1,8 @@
-from administracion.models import Articulo, Categoria, Movimiento, Stock, UnidadDeMedida
+from drf_yasg.utils import swagger_auto_schema
+
+from administracion.models import Articulo
 from rest_framework import viewsets, permissions
-from .serializers import (
-    ArticuloSerializer,
-    CategoriaSerializer,
-    MovimientoSerializer,
-    StockSerializer,
-    UnidadDeMedidaSerializer,
-)
-
-
-class CategoriaViewSet(viewsets.ModelViewSet):
-    queryset = Categoria.objects.all()
-    serializer_class = CategoriaSerializer
-    permission_classes = [permissions.AllowAny]
-
-
-class UnidadDeMedidaViewSet(viewsets.ModelViewSet):
-    queryset = UnidadDeMedida.objects.all()
-    serializer_class = UnidadDeMedidaSerializer
-    permission_classes = [permissions.AllowAny]
+from .serializers import ArticuloSerializer
 
 
 class ArticuloViewSet(viewsets.ModelViewSet):
@@ -29,24 +13,17 @@ class ArticuloViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = super().get_queryset()
 
-        # Get persona_id_persona from URL parameter
-
         id_persona = self.request.GET.get("idPersona")
 
-        # Filter queryset based on persona_id_persona
         if id_persona:
             queryset = queryset.filter(persona_id_persona=id_persona)
 
         return queryset
 
+    @swagger_auto_schema(auto_schema=None)
+    def partial_update(self, request, pk, *args, **kwargs):
+        return super().partial_update(request, pk, *args, **kwargs)
 
-class MovimientoViewSet(viewsets.ModelViewSet):
-    queryset = Movimiento.objects.all()
-    serializer_class = MovimientoSerializer
-    permission_classes = [permissions.AllowAny]
-
-
-class StockViewSet(viewsets.ModelViewSet):
-    queryset = Stock.objects.all()
-    serializer_class = StockSerializer
-    permission_classes = [permissions.AllowAny]
+    @swagger_auto_schema(auto_schema=None)
+    def retrieve(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)

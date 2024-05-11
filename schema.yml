@@ -1,0 +1,932 @@
+openapi: 3.0.3
+info:
+  title: ''
+  version: 0.0.0
+paths:
+  /api/v1/categoria/:
+    get:
+      operationId: api_v1_categoria_list
+      tags:
+      - Categoria
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Categoria'
+          description: ''
+    post:
+      operationId: api_v1_categoria_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Categoria'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Categoria'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Categoria'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Categoria'
+          description: ''
+  /api/v1/categoria/{id_categoria}/:
+    get:
+      operationId: api_v1_categoria_retrieve
+      parameters:
+      - in: path
+        name: id_categoria
+        schema:
+          type: integer
+        description: A unique integer value identifying this categoria.
+        required: true
+      tags:
+      - Categoria
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Categoria'
+          description: ''
+    put:
+      operationId: api_v1_categoria_update
+      parameters:
+      - in: path
+        name: id_categoria
+        schema:
+          type: integer
+        description: A unique integer value identifying this categoria.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Categoria'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Categoria'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Categoria'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Categoria'
+          description: ''
+    patch:
+      operationId: api_v1_categoria_partial_update
+      parameters:
+      - in: path
+        name: id_categoria
+        schema:
+          type: integer
+        description: A unique integer value identifying this categoria.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCategoria'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCategoria'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCategoria'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Categoria'
+          description: ''
+    delete:
+      operationId: api_v1_categoria_destroy
+      parameters:
+      - in: path
+        name: id_categoria
+        schema:
+          type: integer
+        description: A unique integer value identifying this categoria.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/v1/imagenProducto/:
+    get:
+      operationId: api_v1_imagenProducto_list
+      tags:
+      - Imagen Producto
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Imagen'
+          description: ''
+    post:
+      operationId: api_v1_imagenProducto_create
+      tags:
+      - Imagen Producto
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Imagen'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Imagen'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Imagen'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Imagen'
+          description: ''
+  /api/v1/imagenProducto/{id_imagen}/:
+    get:
+      operationId: api_v1_imagenProducto_retrieve
+      parameters:
+      - in: path
+        name: id_imagen
+        schema:
+          type: integer
+        description: A unique integer value identifying this imagen.
+        required: true
+      tags:
+      - Imagen Producto
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Imagen'
+          description: ''
+    put:
+      operationId: api_v1_imagenProducto_update
+      parameters:
+      - in: path
+        name: id_imagen
+        schema:
+          type: integer
+        description: A unique integer value identifying this imagen.
+        required: true
+      tags:
+      - Imagen Producto
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Imagen'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Imagen'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Imagen'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Imagen'
+          description: ''
+    patch:
+      operationId: api_v1_imagenProducto_partial_update
+      parameters:
+      - in: path
+        name: id_imagen
+        schema:
+          type: integer
+        description: A unique integer value identifying this imagen.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedImagen'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedImagen'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedImagen'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Imagen'
+          description: ''
+    delete:
+      operationId: api_v1_imagenProducto_destroy
+      parameters:
+      - in: path
+        name: id_imagen
+        schema:
+          type: integer
+        description: A unique integer value identifying this imagen.
+        required: true
+      tags:
+      - Imagen Producto
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/v1/producto/:
+    get:
+      operationId: api_v1_producto_list
+      tags:
+      - Productos
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Articulo'
+          description: ''
+    post:
+      operationId: api_v1_producto_create
+      tags:
+      - Productos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Articulo'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Articulo'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Articulo'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Articulo'
+          description: ''
+  /api/v1/producto/{id_articulo}/:
+    get:
+      operationId: api_v1_producto_retrieve
+      parameters:
+      - in: path
+        name: id_articulo
+        schema:
+          type: integer
+        description: A unique integer value identifying this articulo.
+        required: true
+      tags:
+      - Productos
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Articulo'
+          description: ''
+    put:
+      operationId: api_v1_producto_update
+      parameters:
+      - in: path
+        name: id_articulo
+        schema:
+          type: integer
+        description: A unique integer value identifying this articulo.
+        required: true
+      tags:
+      - Productos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Articulo'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Articulo'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Articulo'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Articulo'
+          description: ''
+    patch:
+      operationId: api_v1_producto_partial_update
+      parameters:
+      - in: path
+        name: id_articulo
+        schema:
+          type: integer
+        description: A unique integer value identifying this articulo.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedArticulo'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedArticulo'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedArticulo'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Articulo'
+          description: ''
+    delete:
+      operationId: api_v1_producto_destroy
+      parameters:
+      - in: path
+        name: id_articulo
+        schema:
+          type: integer
+        description: A unique integer value identifying this articulo.
+        required: true
+      tags:
+      - Productos
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/v1/schema/:
+    get:
+      operationId: api_v1_schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - ckb
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - ms
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - ug
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/unidadDeMedida/:
+    get:
+      operationId: api_v1_unidadDeMedida_list
+      tags:
+      - Unidad de medida
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UnidadDeMedida'
+          description: ''
+    post:
+      operationId: api_v1_unidadDeMedida_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnidadDeMedida'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UnidadDeMedida'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UnidadDeMedida'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnidadDeMedida'
+          description: ''
+  /api/v1/unidadDeMedida/{idunidad_de_medida}/:
+    get:
+      operationId: api_v1_unidadDeMedida_retrieve
+      parameters:
+      - in: path
+        name: idunidad_de_medida
+        schema:
+          type: integer
+        description: A unique integer value identifying this unidad de medida.
+        required: true
+      tags:
+      - Unidad de medida
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnidadDeMedida'
+          description: ''
+    put:
+      operationId: api_v1_unidadDeMedida_update
+      parameters:
+      - in: path
+        name: idunidad_de_medida
+        schema:
+          type: integer
+        description: A unique integer value identifying this unidad de medida.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnidadDeMedida'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UnidadDeMedida'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UnidadDeMedida'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnidadDeMedida'
+          description: ''
+    patch:
+      operationId: api_v1_unidadDeMedida_partial_update
+      parameters:
+      - in: path
+        name: idunidad_de_medida
+        schema:
+          type: integer
+        description: A unique integer value identifying this unidad de medida.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUnidadDeMedida'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUnidadDeMedida'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUnidadDeMedida'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnidadDeMedida'
+          description: ''
+    delete:
+      operationId: api_v1_unidadDeMedida_destroy
+      parameters:
+      - in: path
+        name: idunidad_de_medida
+        schema:
+          type: integer
+        description: A unique integer value identifying this unidad de medida.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    Articulo:
+      type: object
+      properties:
+        id_articulo:
+          type: integer
+          readOnly: true
+        nombre_articulo:
+          type: string
+          maxLength: 45
+        descripcion_articulo:
+          type: string
+          maxLength: 345
+        categoria:
+          allOf:
+          - $ref: '#/components/schemas/Categoria'
+          readOnly: true
+        unidadDeMedida:
+          allOf:
+          - $ref: '#/components/schemas/UnidadDeMedida'
+          readOnly: true
+        persona_id_persona:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        stock:
+          type: string
+          readOnly: true
+        imagen:
+          type: string
+          readOnly: true
+      required:
+      - categoria
+      - descripcion_articulo
+      - id_articulo
+      - imagen
+      - nombre_articulo
+      - persona_id_persona
+      - stock
+      - unidadDeMedida
+    Categoria:
+      type: object
+      properties:
+        id_categoria:
+          type: integer
+          readOnly: true
+        nombre_categoria:
+          type: string
+          maxLength: 45
+        descipcion_categoria:
+          type: string
+          nullable: true
+          maxLength: 45
+      required:
+      - id_categoria
+      - nombre_categoria
+    Imagen:
+      type: object
+      properties:
+        id_imagen:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          maxLength: 255
+        descripcion:
+          type: string
+          maxLength: 345
+        articulo_id_articulo:
+          type: integer
+      required:
+      - articulo_id_articulo
+      - descripcion
+      - id_imagen
+      - url
+    PatchedArticulo:
+      type: object
+      properties:
+        id_articulo:
+          type: integer
+          readOnly: true
+        nombre_articulo:
+          type: string
+          maxLength: 45
+        descripcion_articulo:
+          type: string
+          maxLength: 345
+        categoria:
+          allOf:
+          - $ref: '#/components/schemas/Categoria'
+          readOnly: true
+        unidadDeMedida:
+          allOf:
+          - $ref: '#/components/schemas/UnidadDeMedida'
+          readOnly: true
+        persona_id_persona:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        stock:
+          type: string
+          readOnly: true
+        imagen:
+          type: string
+          readOnly: true
+    PatchedCategoria:
+      type: object
+      properties:
+        id_categoria:
+          type: integer
+          readOnly: true
+        nombre_categoria:
+          type: string
+          maxLength: 45
+        descipcion_categoria:
+          type: string
+          nullable: true
+          maxLength: 45
+    PatchedImagen:
+      type: object
+      properties:
+        id_imagen:
+          type: integer
+          readOnly: true
+        url:
+          type: string
+          maxLength: 255
+        descripcion:
+          type: string
+          maxLength: 345
+        articulo_id_articulo:
+          type: integer
+    PatchedUnidadDeMedida:
+      type: object
+      properties:
+        idunidad_de_medida:
+          type: integer
+          readOnly: true
+        nombre:
+          type: string
+          maxLength: 45
+        descripcion:
+          type: string
+          maxLength: 145
+    UnidadDeMedida:
+      type: object
+      properties:
+        idunidad_de_medida:
+          type: integer
+          readOnly: true
+        nombre:
+          type: string
+          maxLength: 45
+        descripcion:
+          type: string
+          maxLength: 145
+      required:
+      - descripcion
+      - idunidad_de_medida
+      - nombre
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
