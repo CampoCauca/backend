@@ -1,10 +1,10 @@
 from rest_framework import serializers
 from administracion.models import (
-    Categoria,
+    Imagen,
 )
 
 
-class CategoriaSerializer(serializers.ModelSerializer):
+class ImagenSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Categoria
+        model = Imagen
         fields = "__all__"

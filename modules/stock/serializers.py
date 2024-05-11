@@ -1,10 +1,10 @@
 from rest_framework import serializers
 from administracion.models import (
-    Categoria,
+    Stock,
 )
 
 
-class CategoriaSerializer(serializers.ModelSerializer):
+class StockSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Categoria
+        model = Stock
         fields = "__all__"
