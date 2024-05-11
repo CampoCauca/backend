@@ -48,12 +48,14 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'product',
     'category',
-    'modules.unidad_de_medida'
-    
-    
-   
-    
+    'modules.unidad_de_medida',
+    'drf_spectacular',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    # Other DRF settings...
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

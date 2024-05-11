@@ -1,8 +1,3 @@
-from urllib import response
-from django.core.files.base import ContentFile
-from django.core.files.storage import default_storage
-from django.forms import ValidationError
-
 from administracion.models import (
     Articulo,
     Categoria,
@@ -24,6 +19,7 @@ from .serializers import (
 from rest_framework import status
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
+from drf_spectacular.utils import extend_schema
 
 import base64
 import os
@@ -54,6 +50,7 @@ class UnidadDeMedidaViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny]
 
 
+@extend_schema(tags=["Productos"], methods=["get", "post", "put", "delete"])
 class ArticuloViewSet(viewsets.ModelViewSet):
     queryset = Articulo.objects.all()
     serializer_class = ArticuloSerializer
@@ -96,7 +93,7 @@ class UniqueFileNameGenerator:
             if not os.path.exists(os.path.join("static/media/img", filename)):
                 return filename
 
-
+@extend_schema(tags=["Imagen Producto"], methods=["get", "post", "put", "delete"])
 class ImagenViewSet(viewsets.ModelViewSet):
     queryset = Imagen.objects.all()
     serializer_class = ImagenSerializer
