@@ -9,7 +9,7 @@ from .serializers import (
     ImagenSerializer
 )
 
-from .domain.criteria.criterias import PriceCriteria, StockCiteria, NameCriteria, CategoryCiteria
+from .domain.criteria.criterias import PriceCriteria, StockCriteria, NameCriteria, CategoryCriteria
 
 class CategoriaViewSet(viewsets.ModelViewSet):
     queryset = Categoria.objects.all()
@@ -46,11 +46,13 @@ class ArticuloViewSet(viewsets.ModelViewSet):
             case "min_price":
                 criteria = PriceCriteria(paramCriteriaValue)
             case "stock":
-                criteria = StockCiteria(paramCriteriaValue)
+                criteria = StockCriteria(paramCriteriaValue)
             case "name":
                 criteria = NameCriteria(paramCriteriaValue)
             case "category":
-                criteria = CategoryCiteria(paramCriteriaValue)
+                criteria = CategoryCriteria(paramCriteriaValue)
+            case default:
+                return queryset
 
         return criteria.apply(queryset)
 
