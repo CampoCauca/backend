@@ -1,4 +1,3 @@
-
 """
 URL configuration for campocauca project.
 
@@ -15,17 +14,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
 from administracion.views import *
 from django.contrib.auth.views import LoginView, LogoutView
 
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('administracion/', include(('administracion.urls','administracion'))),
-    path("api/v1/", include("modules.urls")),
+    path("admin/", admin.site.urls),
+    path("administracion/", include(("administracion.urls", "administracion"))),
+    path("api/", include("modules.urls")),
     path('home/', Home, name= 'index'),
-    path('', LoginView.as_view(template_name='login.html'), name="login"),
+    path('',login_view, name="login"),
     path('logout/', LogoutView.as_view(template_name='login.html'), name="logout"),
-    path('registro/', Register, name= 'register'),
+    path('registro/', register, name= 'register'),
+    path('perfil/', Perfil, name="perfil"),
 ]

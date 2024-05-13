@@ -272,5 +272,70 @@ urlpatterns = [
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
     path('auth_group_permission/eliminar/<int:pk>', AuthGroupPermissionsEliminar.as_view(), name='crud/auth_group_permission/eliminar.html'),
     #--------------------------------------------URL AuthGroupPermissions------------------------------------------------------------------------#
+    
+    #--------------------------------------------URL AuthPermission------------------------------------------------------------------------#
+    
+    path('auth_permission/', ListadoAuthPermission.as_view(template_name = "crud/auth_permission/tables.html"), name='leeraut'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
+    path('auth_permission/detalle/<int:pk>', AuthPermissionDetalle.as_view(template_name = "crud/auth_permission/detalle.html"), name='detallesaut'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('auth_permission/editar/<int:pk>', AuthPermissionActualizar.as_view(template_name = "crud/auth_permission/actualizar.html"), name='actualizaraut'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('auth_permission/eliminar/<int:pk>', AuthPermissionEliminar.as_view(), name='crud/auth_permission/eliminar.html'), 
+
+    #--------------------------------------------URL AuthPermission------------------------------------------------------------------------#
+    #--------------------------------------------URL Cuerpo------------------------------------------------------------------------#
+    
+    path('cuerpo/', ListadoCuerpo.as_view(template_name = "crud/cuerpo/tables.html"), name='leercur'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
+    path('cuerpo/detalle/<int:pk>', CuerpoDetalle.as_view(template_name = "crud/cuerpo/detalle.html"), name='detallescur'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('cuerpo/editar/<int:pk>', CuerpoActualizar.as_view(template_name = "crud/cuerpo/actualizar.html"), name='actualizarcur'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('cuerpo/eliminar/<int:pk>', CuerpoEliminar.as_view(), name='crud/cuerpo/eliminar.html'), 
+
+    #--------------------------------------------URL Cuerpo------------------------------------------------------------------------#
+    #--------------------------------------------URL django_content_type------------------------------------------------------------------------#
+    
+    path('django_content_type/', ContentTypeListado.as_view(template_name = "crud/django_content_type/tables.html"), name='leerContentType'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un registro o Content Type
+    path('django_content_type/detalle/<int:pk>', ContentTypeDetalle.as_view(template_name = "crud/django_content_type/detalle.html"), name='detallesContentType'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un registro o Content Type de la Base de Datos 
+    path('django_content_type/editar/<int:pk>', ContentTypeActualizar.as_view(template_name = "crud/django_content_type/actualizar.html"), name='actualizarContentType'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un registro o Content Type de la Base de Datos 
+    path('django_content_type/eliminar/<int:pk>', ContentTypeEliminar.as_view(), name='crud/django_content_type/eliminar.html'), 
+  #--------------------------------------------URL django_content_type------------------------------------------------------------------------#
+  #--------------------------------------------URL Unidad_de_Medida------------------------------------------------------------------------#
+    
+    path('unidad_de_medida/', ListadoUnidadDeMedida.as_view(template_name = "crud/unidad_de_medida/tables.html"), name='leeruni'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Categoria o registro 
+    path('unidad_de_medida/detalle/<int:pk>', UnidadDeMedidaDetalle.as_view(template_name = "crud/unidad_de_medida/detalle.html"), name='detallesuni'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Categoria o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('unidad_de_medida/editar/<int:pk>', UnidadDeMedidaActualizar.as_view(template_name = "crud/unidad_de_medida/actualizar.html"), name='actualizaruni'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('unidad_de_medida/eliminar/<int:pk>', UnidadDeMedidaEliminar.as_view(), name='crud/unidad_de_medida/eliminar.html'), 
+
+    #--------------------------------------------URL Unidad_de_Medida------------------------------------------------------------------------#
 ]
 

@@ -1,5 +1,8 @@
-from administracion.models import Articulo, Categoria, Movimiento, Stock, UnidadDeMedida, Imagen
+from drf_yasg.utils import swagger_auto_schema
+
+from administracion.models import Articulo
 from rest_framework import viewsets, permissions
+from .serializers import ArticuloSerializer
 from .serializers import (
     ArticuloSerializer,
     CategoriaSerializer,
@@ -30,9 +33,6 @@ class ArticuloViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        print(queryset)
-
-        # Get persona_id_persona from URL parameter
 
         idPersona = self.request.GET.get("idPersona") # Obligatorio
         paramCriteria = self.request.GET.get("criteria")
@@ -72,3 +72,10 @@ class ImagenViewSet(viewsets.ModelViewSet):
     queryset = Imagen.objects.all()
     serializer_class = ImagenSerializer
     permission_classes = [permissions.AllowAny]
+    @swagger_auto_schema(auto_schema=None)
+    def partial_update(self, request, pk, *args, **kwargs):
+        return super().partial_update(request, pk, *args, **kwargs)
+
+    @swagger_auto_schema(auto_schema=None)
+    def retrieve(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
