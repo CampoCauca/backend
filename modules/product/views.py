@@ -106,6 +106,10 @@ class ArticuloViewSet(viewsets.ModelViewSet):
     )
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
+        
+    @swagger_auto_schema(auto_schema=None)
+    def partial_update(self, request, pk, *args, **kwargs):
+        return super().partial_update(request, pk, *args, **kwargs)
     
 
 
