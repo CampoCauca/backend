@@ -1,16 +1,15 @@
 from django.urls import path, include
 from rest_framework import routers
 from rest_framework import permissions
-from administracion.models import Stock
 from modules.category.views import CategoriaViewSet
 from modules.imagenProducto.views import ImagenProductoViewSet
 from modules.product.views import ArticuloViewSet
+from modules.stock.views import StockViewSet
 
 
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
-from modules.stock.views import StockViewSet
 from modules.unidad_de_medida.views import UnidadDeMedidaViewSet
 
 schema_view = get_schema_view(
