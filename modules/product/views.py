@@ -107,9 +107,6 @@ class ArticuloViewSet(viewsets.ModelViewSet):
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
     
-    @swagger_auto_schema(auto_schema=None)
-    def retrieve(self, request, *args, **kwargs):
-        return super().list(request, *args, **kwargs)
 
 
 # class MovimientoViewSet(viewsets.ModelViewSet):
