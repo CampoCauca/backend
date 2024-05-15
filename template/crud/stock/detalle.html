@@ -1,0 +1,78 @@
+{# Cargamos las librerías necesarias #}
+{% load django_bootstrap5 %}
+{% load static %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de Stock</title>
+    <!-- CSS Bootstrap -->
+    {% bootstrap_css %}
+    <!-- Custom CSS -->
+    <style>
+        /* Estilos personalizados */
+        .espacio {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-0">Detalles de Stock</h5>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th>Cantidad Actual</th>
+                                        <td>{{ object.cantidad_actual }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Valor de Compra</th>
+                                        <td>{{ object.valor_compra }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Valor de Venta</th>
+                                        <td>{{ object.valor_venta }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Utilidad</th>
+                                        <td>{{ object.utilidad }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Movimiento</th>
+                                        <td>{{ object.movimiento_id_movimiento }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Artículo</th>
+                                        <td>{{ object.articulo_id_articulo }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="../" class="btn btn-primary">Volver</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScripts -->
+    <script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js' %}"></script>
+    <script src="{% static 'assets/extra-libs/sparkline/sparkline.js' %}"></script>
+    <script src="{% static 'dist/js/waves.js' %}"></script>
+    <script src="{% static 'dist/js/sidebarmenu.js' %}"></script>
+    <script src="{% static 'dist/js/custom.min.js' %}"></script>
+</body>
+</html>
+

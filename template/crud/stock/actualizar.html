@@ -1,0 +1,95 @@
+{# Cargamos las librerías necesarias #}
+{% load django_bootstrap5 %}
+{% load static %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualización de Stock</title>
+    <!-- CSS Bootstrap -->
+    {% bootstrap_css %}
+    <!-- Custom CSS -->
+    <style>
+        /* Estilos personalizados */
+        .espacio {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-0">Actualización de Stock</h5>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <!-- Campos para la actualización -->
+                                <div class="form-group row">
+                                    <label for="cantidad_actual" class="col-lg-3 col-form-label">Cantidad Actual:</label>
+                                    <div class="col-lg-7">
+                                        {{ form.cantidad_actual }}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="valor_compra" class="col-lg-3 col-form-label">Valor de Compra:</label>
+                                    <div class="col-lg-7">
+                                        {{ form.valor_compra }}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="valor_venta" class="col-lg-3 col-form-label">Valor de Venta:</label>
+                                    <div class="col-lg-7">
+                                        {{ form.valor_venta }}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="utilidad" class="col-lg-3 col-form-label">Utilidad:</label>
+                                    <div class="col-lg-7">
+                                        {{ form.utilidad }}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="movimiento" class="col-lg-3 col-form-label">Movimiento:</label>
+                                    <div class="col-lg-7">
+                                        {{ form.movimiento_id_movimiento }}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="articulo" class="col-lg-3 col-form-label">Artículo:</label>
+                                    <div class="col-lg-7">
+                                        {{ form.articulo_id_articulo }}
+                                    </div>
+                                </div>
+                                <!-- Botones de acción -->
+                                <div class="form-group row">
+                                    <div class="col-lg-7 offset-lg-3">
+                                        <button type="submit" class="btn btn-primary">Aceptar</button>
+                                        <a href="../" class="btn btn-primary">Cancelar</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScripts -->
+    <script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js' %}"></script>
+    <script src="{% static 'assets/extra-libs/sparkline/sparkline.js' %}"></script>
+    <script src="{% static 'dist/js/waves.js' %}"></script>
+    <script src="{% static 'dist/js/sidebarmenu.js' %}"></script>
+    <script src="{% static 'dist/js/custom.min.js' %}"></script>
+</body>
+</html>

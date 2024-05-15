@@ -47,7 +47,100 @@
                 </div>
               </div>
               <!-- Column -->
-
+              <div class="col-md-6 col-lg-2 col-xlg-3">
+                <div class="card card-hover">
+                    <div class="box bg-cyan text-center">
+                        <h1 class="font-light text-white">
+                            <i class="mdi mdi-view-dashboard"></i>
+                        </h1>
+                        {% if perms.administracion.add_cabeza %}
+                        <a href="{% url 'administracion:crearcab' %}">
+                            <h6 class="text-white">Crear Cabeza</h6>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+              
+              <!-- Column -->
+              <div class="col-md-6 col-lg-2 col-xlg-3">
+                <div class="card card-hover">
+                    <div class="box bg-cyan text-center">
+                        <h1 class="font-light text-white">
+                            <i class="mdi mdi-view-dashboard"></i>
+                        </h1>
+                        {% if perms.administracion.view_stock %}
+                    <a href="{% url 'administracion:leerstock' %}">
+                      <h6 class="text-white">Listar Stock</h6>
+                    </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+              
+              <!-- Column -->
+              
+              <div class="col-md-6 col-lg-2 col-xlg-3">
+                <div class="card card-hover">
+                    <div class="box bg-cyan text-center">
+                        <h1 class="font-light text-white">
+                            <i class="mdi mdi-view-dashboard"></i>
+                        </h1>
+                        {% if perms.administracion.add_stock %}
+                    <a href="{% url 'administracion:crearstock' %}">
+                      <h6 class="text-white">Crear Stock</h6>
+                    </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+              <!-- Column -->
+              <div class="col-md-6 col-lg-2 col-xlg-3">
+                <div class="card card-hover">
+                  <div class="box bg-cyan text-center">
+                    <h1 class="font-light text-white">
+                      <i class="mdi mdi-view-dashboard"></i>
+                    </h1>
+                    {% if perms.administracion.view_stock %}
+                    <a href="{% url 'administracion:detallesstock' pk=1 %}">
+                      <h6 class="text-white">Detalles Stock</h6>
+                    </a>
+                    {% endif %}
+                                       
+                  </div>
+                </div>
+              </div>
+              <!-- Column -->
+                           
+               <div class="col-md-6 col-lg-2 col-xlg-3">
+                <div class="card card-hover">
+                    <div class="box bg-cyan text-center">
+                        <h1 class="font-light text-white">
+                            <i class="mdi mdi-view-dashboard"></i>
+                        </h1>
+                        {% if perms.administracion.change_stock %}
+                    <a href="{% url 'administracion:actualizarstock' pk=1 %}">
+                      <h6 class="text-white">Actualizar Stock</h6>
+                    </a>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+              <!-- Column -->
+              <div class="col-md-6 col-lg-2 col-xlg-3">
+                <div class="card card-hover">
+                    <div class="box bg-cyan text-center">
+                        <h1 class="font-light text-white">
+                            <i class="mdi mdi-view-dashboard"></i>
+                        </h1>
+                        {% if perms.administracion.delete_stock %}
+                    <a href="{% url 'administracion:eliminarstock' pk=1 %}">
+                      <h6 class="text-white">Eliminar Stock</h6>
+                    </a>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
               <!-- Column -->
               <div class="col-md-6 col-lg-2 col-xlg-3">
                 <div class="card card-hover">

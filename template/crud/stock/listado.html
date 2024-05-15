@@ -1,0 +1,71 @@
+{# Cargamos las librerías necesarias #}
+{% load django_bootstrap5 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Stock</title>
+    <!-- CSS Bootstrap -->
+    {% bootstrap_css %}
+    <!-- Custom CSS -->
+    <style>
+        /* Estilos personalizados */
+        .espacio {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-0">Listado de Stock</h5>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Cantidad Actual</th>
+                                        <th>Valor de Compra</th>
+                                        <th>Valor de Venta</th>
+                                        <th>Utilidad</th>
+                                        <th>Movimiento</th>
+                                        <th>Artículo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for stock in stocks %}
+                                    <tr>
+                                        <td>{{ stock.cantidad_actual }}</td>
+                                        <td>{{ stock.valor_compra }}</td>
+                                        <td>{{ stock.valor_venta }}</td>
+                                        <td>{{ stock.utilidad }}</td>
+                                        <td>{{ stock.movimiento_id_movimiento }}</td>
+                                        <td>{{ stock.articulo_id_articulo }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScripts -->
+    <script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js' %}"></script>
+    <script src="{% static 'assets/extra-libs/sparkline/sparkline.js' %}"></script>
+    <script src="{% static 'dist/js/waves.js' %}"></script>
+    <script src="{% static 'dist/js/sidebarmenu.js' %}"></script>
+    <script src="{% static 'dist/js/custom.min.js' %}"></script>
+</body>
+</html>

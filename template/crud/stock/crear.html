@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Stock</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-submit {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Crear Stock</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="cantidad_actual">Cantidad Actual:</label>
+                                <input type="number" class="form-control" id="cantidad_actual" name="cantidad_actual" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="valor_compra">Valor de Compra:</label>
+                                <input type="number" class="form-control" id="valor_compra" name="valor_compra" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="valor_venta">Valor de Venta:</label>
+                                <input type="number" class="form-control" id="valor_venta" name="valor_venta">
+                            </div>
+                            <div class="form-group">
+                                <label for="utilidad">Utilidad:</label>
+                                <input type="text" class="form-control" id="utilidad" name="utilidad" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="movimiento">Movimiento:</label>
+                                <select class="form-control" id="movimiento" name="movimiento" required>
+                                    <option value="1">Movimiento 1</option>
+                                    <option value="2">Movimiento 2</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="articulo">Artículo:</label>
+                                <select class="form-control" id="articulo" name="articulo" required>
+                                    <option value="1">Artículo 1</option>
+                                    <option value="2">Artículo 2</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-submit">Crear Stock</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
