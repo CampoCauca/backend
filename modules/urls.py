@@ -5,7 +5,11 @@ from modules.category.views import CategoriaViewSet
 from modules.imagenProducto.views import ImagenProductoViewSet
 from modules.product.views import ArticuloViewSet
 from modules.stock.views import StockViewSet
-
+from modules.users.views import UsersViewSet
+from modules.tipo_documento.views import TipoDocumentoViewSet
+from modules.empresa.views import EmpresaViewSet
+from modules.tipo_persona.views import TipoPersonaViewSet
+from modules.municipio.views import MunicipioViewSet
 
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
@@ -25,13 +29,18 @@ schema_view = get_schema_view(
     permission_classes=(permissions.AllowAny,),
 )
 
-
 router = routers.DefaultRouter()
 router.register(r"producto", ArticuloViewSet, basename="producto")
 router.register(r"categoria", CategoriaViewSet, basename="categoria")
 router.register(r"unidadDeMedida", UnidadDeMedidaViewSet, basename="unidadDeMedida")
 router.register(r"imagenProducto", ImagenProductoViewSet, basename="imagenProducto")
 router.register(r"stock", StockViewSet, basename="stock")
+router.register(r"usuarios", UsersViewSet, basename="usuarios")
+router.register(r"tipoDocumento", TipoDocumentoViewSet, basename="tipoDocumento")
+router.register(r"empresa", EmpresaViewSet, basename="empresa")
+router.register(r"tipoPersona", TipoPersonaViewSet, basename="tipoPersona")
+router.register(r"municipio", MunicipioViewSet, basename="municipio")
+
 # Add other endpoints with their respective ViewSets here
 
 urlpatterns = [
