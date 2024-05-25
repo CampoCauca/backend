@@ -8,6 +8,7 @@ from modules.stock.views import StockViewSet
 from modules.users.views import UsersViewSet
 from modules.tipo_documento.views import TipoDocumentoViewSet
 from modules.empresa.views import EmpresaViewSet
+from modules.tipo_persona.views import TipoPersonaViewSet
 
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
@@ -37,6 +38,7 @@ router.register(r"stock", StockViewSet, basename="stock")
 router.register(r"usuarios", UsersViewSet, basename="usuarios")
 router.register(r"tipoDocumento", TipoDocumentoViewSet, basename="tipoDocumento")
 router.register(r"empresa", EmpresaViewSet, basename="empresa")
+router.register(r"tipoPersona", TipoPersonaViewSet, basename="tipoPersona")
 
 # Add other endpoints with their respective ViewSets here
 
