@@ -2,18 +2,18 @@ from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 
 from rest_framework import viewsets, permissions
-from administracion.models import MyUser
+from administracion.models import Persona
 from modules.users.serializers import UsersSerializer
 
 class UsersViewSet(viewsets.ModelViewSet):
-    queryset = MyUser.objects.all()
+    queryset = Persona.objects.all()
     serializer_class = UsersSerializer
     permission_classes = [permissions.AllowAny]
 
     @swagger_auto_schema(
         manual_parameters=[
             openapi.Parameter(
-                "id",
+                "id_persona",
                 openapi.IN_QUERY,
                 description="Id of user",
                 type=openapi.TYPE_INTEGER,

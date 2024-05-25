@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from administracion.models import MyUser
+from administracion.models import Persona
 
 
 class UsersSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = MyUser
+        model = Persona
         fields = "__all__"
