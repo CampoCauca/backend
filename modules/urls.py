@@ -6,6 +6,7 @@ from modules.imagenProducto.views import ImagenProductoViewSet
 from modules.product.views import ArticuloViewSet
 from modules.stock.views import StockViewSet
 from modules.users.views import UsersViewSet
+from modules.tipo_documento.views import TipoDocumentoViewSet
 
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
@@ -33,6 +34,7 @@ router.register(r"unidadDeMedida", UnidadDeMedidaViewSet, basename="unidadDeMedi
 router.register(r"imagenProducto", ImagenProductoViewSet, basename="imagenProducto")
 router.register(r"stock", StockViewSet, basename="stock")
 router.register(r"usuarios", UsersViewSet, basename="usuarios")
+router.register(r"tipoDocumento", TipoDocumentoViewSet, basename="tipoDocumento")
 
 # Add other endpoints with their respective ViewSets here
 
