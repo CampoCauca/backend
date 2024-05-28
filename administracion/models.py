@@ -122,6 +122,9 @@ class Persona(models.Model):
     segundo_nombre= models.CharField(max_length=45)
     primer_apellido = models.CharField(max_length=50)
     segundo_apellido = models.CharField(max_length=45)
+    identificacion = models.CharField(max_length=45)
+    correo_institucional = models.CharField(max_length=70)
+    foto = models.ImageField(upload_to = "img/", null=True)
     correo = models.EmailField(unique=True)
     telefono = models.CharField(max_length=45)
     direccion = models.CharField(max_length=45)
@@ -129,10 +132,6 @@ class Persona(models.Model):
     id_tipo_persona = models.ForeignKey('tipoPersona', models.DO_NOTHING, db_column='tipoPerona_id_tipo_persona')
     id_tipo_documento = models.ForeignKey('tipoIdentificacion', models.DO_NOTHING, db_column='tipo_documento_id_tipo_documento')
     id_municipio = models.ForeignKey('municipio', models.DO_NOTHING, db_column='municipio_id_municipio')
-
-    #correo_institucional = models.CharField(max_length=70)
-    #foto = models.ImageField(upload_to = "img/", null=True)
-    #identificacion = models.CharField(max_length=45)
 
     class Meta:
         managed = True
