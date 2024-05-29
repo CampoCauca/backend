@@ -97,21 +97,21 @@
                                           <td >
                                               
                                               <div class="col-lg-7">
-                                                  <label for="id_persona" >Id Persona</label>
+                                                  <label for="id_persona" >Codigo Persona</label>
                                                   {{ form.id_persona}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
                                               </div>
                                           </td>
                                           <td >
                                               
                                               <div class="col-lg-7" >
-                                                  <label for="primer_nombre" >Primer nombre</label>
+                                                  <label for="primer_nombre" >Primer nombre de Persona</label>
                                                   {{ form.primer_nombre}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
                                           <td>
                                               
                                               <div class="col-lg-7">
-                                                  <label for="segundo_nombre" >Segundo nombre</label>
+                                                  <label for="segundo_nombre" >segundo nombre de Persona</label>
                                                   {{ form.segundo_nombre }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
@@ -119,42 +119,23 @@
                                           <td>
                                               
                                               <div class="col-lg-7">
-                                                  <label for="primer_apellido" >Primer apellido</label>
+                                                  <label for="primer_apellido" >Pimer apellido de Persona</label>
                                                   {{ form.primer_apellido }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
-                                        </tr> 
-
-                                        <tr class="espacio">
 
                                           <td>
                                               
                                               <div class="col-lg-7">
-                                                  <label for="segundo_apellido" >Segundo apellido </label>
+                                                  <label for="segundo_apellido" >Segundo apellido de Persona</label>
                                                   {{ form.segundo_apellido }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
 
-                                            <td>
-                                              
-                                              <div class="col-lg-7">
-                                                  <label for="identificacion" >Identificación</label>
-                                                  {{ form.identificacion }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
-                                              </div>
-                                          </td>
-
                                           <td>
                                               
                                               <div class="col-lg-7">
-                                                  <label for="correo" >Correo</label>
-                                                  {{ form.correo}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
-                                              </div>
-                                          </td>
-
-                                          <td>
-                                              
-                                              <div class="col-lg-7">
-                                                  <label for="telefono" >Teléfono</label>
+                                                  <label for="telefono" >Telefono</label>
                                                   {{ form.telefono}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
@@ -162,20 +143,24 @@
                                             <td>
                                               
                                               <div class="col-lg-7">
-                                                  <label for="direccion" >Dirección</label>
+                                                  <label for="direccion" >Direccion</label>
                                                   {{ form.direccion}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
 
-                                               <div class="col-lg-7">
-                                                  <label for="foto" >Foto</label>
-                                                  {{ form.foto}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                                <td>
+                                              
+                                              <div class="col-lg-7">
+                                                  <label for="correo" >Correo</label>
+                                                  {{ form.correo}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
-                                          </td>     
+                                          </td>
+                                          
+                                      </tr>   
                                     </tr>                
                                       <div>              
                                           <button type="submit" class="btn btn-primary">Aceptar</button> 
-                                          <a href="/home" type="submit" class="btn btn-primary">Cancelar</a>
+                                          <a href="../" type="submit" class="btn btn-primary">Cancelar</a>
                                       </div> 
                                       &nbsp;
                                       &nbsp;
@@ -198,16 +183,15 @@
                     <table id="zero_config" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th>Id de Persona</th>
-                          <th>Primer nombre </th>
-                          <th>Segundo nombre </th>
-                          <th>Primer apellido </th>
-                          <th>Segundo apellido </th> <!--poner todo el nombre completo-->
-                          <th>Identificación</th>
-                          <th>Correo</th>
-                          <th>Teléfono</th>  
-                          <th>Dirección</th>
-                         </tr>
+                          <th>Código de Persona</th>
+                          <th>primer nombre </th>
+                          <th>segundo nombre </th>
+                          <th>segundo apellido </th>
+                          <th>segundo apellido </th> <!--poner todo el nombre completo-->
+                          <th>telefono</th>  
+                          <th>Direccion</th>
+                          <th>Correo</th>   
+                        </tr>
                       </thead>
                       <tbody>
                         {% for persona in object_list %}
@@ -216,12 +200,12 @@
                             <td>{{ persona.primer_nombre}}</td>
                             <td>{{ persona.segundo_nombre}}</td>
                             <td>{{ persona.primer_apellido}}</td>
-                            <td>{{ persona.segundo_apellido}}</td>
-                            <td>{{ persona.identificacion}}</td>
-                            <td>{{ persona.correo}}</td> 
+                            <td>{{ persona.segundo_apeliido}}</td>
                             <td>{{ persona.telefono}}</td>      
                             <td>{{ persona.direccion}}</td>
-                                                     
+                            <td>{{ persona.correo}}</td> 
+                           
+                                                      
                             <td>
                               <form method="POST" action="eliminar/{{ persona.id_persona}}">
                                   {% csrf_token %}

@@ -53,7 +53,7 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Encabezado de factura</h4>
+              <h4 class="page-title">Cabeza</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
@@ -73,7 +73,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title mb-0">Creación de encabezado de factura</h5>
+                  <h5 class="card-title mb-0">Creación de Cabeza</h5>
                 </div>
                 <div class="card">
                   <div class="card-body">
@@ -97,43 +97,43 @@
                                           <td >
                                               
                                               <div class="col-lg-7">
-                                                  <label for="id_cabeza" >Id de encabezado de factura</label>
-                                                  {{ form.id_cabeza}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+                                                  <label for="id_categoria" >id de Cabeza</label>
+                                                  {{ form.id_categoria}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
                                               </div>
                                           </td>
                                           <td >
                                               
                                               <div class="col-lg-7" >
-                                                  <label for="id_persona" >Id de persona</label>
-                                                  {{ form.id_persona}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                                  <label for="nombre_categoria" >id de persona</label>
+                                                  {{ form.nombre_categoria}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
                                           <td>
                                               
                                               <div class="col-lg-7">
-                                                  <label for="fecha" >Fecha</label>
-                                                  {{ form.fecha }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                                  <label for="descipcion_categoria" >Fecha</label>
+                                                  {{ form.descipcion_categoria }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
                                           <td>
                                               
                                               <div class="col-lg-7">
-                                                  <label for="valor_total" >Valor total</label>
-                                                  {{ form.valor_total }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                                  <label for="descipcion_categoria" >valor total</label>
+                                                  {{ form.descipcion_categoria }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
                                           <td>
                                               
                                               <div class="col-lg-7">
-                                                  <label for="vendedor" >Vendedor</label>
-                                                  {{ form.vendedor }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                                  <label for="descipcion_categoria" >vendedor</label>
+                                                  {{ form.descipcion_categoria }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
                                           <td>
                                               
                                               <div class="col-lg-7">
-                                                  <label for="comprador" >Comprador</label>
-                                                  {{ form.comprador }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                                  <label for="descipcion_categoria" >Comprador</label>
+                                                  {{ form.descipcion_categoria }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
                                           
@@ -141,7 +141,7 @@
                                     </tr>                
                                       <div>              
                                           <button type="submit" class="btn btn-primary">Aceptar</button> 
-                                          <a href="/home" type="submit" class="btn btn-primary">Cancelar</a>
+                                          <a href="../" type="submit" class="btn btn-primary">Cancelar</a>
                                       </div> 
                                       &nbsp;
                                       &nbsp;
@@ -159,13 +159,13 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Lista de encabezado de factura</h5>
+                  <h5 class="card-title">Lista de Cabeza</h5>
                   <div class="table-responsive">
                     <table id="zero_config" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th>Id de encabezado de factura</th>
-                          <th>Id de persona</th>
+                          <th>Código de emcabezado</th>
+                          <th>Codigo de la persona</th>
                           <th>Fecha</th> 
                           <th>Valor Total</th>   
                           <th>Vendedor</th>  

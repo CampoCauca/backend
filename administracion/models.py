@@ -27,7 +27,7 @@ class Articulo(models.Model):
         db_table = 'articulo'
         db_table_comment = 'Esta entidad se crea con el objetivo de mantener un registro de todos los articulos que hay en la tienda, teniendo en cuenta sus caracteristicas '
         
-        #Ubicada en lugar diferente
+        
 class Imagen(models.Model):
     id_imagen = models.AutoField(primary_key=True)
     url = models.CharField(max_length=255)
@@ -319,6 +319,8 @@ class Municipio(models.Model):
         managed = False
         db_table = 'municipio'
         db_table_comment = 'Esta entidad se crea con el objetivo de determinar la procedencia por municipios, o en su defecto dictaminar hacia que punto van dirijido los pedidos'
+
+
 
 
 class Stock(models.Model):

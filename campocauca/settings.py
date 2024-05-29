@@ -88,7 +88,7 @@ WSGI_APPLICATION = "campocauca.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "campocauca10",
+        "NAME": "campocauca",
         "USER": "root",
         "PASSWORD": "Admin1234*",
         "PORT": "3306",

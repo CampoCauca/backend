@@ -175,7 +175,7 @@ class ListadoEmpresa(CreateView, ListView, SuccessMessageMixin):
 
 
 class EmpresaDetalle(DetailView):
-    model = Empresa # E mayus
+    model = Empresa
 
 
 class EmpresaActualizar(SuccessMessageMixin, UpdateView):
@@ -423,7 +423,6 @@ class TipoPersonaEliminar(SuccessMessageMixin, DeleteView):
         messages.success (self.request, (success_message))       
         return reverse('administracion:leertpe') # Redireccionamos a la vista principal 'leer'
     #------------------------------------Tipo Persona ----------------------------------#
-   
     #------------------------------------TipoDocumento ----------------------------------#
 class ListadoTipoDocumento(CreateView,ListView,SuccessMessageMixin):
     model = TipoDocumento
@@ -458,7 +457,6 @@ class TipoDocumentoEliminar(SuccessMessageMixin, DeleteView):
         messages.success (self.request, (success_message))       
         return reverse('administracion:leertdo') # Redireccionamos a la vista principal 'leer'
     #------------------------------------TipoDocumento ----------------------------------#
-
 #-----------------------------------Persona-----------------------------------------------------#
     
 class ListadoPersona(CreateView,ListView,SuccessMessageMixin):
@@ -494,27 +492,26 @@ class PersonaEliminar(SuccessMessageMixin, DeleteView):
         messages.success (self.request, (success_message))       
         return reverse('administracion:leerper') # Redireccionamos a la vista principal 'leer'
      #-----------------------------------Persona-----------------------------------------------------#
-
-  #-----------------------------------DjangoMigrations-----------------------------------------------------#
+      #-----------------------------------DjangoMigrations-----------------------------------------------------#
     
 class ListadoDjangoMigrations(CreateView,ListView,SuccessMessageMixin):
     model = DjangoMigrations
     form = DjangoMigrations
     fields = "__all__"
     context_object_name = 'object_list'
-    success_message ='Django Migrations creado correctamente' 
+    success_message ='Metodo de pago creado correctamente'
     def get_success_url(self):        
         return reverse('administracion:leerdjm') # Redireccionamos a la vista principal 'leer'    
     
 
 class DjangoMigrationsDetalle (DetailView):
-    model = DjangoMigrations
+    model =DjangoMigrations
 
 class DjangoMigrationsActualizar(SuccessMessageMixin,UpdateView):
-    model = DjangoMigrations
+    model =DjangoMigrations
     form = DjangoMigrations
     fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'regional' de nuestra Base de Datos 
-    success_message = 'Django Migrations Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+    success_message = 'Metodo de pago Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
 
     def get_success_url(self):               
         return reverse('administracion:leerdjm') # Redireccionamos a la vista principal 'leer'
@@ -526,11 +523,10 @@ class DjangoMigrationsEliminar(SuccessMessageMixin, DeleteView):
  
     # Redireccionamos a la página principal luego de eliminar un registro o postre
     def get_success_url(self): 
-        success_message = 'Django Migrations Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
+        success_message = 'Metodo de pago Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
         messages.success (self.request, (success_message))       
         return reverse('administracion:leerdjm') # Redireccionamos a la vista principal 'leer'
 #-----------------------------------DjangoMigrations-----------------------------------------------------#
- 
  #-----------------------------------AuthUserUserPermissions-----------------------------------------------------#
     
 class ListadoAuthUserUserPermissions(CreateView,ListView,SuccessMessageMixin):
@@ -567,7 +563,6 @@ class AuthUserUserPermissionsEliminar(SuccessMessageMixin, DeleteView):
         return reverse('administracion:leerau') # Redireccionamos a la vista principal 'leer'     
      
  #-----------------------------------AuthUserUserPermissions-----------------------------------------------------#
-   
     #-----------------------------------Cabeza-----------------------------------------------------#
 class ListadoCabeza(CreateView,ListView,SuccessMessageMixin):
     model = Cabeza
@@ -585,7 +580,7 @@ class CabezaDetalle (DetailView):
 class CabezaCrear(SuccessMessageMixin, CreateView):
     model = Cabeza
     fields = "__all__"
-    success_message = 'Creada correctamente'  
+    success_message = 'creada correctamente'  
 
     def get_success_url(self):
         return reverse('administracion:leercab')  
@@ -663,13 +658,12 @@ class ArticuloEliminar(SuccessMessageMixin, DeleteView):
         return reverse('administracion:leerart') # Redireccionamos a la vista principal 'leer'     
      
  #-----------------------------------Articulo-----------------------------------------------------#
- 
  #-----------------------------------AuthGroupPermissions-----------------------------------------------------#
  
 class ListadoAuthGroupPermissions(CreateView,ListView,SuccessMessageMixin):
     model = AuthGroupPermissions
     form = AuthGroupPermissions
-    fields = "__all__"
+    fields = "_all_"
     context_object_name = 'object_list'
     success_message ='AuthGroupPermissions creado correctamente'
     def get_success_url(self):        
@@ -682,7 +676,7 @@ class AuthGroupPermissionsDetalle (DetailView):
 class AuthGroupPermissionsActualizar(SuccessMessageMixin,UpdateView):
     model = AuthGroupPermissions
     form = AuthGroupPermissions
-    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'regional' de nuestra Base de Datos 
+    fields = "_all_" # Le decimos a Django que muestre todos los campos de la tabla 'regional' de nuestra Base de Datos 
     success_message = 'AuthGroupPermissions Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
 
     def get_success_url(self):               
@@ -691,7 +685,7 @@ class AuthGroupPermissionsActualizar(SuccessMessageMixin,UpdateView):
 class AuthGroupPermissionsEliminar(SuccessMessageMixin, DeleteView): 
     model = AuthGroupPermissions
     form = AuthGroupPermissions
-    fields = "__all__"     
+    fields = "_all_"     
  
     # Redireccionamos a la página principal luego de eliminar un registro o postre
     def get_success_url(self): 
@@ -700,7 +694,6 @@ class AuthGroupPermissionsEliminar(SuccessMessageMixin, DeleteView):
         return reverse('administracion:leerauthgp') # Redireccionamos a la vista principal 'leer'     
      
  #-----------------------------------AuthGroupPermissions-----------------------------------------------------#
- 
  #-----------------------------------Auth_permission(Permisos de autenticacion)-----------------------------------------------------#
     
 class ListadoAuthPermission(CreateView,ListView,SuccessMessageMixin):
@@ -737,7 +730,6 @@ class AuthPermissionEliminar(SuccessMessageMixin, DeleteView):
         return reverse('administracion:leeraut') # Redireccionamos a la vista principal 'leer' 
 
 #-----------------------------------Auth_permission(Permisos de autenticacion)-----------------------------------------------------#
-
 #-----------------------------------Cuerpo-----------------------------------------------------#
     
 class ListadoCuerpo(CreateView,ListView,SuccessMessageMixin):
@@ -774,7 +766,6 @@ class CuerpoEliminar(SuccessMessageMixin, DeleteView):
         return reverse('administracion:leercur') # Redireccionamos a la vista principal 'leer' 
 
 #-----------------------------------Cuerpo-----------------------------------------------------#
-
 #-----------------------------------django_content_type-----------------------------------------------------#
 
 class ContentTypeListado(CreateView,ListView,SuccessMessageMixin):
@@ -782,7 +773,7 @@ class ContentTypeListado(CreateView,ListView,SuccessMessageMixin):
     form = DjangoContentType
     fields = "__all__"
     context_object_name = 'object_list'
-    success_message ='Content type creado correctamente'
+    success_message ='Categoria creado correctamente'
     def get_success_url(self):        
         return reverse('administracion:leerContentType') # Redireccionamos a la vista principal 'leer'    
     
@@ -794,7 +785,7 @@ class ContentTypeActualizar(SuccessMessageMixin,UpdateView):
     model = DjangoContentType
     form = DjangoContentType
     fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'Content Type' de nuestra Base de Datos 
-    success_message = 'Content type Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Content Type
+    success_message = 'Categoria Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Content Type
 
     def get_success_url(self):               
         return reverse('administracion:leerContentType') # Redireccionamos a la vista principal 'leer'
@@ -806,12 +797,11 @@ class ContentTypeEliminar(SuccessMessageMixin, DeleteView):
  
     # Redireccionamos a la página principal luego de eliminar un registro o Content Type
     def get_success_url(self): 
-        success_message = 'Content type Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Grupo
+        success_message = 'Categoria Eliminado Correctamente !' # Mostramos este Mensaje luego de Editar un Grupo
         messages.success (self.request, (success_message))       
         return reverse('administracion:leerContentType') # Redireccionamos a la vista principal 'leer'    
         
  #-----------------------------------django_content_type-----------------------------------------------------#
- 
  #-----------------------------------Unidad_de_medida-----------------------------------------------------#
     
 class ListadoUnidadDeMedida(CreateView,ListView,SuccessMessageMixin):
@@ -847,4 +837,4 @@ class UnidadDeMedidaEliminar(SuccessMessageMixin, DeleteView):
         messages.success (self.request, (success_message))       
         return reverse('administracion:leeruni') # Redireccionamos a la vista principal 'leer' 
 
-#-----------------------------------Unidad_de_medida-----------------------------------------------------# 
+#-----------------------------------Unidad_de_medida-----------------------------------------------------#
