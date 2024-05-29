@@ -84,7 +84,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title mb-0">Actualización de Cabeza</h5>
+                  <h5 class="card-title mb-0">Actualización de Encabezado de factura</h5>
                 </div>
                 <div class="card">
                   <div class="card-body">
@@ -107,17 +107,19 @@
                                           <td >
                                               
                                               <div class="col-lg-7">
-                                                  <label for="id_cabeza" > Código de Cabeza </label>
+                                                  <label for="id_cabeza" > Id de Encabezado de factura </label>
                                                   {{ form.id_cabeza}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
                                               </div>
                                           </td>
+
                                           <td >
                                               
                                               <div class="col-lg-7" >
-                                                  <label for="id_persona" > Codigo de la persona </label>
+                                                  <label for="id_persona" > Id de persona </label>
                                                   {{ form.id_persona }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
+
                                           <td>
                                               
                                               <div class="col-lg-7">
@@ -126,36 +128,31 @@
                                               </div>
                                           </td>
                                          
-                              
-                                    </td>
-                                    <td>
-                                        
-                                        <div class="col-lg-7">
-                                            <label for="valor_total" > Valor Total </label>
-                                            {{ form.valor_total}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
-                                        </div>
-                                    </td>
-                                   </td>
+                                          <td>
+                                              
+                                              <div class="col-lg-7">
+                                                  <label for="valor_total" > Valor Total </label>
+                                                  {{ form.valor_total}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                              </div>
+                                          </td>
+
+                                          <td>
                                           
                                           <div class="col-lg-7">
                                               <label for="vendedor" > Vendedor </label>
                                               {{ form.vendedor}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                           </div>
-                                      </td>
-                                    </td>
-                                    <td>
-                                        
-                                        <div class="col-lg-7">
-                                            <label for="comprador" > Comprador </label>
-                                            {{ form.comprador}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
-                                        </div>
-                                    </td>
+                                          </td>
                                    
-                                </tr>
-                                  </tr>
-                                    </tr>
-                                      </tr>
-                                </tr>
+                                          <td>
+                                              
+                                              <div class="col-lg-7">
+                                                  <label for="comprador" > Comprador </label>
+                                                  {{ form.comprador}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                              </div>
+                                          </td>
+                                        </tr>
+                                 
                                       
                                       
                                         <div class="col-lg-7">              

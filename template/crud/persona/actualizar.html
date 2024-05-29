@@ -84,7 +84,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title mb-0">Actualización de Persona</h5>
+                  <h5 class="card-title mb-0">Actualización de persona</h5>
                 </div>
                 <div class="card">
                   <div class="card-body">
@@ -108,7 +108,7 @@
                                           <td >
                                               
                                               <div class="col-lg-7">
-                                                  <label for="id_persona" >Código de Persona</label>
+                                                  <label for="id_persona" >Id de Persona</label>
                                                   {{ form.id_persona}} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
                                               </div>
                                           </td>
@@ -126,6 +126,7 @@
                                                   {{ form.segundo_nombre }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
+
                                            <td>
                                               
                                               <div class="col-lg-7">
@@ -135,17 +136,28 @@
                                           </td>
 
                                           <td>
-                                              
                                               <div class="col-lg-7">
                                                   <label for="segundo_apellido" >Segundo Apellido</label>
                                                   {{ form.segundo_apellido }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                                              </div>
+                                          </td>
+                                          
+                                      </tr> 
+                                              
+
+                                      <tr class="espacio">
+                                          <td>
+                                              
+                                              <div class="col-lg-7">
+                                                  <label for="identificacion" >Identificación</label>
+                                                  {{ form.identificacion }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
 
                                            <td>
                                               
                                               <div class="col-lg-7">
-                                                  <label for="telefono" >Telefono</label>
+                                                  <label for="telefono" >Teléfono</label>
                                                   {{ form.telefono }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
@@ -153,7 +165,7 @@
                                            <td>
                                               
                                               <div class="col-lg-7">
-                                                  <label for="direccion" >Direccion</label>
+                                                  <label for="direccion" >Dirección</label>
                                                   {{ form.direccion }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
                                               </div>
                                           </td>
@@ -174,10 +186,7 @@
                                           <a href="../" type="submit" class="btn btn-primary">Cancelar</a>
                                       </div> 
 
-                                                         
-                    
-                                      
-                                      
+ 
                                   </form>
                               </div>
                           </tr>
