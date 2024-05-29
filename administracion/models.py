@@ -98,6 +98,8 @@ class MyUser(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(blank=True, null=True)
+    persona_id_persona = models.OneToOneField('Persona', on_delete=models.CASCADE, null=True, blank=True, db_column="persona_id_persona")
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
@@ -116,7 +118,6 @@ class MyUser(AbstractBaseUser):
         db_table = 'myuser'
         
 class Persona(models.Model):
-
     id_persona = models.IntegerField(primary_key=True)
     primer_nombre = models.CharField(max_length=50)
     segundo_nombre= models.CharField(max_length=45)
@@ -124,7 +125,7 @@ class Persona(models.Model):
     segundo_apellido = models.CharField(max_length=45)
     identificacion = models.CharField(max_length=45)
     correo_institucional = models.CharField(max_length=70)
-    foto = models.ImageField(upload_to = "img/", null=True)
+    foto = models.TextField(null=True, blank=True)
     correo = models.EmailField(unique=True)
     telefono = models.CharField(max_length=45)
     direccion = models.CharField(max_length=45)
@@ -140,12 +141,12 @@ class Persona(models.Model):
 @receiver(post_save, sender=Persona)       
 def create_user_for_persona(sender, instance, created, **kwargs):
     if created:
-        User = get_user_model()
-        email = instance.correop
+        MyUser = get_user_model()
+        email = instance.correo
         first_name = instance.primer_nombre
         last_name = instance.primer_apellido
         password = instance.identificacion  # Aquí puedes definir cómo deseas obtener el valor de la contraseña
-        user = User.objects.create_user(email=email, password=password, first_name=first_name, last_name=last_name)        
+        MyUser.objects.create_user(email=email, password=password, first_name=first_name, last_name=last_name, persona_id_persona = instance)      
 
 def actualizar_usuario(sender, instance, **kwargs):
     usuario = instance.user
@@ -153,8 +154,6 @@ def actualizar_usuario(sender, instance, **kwargs):
     usuario.first_name = instance.first_name
     usuario.last_name = instance.last_name
     usuario.save()
-
-
 
 class AuthUserGroups(models.Model):
     id = models.BigAutoField(primary_key=True)
