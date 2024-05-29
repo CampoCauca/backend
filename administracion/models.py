@@ -125,7 +125,6 @@ class Persona(models.Model):
     identificacion = models.CharField(max_length=45)
     correo = models.EmailField(unique=True)
     telefono = models.CharField(max_length=45)
-    correo_institucional = models.CharField(max_length=70)
     direccion = models.CharField(max_length=45)
     foto = models.ImageField(upload_to = "img/", null=True)
    
@@ -317,8 +316,6 @@ class Municipio(models.Model):
         managed = False
         db_table = 'municipio'
         db_table_comment = 'Esta entidad se crea con el objetivo de determinar la procedencia por municipios, o en su defecto dictaminar hacia que punto van dirijido los pedidos'
-
-
 
 
 class Stock(models.Model):

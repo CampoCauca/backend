@@ -7,28 +7,21 @@
               <!-- ============================================================== -->
               <!-- Logo -->
               <!-- ============================================================== -->
-              <a class="navbar-brand" href="index.html">
+              <a class="navbar-brand" href=" ">
                 <!-- Logo icon -->
                 <b class="logo-icon ps-2">
                   <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                   <!-- Dark Logo icon -->
                   <img
-                    src="../assets/images/logo-icon.png"
+                    src="../static/assets/images/Campocauca.png"
                     alt="homepage"
                     class="light-logo"
-                    width="25"
+                    width="66"
                   />
                 </b>
                 <!--End Logo icon -->
-                <!-- Logo text -->
-                <span class="logo-text ms-2">
-                  <!-- dark Logo text -->
-                  <img
-                    src="../assets/images/logo-text.png"
-                    alt="homepage"
-                    class="light-logo"
-                  />
-                </span>
+               
+                
                 <!-- Logo icon -->
                 <!-- <b class="logo-icon"> -->
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -318,7 +311,9 @@
                     >
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="javascript:void(0)"
-                      ><i class="fa fa-power-off me-1 ms-1"></i> Logout</a
+                      ><i class="fa fa-power-off me-1 ms-1">
+                      <a href="/login">
+                      </i>  Logout </a
                     >
                     <div class="dropdown-divider"></div>
                     <div class="ps-4 p-10">
@@ -352,22 +347,14 @@
                 <li class="sidebar-item">
                   <a
                     class="sidebar-link waves-effect waves-dark sidebar-link"
-                    href="index.html"
+                    href="\home"
                     aria-expanded="false"
                     ><i class="mdi mdi-view-dashboard"></i
                     ><span class="hide-menu">Dashboard</span></a
                   >
                 </li>
-                <li class="sidebar-item">
-                  <a
-                    class="sidebar-link waves-effect waves-dark sidebar-link"
-                    href="charts.html"
-                    aria-expanded="false"
-                    ><i class="mdi mdi-chart-bar"></i
-                    ><span class="hide-menu">Charts</span></a
-                  >
-                </li>
-                <li class="sidebar-item">
+               
+               <!-- <li class="sidebar-item">
                   <a
                     class="sidebar-link waves-effect waves-dark sidebar-link"
                     href="widgets.html"
@@ -393,7 +380,212 @@
                     ><i class="mdi mdi-blur-linear"></i
                     ><span class="hide-menu">Full Width</span></a
                   >
+                </li> -->
+               <!-- M-->
+                <!-- Empresa-->
+                 <li class="sidebar-item">
+                  <a
+                    class="sidebar-link waves-effect waves-dark sidebar-link"
+                    href="{% url 'administracion:leerem' %}"
+                    aria-expanded="false"
+                    ><i class="mdi mdi-home-modern"></i
+                    ><span class="hide-menu">Empresa</span></a
+                  >
                 </li>
+              <!-- Menu Django-->
+                <li class="sidebar-item">
+                  <a
+                    class="sidebar-link has-arrow waves-effect waves-dark"
+                    href="javascript:void(0)"
+                    aria-expanded="false"
+                    ><i class="mdi mdi-security"></i
+                    ><span class="hide-menu">Django </span></a
+                  >
+                  <ul aria-expanded="false" class="collapse first-level">
+                    <li class="sidebar-item">
+                      <a href="{% url 'administracion:leerdjm' %}" class="sidebar-link"
+                        ><i class="mdi mdi-shuffle-variant"></i
+                        ><span class="hide-menu"> Django Migrations </span></a
+                      >
+                    </li>
+                    <li class="sidebar-item">
+                      <a href="{% url 'administracion:leerau' %}" class="sidebar-link"
+                        ><i class="mdi mdi-account-key"></i
+                        ><span class="hide-menu"> Auth user User permission </span></a
+                      >
+                    </li>
+                    <li class="sidebar-item">
+                      <a href="{% url 'administracion:leerauthgp' %}" class="sidebar-link"
+                        ><i class="mdi mdi-account-multiple-outline"></i
+                        ><span class="hide-menu"> Auth group permission </span></a
+                      >
+                    </li>
+                    <li class="sidebar-item">
+                      <a href="{% url 'administracion:leeraut' %}" class="sidebar-link"
+                        ><i class="mdi mdi-key-plus"></i
+                        ><span class="hide-menu"> Auth  permission </span></a
+                      >
+                    </li>
+                    <li class="sidebar-item">
+                      <a href="{% url 'administracion:leerContentType' %}" class="sidebar-link"
+                        ><i class="mdi mdi-note-plus"></i
+                        ><span class="hide-menu"> Content type </span></a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <!-- Menu Persona-->
+
+                <li class="sidebar-item">
+                  <a
+                    class="sidebar-link has-arrow waves-effect waves-dark"
+                    href="javascript:void(0)"
+                    aria-expanded="false"
+                    ><i class="mdi mdi-account-settings"></i
+                    ><span class="hide-menu">Menú persona </span></a
+                  >
+                  <ul aria-expanded="false" class="collapse first-level">
+                    <li class="sidebar-item">
+                      <a href="{% url 'administracion:leerper' %}" class="sidebar-link"
+                        ><i class="mdi mdi-human-greeting"></i
+                        ><span class="hide-menu"> Persona </span></a
+                      >
+                    </li>
+                    <li class="sidebar-item">
+                      <a href="{% url 'administracion:leertpe' %}" class="sidebar-link"
+                        ><i class="mdi mdi-human-male-female"></i
+                        ><span class="hide-menu"> Tipo persona </span></a
+                      >
+                    </li>
+                    <li class="sidebar-item">
+                      <a href="{% url 'administracion:leertdo' %}" class="sidebar-link"
+                        ><i class="mdi mdi-account-card-details"></i
+                        ><span class="hide-menu"> Tipo documento </span></a
+                      >
+                    </li>
+                    <li class="sidebar-item">
+                      <a href="{% url 'administracion:leertip' %}" class="sidebar-link"
+                        ><i class="mdi mdi-contacts"></i
+                        ><span class="hide-menu"> Tipo identificación </span></a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <!-- parte nueva  productos (Categoria,stock,articulo,unidad de medida)-->
+                <li class="sidebar-item">
+                  <a
+                    class="sidebar-link has-arrow waves-effect waves-dark"
+                    href="javascript:void(0)"
+                    aria-expanded="false"
+                    ><i class="mdi mdi-food-apple"></i
+                    ><span class="hide-menu">Productos</span></a
+                  >
+                  <ul aria-expanded="false" class="collapse first-level">
+                    <li class="sidebar-item">
+                    
+                      <a href="{% url 'administracion:leerca' %}" class="sidebar-link"
+                      
+                        ><i class="mdi mdi-folder-multiple"></i
+                        ><span class="hide-menu"> Categoria </span></a
+                      >
+                    </li>
+                    <li class="sidebar-item">
+                    
+                      <a href="{% url 'administracion:leerstock' %}" class="sidebar-link"
+                      
+                        ><i class="mdi mdi-store"></i
+                        ><span class="hide-menu"> Stock </span></a
+                      >
+                    </li>
+                    <li class="sidebar-item">
+                      <a href="{% url 'administracion:leerart' %}" class="sidebar-link"
+                        ><i class="mdi mdi-window-restore"></i
+                        ><span class="hide-menu"> Articulo </span></a
+                      >
+                    </li>
+                    <li class="sidebar-item">
+                      <a href="{% url 'administracion:leeruni' %}" class="sidebar-link"
+                        ><i class="mdi mdi-scale"></i
+                        ><span class="hide-menu"> Unidad de medida </span></a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <!-- parte nueva  productos (Categoria,stock,articulo,unidad de medida)-->
+                
+                <!-- parte nueva  pagos (movimiento,metodo de pago,cuerpo,cabeza)-->
+                <li class="sidebar-item">
+                  <a
+                    class="sidebar-link has-arrow waves-effect waves-dark"
+                    href="javascript:void(0)"
+                    aria-expanded="false"
+                    ><i class="mdi mdi-coin"></i
+                    ><span class="hide-menu">Pagos</span></a
+                  >
+                  <ul aria-expanded="false" class="collapse first-level">
+                    <li class="sidebar-item">
+                    
+                      <a href="{% url 'administracion:leermov' %}" class="sidebar-link" 
+                      
+                        ><i class="mdi mdi-swap-horizontal"></i
+                        ><span class="hide-menu"> Movimiento </span></a
+                      >
+                    </li>
+                    <li class="sidebar-item">
+                    
+                      <a href="{% url 'administracion:leerme' %}" class="sidebar-link"
+                      
+                        ><i class="mdi mdi-credit-card-plus"></i
+                        ><span class="hide-menu"> Metodo de Pago </span></a
+                      >
+                    </li>
+                    <li class="sidebar-item">
+                      <a href="{% url 'administracion:leercur' %}" class="sidebar-link"
+                        ><i class="mdi mdi-note-plus"></i
+                        ><span class="hide-menu"> Cuerpo </span></a
+                      >
+                    </li>
+                    <li class="sidebar-item">
+                      <a href="{% url 'administracion:leercab' %}" class="sidebar-link"
+                        ><i class="mdi mdi-note-plus"></i
+                        ><span class="hide-menu"> Cabeza </span></a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <!-- parte nueva  pagos (movimiento,metodo de pago,cuerpo,cabeza)-->
+                
+                <!-- parte nueva  UBICACION (mDEPARTAMENTO MUNICIPIO)-->
+                <li class="sidebar-item">
+                  <a
+                    class="sidebar-link has-arrow waves-effect waves-dark"
+                    href="javascript:void(0)"
+                    aria-expanded="false"
+                    ><i class="mdi mdi-map-marker-radius"></i
+                    ><span class="hide-menu">Ubicacion</span></a
+                  >
+                  <ul aria-expanded="false" class="collapse first-level">
+                    <li class="sidebar-item">
+                    
+                      <a href="{% url 'administracion:leerdep' %}" class="sidebar-link" 
+                      
+                        ><i class="mdi mdi-google-maps"></i
+                        ><span class="hide-menu"> Departamento </span></a
+                      >
+                    </li>
+                    <li class="sidebar-item">
+                    
+                      <a href="{% url 'administracion:leermu' %}" class="sidebar-link"
+                      
+                        ><i class="mdi mdi-map-marker-plus"></i
+                        ><span class="hide-menu"> Municipio </span></a
+                      >
+                    </li>
+                    
+                  </ul>
+                </li>
+                <!-- parte nueva  UBICACION (mDEPARTAMENTO MUNICIPIO)-->
+                 <!-- 
                 <li class="sidebar-item">
                   <a
                     class="sidebar-link has-arrow waves-effect waves-dark"
@@ -409,154 +601,8 @@
                         ><span class="hide-menu"> Form Basic </span></a
                       >
                     </li>
-                    <li class="sidebar-item">
-                      <a href="form-wizard.html" class="sidebar-link"
-                        ><i class="mdi mdi-note-plus"></i
-                        ><span class="hide-menu"> Form Wizard </span></a
-                      >
-                    </li>
-                  </ul>
-                </li>
-                <li class="sidebar-item">
-                  <a
-                    class="sidebar-link waves-effect waves-dark sidebar-link"
-                    href="pages-buttons.html"
-                    aria-expanded="false"
-                    ><i class="mdi mdi-relative-scale"></i
-                    ><span class="hide-menu">Buttons</span></a
-                  >
-                </li>
-                <li class="sidebar-item">
-                  <a
-                    class="sidebar-link has-arrow waves-effect waves-dark"
-                    href="javascript:void(0)"
-                    aria-expanded="false"
-                    ><i class="mdi mdi-face"></i
-                    ><span class="hide-menu">Icons </span></a
-                  >
-                  <ul aria-expanded="false" class="collapse first-level">
-                    <li class="sidebar-item">
-                      <a href="icon-material.html" class="sidebar-link"
-                        ><i class="mdi mdi-emoticon"></i
-                        ><span class="hide-menu"> Material Icons </span></a
-                      >
-                    </li>
-                    <li class="sidebar-item">
-                      <a href="icon-fontawesome.html" class="sidebar-link"
-                        ><i class="mdi mdi-emoticon-cool"></i
-                        ><span class="hide-menu"> Font Awesome Icons </span></a
-                      >
-                    </li>
-                  </ul>
-                </li>
-                <li class="sidebar-item">
-                  <a
-                    class="sidebar-link waves-effect waves-dark sidebar-link"
-                    href="pages-elements.html"
-                    aria-expanded="false"
-                    ><i class="mdi mdi-pencil"></i
-                    ><span class="hide-menu">Elements</span></a
-                  >
-                </li>
-                <li class="sidebar-item">
-                  <a
-                    class="sidebar-link has-arrow waves-effect waves-dark"
-                    href="javascript:void(0)"
-                    aria-expanded="false"
-                    ><i class="mdi mdi-move-resize-variant"></i
-                    ><span class="hide-menu">Addons </span></a
-                  >
-                  <ul aria-expanded="false" class="collapse first-level">
-                    <li class="sidebar-item">
-                      <a href="index2.html" class="sidebar-link"
-                        ><i class="mdi mdi-view-dashboard"></i
-                        ><span class="hide-menu"> Dashboard-2 </span></a
-                      >
-                    </li>
-                    <li class="sidebar-item">
-                      <a href="pages-gallery.html" class="sidebar-link"
-                        ><i class="mdi mdi-multiplication-box"></i
-                        ><span class="hide-menu"> Gallery </span></a
-                      >
-                    </li>
-                    <li class="sidebar-item">
-                      <a href="pages-calendar.html" class="sidebar-link"
-                        ><i class="mdi mdi-calendar-check"></i
-                        ><span class="hide-menu"> Calendar </span></a
-                      >
-                    </li>
-                    <li class="sidebar-item">
-                      <a href="pages-invoice.html" class="sidebar-link"
-                        ><i class="mdi mdi-bulletin-board"></i
-                        ><span class="hide-menu"> Invoice </span></a
-                      >
-                    </li>
-                    <li class="sidebar-item">
-                      <a href="pages-chat.html" class="sidebar-link"
-                        ><i class="mdi mdi-message-outline"></i
-                        ><span class="hide-menu"> Chat Option </span></a
-                      >
-                    </li>
-                  </ul>
-                </li>
-                <li class="sidebar-item">
-                  <a
-                    class="sidebar-link has-arrow waves-effect waves-dark"
-                    href="javascript:void(0)"
-                    aria-expanded="false"
-                    ><i class="mdi mdi-account-key"></i
-                    ><span class="hide-menu">Authentication </span></a
-                  >
-                  <ul aria-expanded="false" class="collapse first-level">
-                    <li class="sidebar-item">
-                      <a href="authentication-login.html" class="sidebar-link"
-                        ><i class="mdi mdi-all-inclusive"></i
-                        ><span class="hide-menu"> Login </span></a
-                      >
-                    </li>
-                    <li class="sidebar-item">
-                      <a href="authentication-register.html" class="sidebar-link"
-                        ><i class="mdi mdi-all-inclusive"></i
-                        ><span class="hide-menu"> Register </span></a
-                      >
-                    </li>
-                  </ul>
-                </li>
-                <li class="sidebar-item">
-                  <a
-                    class="sidebar-link has-arrow waves-effect waves-dark"
-                    href="javascript:void(0)"
-                    aria-expanded="false"
-                    ><i class="mdi mdi-alert"></i
-                    ><span class="hide-menu">Errors </span></a
-                  >
-                  <ul aria-expanded="false" class="collapse first-level">
-                    <li class="sidebar-item">
-                      <a href="error-403.html" class="sidebar-link"
-                        ><i class="mdi mdi-alert-octagon"></i
-                        ><span class="hide-menu"> Error 403 </span></a
-                      >
-                    </li>
-                    <li class="sidebar-item">
-                      <a href="error-404.html" class="sidebar-link"
-                        ><i class="mdi mdi-alert-octagon"></i
-                        ><span class="hide-menu"> Error 404 </span></a
-                      >
-                    </li>
-                    <li class="sidebar-item">
-                      <a href="error-405.html" class="sidebar-link"
-                        ><i class="mdi mdi-alert-octagon"></i
-                        ><span class="hide-menu"> Error 405 </span></a
-                      >
-                    </li>
-                    <li class="sidebar-item">
-                      <a href="error-500.html" class="sidebar-link"
-                        ><i class="mdi mdi-alert-octagon"></i
-                        ><span class="hide-menu"> Error 500 </span></a
-                      >
-                    </li>
-                  </ul>
-                </li>
+                   -->
+
                 <li class="sidebar-item p-3">
                   <a
                     href="https://github.com/wrappixel/matrix-admin-bt5"

@@ -658,12 +658,13 @@ class ArticuloEliminar(SuccessMessageMixin, DeleteView):
         return reverse('administracion:leerart') # Redireccionamos a la vista principal 'leer'     
      
  #-----------------------------------Articulo-----------------------------------------------------#
+ 
  #-----------------------------------AuthGroupPermissions-----------------------------------------------------#
  
 class ListadoAuthGroupPermissions(CreateView,ListView,SuccessMessageMixin):
     model = AuthGroupPermissions
     form = AuthGroupPermissions
-    fields = "_all_"
+    fields = "__all__"
     context_object_name = 'object_list'
     success_message ='AuthGroupPermissions creado correctamente'
     def get_success_url(self):        
@@ -676,7 +677,7 @@ class AuthGroupPermissionsDetalle (DetailView):
 class AuthGroupPermissionsActualizar(SuccessMessageMixin,UpdateView):
     model = AuthGroupPermissions
     form = AuthGroupPermissions
-    fields = "_all_" # Le decimos a Django que muestre todos los campos de la tabla 'regional' de nuestra Base de Datos 
+    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'regional' de nuestra Base de Datos 
     success_message = 'AuthGroupPermissions Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
 
     def get_success_url(self):               
@@ -685,7 +686,7 @@ class AuthGroupPermissionsActualizar(SuccessMessageMixin,UpdateView):
 class AuthGroupPermissionsEliminar(SuccessMessageMixin, DeleteView): 
     model = AuthGroupPermissions
     form = AuthGroupPermissions
-    fields = "_all_"     
+    fields = "__all__"     
  
     # Redireccionamos a la página principal luego de eliminar un registro o postre
     def get_success_url(self): 
@@ -838,3 +839,51 @@ class UnidadDeMedidaEliminar(SuccessMessageMixin, DeleteView):
         return reverse('administracion:leeruni') # Redireccionamos a la vista principal 'leer' 
 
 #-----------------------------------Unidad_de_medida-----------------------------------------------------#
+
+# -----------------------------------STOCKS-----------------------------------------------------#
+
+
+class ListadoStock(CreateView, ListView, SuccessMessageMixin):
+    model = Stock
+    form = Stock
+    fields = "__all__"
+    context_object_name = "object_list"
+    success_message = " Stock creado correctamente"
+
+    def get_success_url(self):
+        return reverse(
+            "administracion:leerstock"
+        )  # Redireccionamos a la vista principal 'leer'
+
+
+class StockDetalle(DetailView):
+    model = Stock
+
+
+class StockActualizar(SuccessMessageMixin, UpdateView):
+    model = Stock 
+    form = Stock
+    fields = "__all__"  # Le decimos a Django que muestre todos los campos de la tabla 'regional' de nuestra Base de Datos
+    success_message = "Stock Actualizado Correctamente !"  # Mostramos este Mensaje luego de Editar un Postre
+
+    def get_success_url(self):
+        return reverse(
+            "administracion:leerstock"
+        )  # Redireccionamos a la vista principal 'leer'
+
+
+class StockEliminar(SuccessMessageMixin, DeleteView):
+    model = Stock
+    form = Stock
+    fields = "__all__"
+
+    # Redireccionamos a la página principal luego de eliminar un registro o postre
+    def get_success_url(self):
+        success_message = "Stock Eliminado Correctamente !"  # Mostramos este Mensaje luego de Editar un Postre
+        messages.success(self.request, (success_message))
+        return reverse(
+            "administracion:leerstock"
+        )  # Redireccionamos a la vista principal 'leer'
+
+
+# -----------------------------------STOCK-----------------------------------------------------#

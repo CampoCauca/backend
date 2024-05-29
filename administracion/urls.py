@@ -107,7 +107,7 @@ urlpatterns = [
     path('departamento/eliminar/<int:pk>', DepartamentoEliminar.as_view(), name='crud/departamento/eliminar.html'), 
     
 
-#--------------------------------------------URL Muniicpio------------------------------------------------------------------------#
+#--------------------------------------------URL Municipio------------------------------------------------------------------------#
     
     path('municipio/', ListadoMunicipio.as_view(template_name = "crud/municipio/tables.html"), name='leermu'),
  
@@ -122,7 +122,7 @@ urlpatterns = [
  
     # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
     path('municipio/eliminar/<int:pk>', MunicipioEliminar.as_view(), name='crud/municipio/eliminar.html'),
-#--------------------------------------------URL TipoIdentificacion ------------------------------------------------------------------------#
+#--------------------------------------------URL Tipo Identificacion ------------------------------------------------------------------------#
     
     path('tipoidentificacion/', ListadoTipoIdentificacion.as_view(template_name = "crud/tipo_identificacion/tables.html"), name='leertip'),
  
@@ -337,5 +337,39 @@ urlpatterns = [
     path('unidad_de_medida/eliminar/<int:pk>', UnidadDeMedidaEliminar.as_view(), name='crud/unidad_de_medida/eliminar.html'), 
 
     #--------------------------------------------URL Unidad_de_Medida------------------------------------------------------------------------#
+
+
+    #--------------------------------------------URL Movimiento------------------------------------------------------------------------#
+    
+    path('movimiento/', ListadoMovimiento.as_view(template_name = "crud/movimiento/tables.html"), name='leermov'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un Movimiento o registro 
+    path('movimiento/detalle/<int:pk>', MovimientoDetalle.as_view(template_name = "crud/movimiento/detalle.html"), name='detallesmov'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo Movimiento o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un categoriao registro de la Base de Datos 
+    path('movimiento/editar/<int:pk>', MovimientoActualizar.as_view(template_name = "crud/movimiento/actualizar.html"), name='actualizarmov'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Movimiento o registro de la Base de Datos 
+    path('movimiento/eliminar/<int:pk>', MovimientoEliminar.as_view(), name='crud/movimiento/eliminar.html'), 
+
+    #--------------------------------------------URL stock------------------------------------------------------------------------#
+    
+    path('stock/', ListadoStock.as_view(template_name = "crud/stock/tables.html"), name='leerstock'),
+ 
+    # La ruta 'detalles' en donde mostraremos una página con los detalles de un EMPRESA o registro 
+    path('stock/detalle/<int:pk>', StockDetalle.as_view(template_name = "crud/stock/detalle.html"), name='detallesstock'),
+ 
+    # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo EMPRESA o registro  
+    #path('zona/crear', ZonaCrear.as_view(template_name = "crud/zona/crear.html"), name='crearre'),
+ 
+    # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un EMPRESAo registro de la Base de Datos 
+    path('stock/editar/<int:pk>', StockActualizar.as_view(template_name = "crud/stock/actualizar.html"), name='actualizarstock'), 
+ 
+    # La ruta 'eliminar' que usaremos para eliminar un Categoria o registro de la Base de Datos 
+    path('stock/eliminar/<int:pk>', StockEliminar.as_view(), name='crud/stock/eliminar.html'),
+
 ]
 

@@ -27,6 +27,7 @@ urlpatterns = [
     path("api/", include("modules.urls")),
     path('home/', Home, name= 'index'),
     path('',login_view, name="login"),
+    path('login/',login_view, name="login"),
     path('logout/', LogoutView.as_view(template_name='login.html'), name="logout"),
     path('registro/', register, name= 'register'),
     path('perfil/', Perfil, name="perfil"),
