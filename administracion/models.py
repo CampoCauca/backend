@@ -27,7 +27,7 @@ class Articulo(models.Model):
         db_table = 'articulo'
         db_table_comment = 'Esta entidad se crea con el objetivo de mantener un registro de todos los articulos que hay en la tienda, teniendo en cuenta sus caracteristicas '
         
-        
+        #Ubicada en lugar diferente
 class Imagen(models.Model):
     id_imagen = models.AutoField(primary_key=True)
     url = models.CharField(max_length=255)
@@ -98,8 +98,6 @@ class MyUser(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(blank=True, null=True)
-    persona_id_persona = models.OneToOneField('Persona', on_delete=models.CASCADE, null=True, blank=True, db_column="persona_id_persona")
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
@@ -118,22 +116,19 @@ class MyUser(AbstractBaseUser):
         db_table = 'myuser'
         
 class Persona(models.Model):
+
     id_persona = models.IntegerField(primary_key=True)
     primer_nombre = models.CharField(max_length=50)
     segundo_nombre= models.CharField(max_length=45)
     primer_apellido = models.CharField(max_length=50)
     segundo_apellido = models.CharField(max_length=45)
     identificacion = models.CharField(max_length=45)
-    correo_institucional = models.CharField(max_length=70)
-    foto = models.TextField(null=True, blank=True)
     correo = models.EmailField(unique=True)
     telefono = models.CharField(max_length=45)
     direccion = models.CharField(max_length=45)
-    id_empresa = models.ForeignKey('empresa', models.DO_NOTHING, db_column='id_empresa')
-    id_tipo_persona = models.ForeignKey('tipoPersona', models.DO_NOTHING, db_column='tipoPerona_id_tipo_persona')
-    id_tipo_documento = models.ForeignKey('tipoIdentificacion', models.DO_NOTHING, db_column='tipo_documento_id_tipo_documento')
-    id_municipio = models.ForeignKey('municipio', models.DO_NOTHING, db_column='municipio_id_municipio')
+    foto = models.ImageField(upload_to = "img/", null=True)
 
+    
     class Meta:
         managed = True
         db_table = 'persona'
@@ -141,12 +136,12 @@ class Persona(models.Model):
 @receiver(post_save, sender=Persona)       
 def create_user_for_persona(sender, instance, created, **kwargs):
     if created:
-        MyUser = get_user_model()
-        email = instance.correo
+        User = get_user_model()
+        email = instance.correop
         first_name = instance.primer_nombre
         last_name = instance.primer_apellido
         password = instance.identificacion  # Aquí puedes definir cómo deseas obtener el valor de la contraseña
-        MyUser.objects.create_user(email=email, password=password, first_name=first_name, last_name=last_name, persona_id_persona = instance)      
+        user = User.objects.create_user(email=email, password=password, first_name=first_name, last_name=last_name)        
 
 def actualizar_usuario(sender, instance, **kwargs):
     usuario = instance.user
@@ -154,6 +149,8 @@ def actualizar_usuario(sender, instance, **kwargs):
     usuario.first_name = instance.first_name
     usuario.last_name = instance.last_name
     usuario.save()
+
+
 
 class AuthUserGroups(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -319,8 +316,6 @@ class Municipio(models.Model):
         managed = False
         db_table = 'municipio'
         db_table_comment = 'Esta entidad se crea con el objetivo de determinar la procedencia por municipios, o en su defecto dictaminar hacia que punto van dirijido los pedidos'
-
-
 
 
 class Stock(models.Model):
